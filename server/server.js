@@ -2,11 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
-var passport = require('./strategies/mongo.localstrategy');
+var passport = require('./strategies/sql.localstrategy');
 var sessionConfig = require('./modules/session.config');
-
-//DB Module
-var db = require('./modules/db.config.js');
 
 // Route includes
 var indexRouter = require('./routes/index.router');
