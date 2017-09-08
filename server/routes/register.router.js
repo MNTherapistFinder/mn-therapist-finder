@@ -28,12 +28,10 @@ router.post('/', function(req, res, next) {
       console.log('post /register -- User.create');
          if(err) {
            console.log('post /register -- User.create -- failure');
-           // next() here would continue on and route to routes/index.js
-           next(err);
+           res.sendStatus(500);
          } else {
            console.log('post /register -- User.create -- success');
-          // route a new express request for GET '/'
-          res.redirect('/');
+           res.sendStatus(201);
          }
     });
 });
