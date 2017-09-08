@@ -23,7 +23,7 @@ router.post('/', function(req, res, next) {
   pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
-      next(err);
+      res.sendStatus(500);
     }
     client.query("INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id",
       [saveUser.username, saveUser.password],
@@ -32,9 +32,9 @@ router.post('/', function(req, res, next) {
 
           if(err) {
             console.log("Error inserting data: ", err);
-            next(err);
+            res.sendStatus(500);
           } else {
-            res.redirect('/');
+            res.sendStatus(201);
           }
         });
   });
