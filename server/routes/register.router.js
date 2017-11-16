@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
 });
 
 // Handles POST request with new user data
-// Handles POST request with new user data
 router.post('/', function(req, res, next) {
 
   var saveUser = {
