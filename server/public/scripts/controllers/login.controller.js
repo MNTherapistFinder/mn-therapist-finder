@@ -1,6 +1,7 @@
 myApp.controller('LoginController', function($http, $location, UserService) {
     console.log('LoginController created');
     var vm = this;
+    vm.truthValue = false;
     vm.user = {
       username: '',
       password: ''
@@ -44,4 +45,20 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         });
       }
     }
+
+    vm.verifyEmail = function (aParam) {
+      vm.truthValue = true
+
+      $http({
+          url: '/email/send',
+          method: 'GET',
+          params: {to: aParam}
+      }).then(function(response){
+          console.log(response.data);
+          if (response.data == 'sent'){
+              vm.greeting = 'Email has been sent to ' + vm.user.username + '. Please check Inbox!'
+              console.log(vm.greeting);
+          }
+      })
+  }
 });
