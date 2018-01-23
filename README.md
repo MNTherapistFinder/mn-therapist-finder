@@ -1,12 +1,13 @@
-# Name of Project
+# MN Therapist Finder
 
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
+MN Therapist Finder is a full-stack web application with the purpose of helping users find therapists in Minnesota who match their needs and connect with those therapists. The application will include a searchable directory of therapists generated through profile creation, and a schedule for users and therapists to connect for their first appointment.
+
 
 ## Built With
 
-List technologies and frameworks here
+AngularJS, Node.js, Express, posgreSQL, Angular Material
 
-## Getting Started
+<!-- ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -20,15 +21,6 @@ Link to software that is required to install the app (e.g. node).
 
 ### Installing
 
-Steps to get the development environment running.
-
-```sql
-CREATE TABLE "users" (
-  "id" serial primary key,
-  "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null
-);
-```
 
 ## Screen Shot
 
@@ -53,13 +45,16 @@ Features that you would like to add at some point in the future.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Add additional notes about how to deploy this on a live system -->
 
 ## Authors
 
-* Name of author(s)
+* Liz Elton
+* Stephanie Ratanas
+* Nasir Hussien 
+* Joe Gagliano
 
 
-## Acknowledgments
+<!-- ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Hat tip to anyone who's code was used -->
