@@ -15,8 +15,10 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       } else {
         console.log('LoginController -- login -- sending to server...', vm.user);
         $http.post('/', vm.user).then(function(response) {
-          if(response.data.username) {
+          if(response.data.email) {
             console.log('LoginController -- login -- success: ', response.data);
+            vm.user.username = '';
+            vm.user.password = '';
             // location works with SPA (ng-route)
             $location.path('/user'); // http://localhost:5000/#/user
           } else {

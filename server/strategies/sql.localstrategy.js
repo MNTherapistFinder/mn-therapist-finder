@@ -3,6 +3,8 @@ var localStrategy = require('passport-local').Strategy;
 var encryptLib = require('../modules/encryption');
 var pool = require('../modules/pool.js');
 
+console.log('got to sql strategy');
+
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
@@ -19,7 +21,7 @@ passport.deserializeUser(function(id, done) {
 
     var user = {};
 
-    client.query("SELECT * FROM users WHERE id = $1", [id], function(err, result) {
+    client.query("SELECT * FROM therapists WHERE id = $1", [id], function(err, result) {
 
       // Handle Errors
       if(err) {
@@ -53,11 +55,11 @@ passport.use('local', new localStrategy({
 	    	console.log('called local - pg');
 
         // assumes the username will be unique, thus returning 1 or 0 results
-        client.query("SELECT * FROM users WHERE username = $1", [username],
+        client.query("SELECT * FROM therapists WHERE email = $1", [username],
           function(err, result) {
             var user = {};
 
-            console.log('here');
+            console.log('here: ', result);
 
             // Handle Errors
             if (err) {
