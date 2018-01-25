@@ -28,7 +28,7 @@
 
     </md-autocomplete>
     <br>
-    <div layout = "row" layout-align= "end center" ng-hide = "hideHsButtons">
+    <div layout = "row" layout-align= "end center" >
         <md-button class="md-primary md-raised" ng-click = "showme=true;hc.searchZipCodes();hideHsButtons=true">Search</md-button>
         <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
     </div>
@@ -38,7 +38,7 @@
 
 <!-- Struggles search box -->
 
-       <div class="md-whiteframe-11dp" ng-show ="showme"  > 
+       <div class="md-whiteframe-11dp" ng-show ="showme" > 
             <h3> Struggles:</h3>
             <md-autocomplete
             md-selected-item = "hc.selectedItem"
@@ -74,7 +74,7 @@
 
 <!-- Insurance Search box -->
 
-<div class="md-whiteframe-11dp" ng-show ="showme2"  > 
+<div class="md-whiteframe-11dp" ng-show ="showme2" > 
         <h3> Insurance:</h3>
         <md-autocomplete
         md-selected-item = "hc.selectedItem"
