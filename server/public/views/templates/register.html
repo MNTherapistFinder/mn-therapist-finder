@@ -2,6 +2,10 @@
   <h1 class="lead">Register User</h1>
   <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
   <form ng-submit="lc.registerUser()">
+      <div>
+          <label for="name">Name:</label>
+          <input type="text" ng-model="lc.user.name" />
+      </div>
     <div>
         <label for="username">Email:</label>
         <input type="text" ng-model="lc.user.username" /><p style="display:inline-block;padding-left:10px;">

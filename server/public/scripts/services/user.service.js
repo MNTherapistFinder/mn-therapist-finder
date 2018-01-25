@@ -1,15 +1,16 @@
 myApp.service('UserService', function($http, $location){
   console.log('UserService Loaded');
   var self = this;
-  self.userObject = {};
+  self.userObject = { list: [] };
 
   self.getuser = function(){
     console.log('UserService -- getuser');
     $http.get('/user').then(function(response) {
         if(response.data.email) {
+            self.userObject.list = response.data;
             // user has a curret session on the server
-            self.userObject.email = response.data.email;
-            console.log('UserService -- getuser -- User Data: ', self.userObject.email);
+            // self.userObject.email = response.data.email;
+            console.log('UserService -- getuser -- User Data: ', self.userObject.list);
         } else {
             console.log('UserService -- getuser -- failure');
             // user has no session, bounce them back to the login page
