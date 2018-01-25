@@ -98,9 +98,25 @@ li a:hover {
 
 
 .md-whiteframe-11dp{
+  transition:all ease-in 1s;
   background-color: lightblue;
   height: 175px;
   width: 400px;
-  padding:20px;
+  padding:10px;
+  padding-bottom:0px !important;
   border-radius: 1%
 }
+
+.ng-hide {
+  height: 0;
+}
+
+.hsAutocomplete{
+  transition: all ease-in 1s;
+}
+
+/* .md-whiteframe-11dp.ng-enter {
+  transition:all ease-in 0.25s;
+  height: 0px;
+
+} */
