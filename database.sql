@@ -1,3 +1,11 @@
+CREATE DATABASE "mn_therapist_finder"
+
+-- -- You need to first install postgis onto your computer, you can use "brew install postgis" if you use homebrew
+-- package manager for macOS
+
+CREATE EXTENSION postgis;
+
+
 CREATE TABLE "therapists"
 (
     "id" serial PRIMARY KEY,
@@ -7,7 +15,9 @@ CREATE TABLE "therapists"
     "profile_picture" VARCHAR(500),
     "biography" VARCHAR(1500) ,
     "workplace_street_address" VARCHAR(100),
-    "workplace_zipcode" INT
+    "workplace_zipcode" INT,
+    "workplace" GEOGRAPHY    
+     -- GEOGRAPHY datatype is a datatype specific to postgis
 )
 WITH (
   OIDS=FALSE
