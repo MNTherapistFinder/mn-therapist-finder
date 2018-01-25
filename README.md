@@ -1,36 +1,39 @@
 # MN Therapist Finder
 
-MN Therapist Finder is a full-stack web application with the purpose of helping users find therapists in Minnesota who match their needs and connect with those therapists. The application will include a searchable directory of therapists generated through profile creation, and a schedule for users and therapists to connect for their first appointment.
+MN Therapist Finder is a full-stack web application with the purpose of helping users find therapists in Minnesota who match their needs and connect with those therapists. The application includes a searchable directory of therapists generated through profile creation, as well as a schedule for users and therapists to connect for their first appointment.
 
 
 ## Built With
 
-AngularJS, Node.js, Express, posgreSQL, Angular Material
+* AngularJS
+* Node.js
+* Express
+* PostgreSQL
+* PostGIS
+* Angular Material
 
 <!-- ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system. -->
 
 ### Prerequisites
 
-Link to software that is required to install the app (e.g. node).
-
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
+- [PostGIS](https://postgis.net/)
 
 
-### Installing
+<!-- ### Installing
 
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+Include one or two screen shots of your project here (optional). Remove if unused. -->
 
 ## Documentation
 
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
+- [MN Therapist Finder scope](https://goo.gl/H1cLaz)
 
-### Completed Features
+<!-- ### Completed Features
 
 High level list of items completed.
 
@@ -55,6 +58,6 @@ Add additional notes about how to deploy this on a live system -->
 * Joe Gagliano
 
 
-<!-- ## Acknowledgments
+## Acknowledgments
 
-* Hat tip to anyone who's code was used -->
+* Thank you to Chris Black and Kris Szafranski for the built-out authentication starting repository.
