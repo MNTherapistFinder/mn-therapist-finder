@@ -78,3 +78,22 @@ li a:hover {
   text-decoration: underline;
   color: #eee;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.md-whiteframe-11dp{
+  background-color: lightblue;
+  height: 175px;
+  width: 400px;
+  padding:20px;
+  border-radius: 1%
+}

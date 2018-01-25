@@ -1,6 +1,74 @@
 <div class="section">
     <h1>home</h1>
 <div layout="row">
-    <md-button class="md-primary md-raised">hello</md-button>
+    <div flex></div>
+    <div flex>
+    <!-- Zip code search box -->
+       <div class="md-whiteframe-11dp"> 
+       <h3> Start Your Search:</h3>
+       <md-autocomplete
+       md-selected-item = "ctrl.selectedItem"
+       md-search-text-change = "ctrl.searchTextChange(ctrl.searchText)"
+       md-search-text = "ctrl.searchText"
+       md-selected-item-change = "ctrl.selectedItemChange(item)"
+       md-items = "item in ctrl.issues | filter : ctrl.searchText "
+       md-item-text = "item.name"
+       md-min-length = "0"
+       placeholder = "Enter Zip Code">
+       
+       <md-item-template>
+          <span md-highlight-text = "ctrl.searchText"
+             md-highlight-flags = "^i">{{item.name}}</span>
+       </md-item-template>
+
+       
+       <md-not-found>
+          No issues matching "{{ctrl.searchText}}" were found.
+          <a ng-click = "ctrl.newIssue(ctrl.searchText)">Please pick an issue from the list.</a>
+       </md-not-found>
+
+    </md-autocomplete>
+    <br><br>
+    <div layout = "row">
+        <md-button class="md-primary md-raised" ng-click = "">Search</md-button>
+        <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
+    </div>
+    
+       </div>
+       <br><br>
+
+<!-- Struggles search box -->
+       <div class="md-whiteframe-11dp" ng-show ="function on skip or click"> 
+            <h3> Start Your Search:</h3>
+            <md-autocomplete
+            md-selected-item = "ctrl.selectedItem"
+            md-search-text-change = "ctrl.searchTextChange(ctrl.searchText)"
+            md-search-text = "ctrl.searchText"
+            md-selected-item-change = "ctrl.selectedItemChange(item)"
+            md-items = "item in ctrl.issues | filter : ctrl.searchText "
+            md-item-text = "item.name"
+            md-min-length = "0"
+            placeholder = "Enter Zip Code">
+            
+            <md-item-template>
+               <span md-highlight-text = "ctrl.searchText"
+                  md-highlight-flags = "^i">{{item.name}}</span>
+            </md-item-template>
+     
+            
+            <md-not-found>
+               No issues matching "{{ctrl.searchText}}" were found.
+               <a ng-click = "ctrl.newIssue(ctrl.searchText)">Please pick an issue from the list.</a>
+            </md-not-found>
+     
+         </md-autocomplete>
+         <br><br>
+         <div layout = "row">
+         <md-button class="md-primary md-raised" ng-click = "">Search</md-button>
+         <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
+         </div>
+
+</div>
+<div flex></div>
 </div>
 </div>
