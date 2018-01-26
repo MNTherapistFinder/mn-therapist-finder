@@ -1,20 +1,27 @@
 body, html {
+  background-color: #f8f8f8;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   font-size: 14px;
+  color: #3C3C3C;
 }
 
-.instructions .container h1 {
+.header .container h1 {
   font-size: 32px;
   font-weight: 600;
+  /* color: #1CCE28; */
 }
 
-.instructions {
-  background-color: #333333;
-  color: #DDDDDD;
+.header {
+  background-color: #f8f8f8;
+  color: #3C3C3C;
   padding: 15px;
 }
+
+/* a {
+  color: #1CCE28;
+} */
 
 #entryForm {
   margin-top: 14px;
@@ -49,7 +56,7 @@ body, html {
 }
 
 .navbar {
-  background-color: #333333;
+  background-color: #3C3C3C;
   width: 100%;
   border-radius: 0px;
 }
@@ -77,4 +84,42 @@ li a {
 li a:hover {
   text-decoration: underline;
   color: #eee;
+}
+
+#login-btn {
+  margin-top: -25px;
+}
+
+.btn-green {
+  background-color: #1CCE28 !important;
+}
+
+.md-whiteframe-11dp{
+  transition:all ease-in 1s;
+  background-color: lightblue;
+  height: 175px;
+  width: 400px;
+  padding:10px;
+  padding-bottom:0px !important;
+  border-radius: 1%
+}
+
+.ng-hide {
+  height: 0;
+}
+
+.hsAutocomplete{
+  transition: all ease-in 1s;
+}
+
+/* .md-whiteframe-11dp.ng-enter {
+  transition:all ease-in 0.25s;
+  height: 0px;
+
+} */
+
+#googleInput {
+  height: 40px;
+  width: 380px;
+  
 }

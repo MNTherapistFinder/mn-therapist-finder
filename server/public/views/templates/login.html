@@ -1,18 +1,26 @@
-<div class="container">
-  <h1 class="lead">Login</h1>
-    <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
+<div class="container" layout="column" layout-align="center center">
+    <h1 class="lead">Login as a Therapist</h1>
+    <h4 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h4>
     <form ng-submit="lc.login()">
-      <div>
-          <label for="username">Username:</label>
-          <input type="text" ng-model="lc.user.username" />
-      </div>
-      <div>
-          <label for="password">Password:</label>
-          <input type="password" ng-model="lc.user.password" />
-      </div>
-      <div>
-          <input class="btn btn-default" type="submit" name="submit" value="Log In" />
-          <a href="#register">Register</a>
-      </div>
+        <div>
+            <div class="container" layout="row" layout-align="center center">
+                <div>
+                    <md-input-container id="login-email">
+                        <label>Email</label>
+                        <input ng-model="lc.user.username" type="email">
+                    </md-input-container>
+                    </div>
+                    <div>
+                    <md-input-container id="login-pass">
+                        <label>Password</label>
+                        <input ng-model="lc.user.password" type="password">
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout="row" layout-align="center center">
+                <md-button type="submit" class="btn-green md-raised" id="login-btn">Log In</md-button>
+            </div>
+            <div layout="row" layout-align="center center">
+            <p>Not registered yet? <a href="#register">Register now</a>!</p>
+        </div>
     </form>
-</div>
