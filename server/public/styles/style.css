@@ -126,3 +126,13 @@ li a:hover {
   width: 380px;
   
 }
+
+.directory-profile-photo-container {
+  height:300px;
+  width: 150px;
+  display: table-cell;
+}
+
+.directoryViewImg {
+  height: 300px;
+}

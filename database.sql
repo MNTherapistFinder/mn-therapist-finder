@@ -141,6 +141,10 @@ WITH (
   OIDS=FALSE
 );
 
+ALTER TABLE qualifications
+RENAME COLUMN license_state
+TO license_type;
+
 
 
 
