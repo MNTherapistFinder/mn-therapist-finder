@@ -1,26 +1,18 @@
 <div ng-controller="LoginController as lc" class="">
     <div class="container" layout="row" layout-align="space-around center">
 
-        <h3><a href="#directory">Directory</a></h3>
+        <h4>
+            <a href="#directory">Directory</a>
+        </h4>
 
-        <h1><a href="#home">MN Therapist Finder</a></h1>
+        <h1>
+            <a href="#home">MN Therapist Finder</a>
+        </h1>
 
-        <div class="container" layout="column" layout-align="center end">
-            <h3><a href="#register">Register</a> / Login</h3>
-                <h3 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h3>
-                <form ng-submit="lc.login()" layout="column" layout-align="center end">
-                    <div>
-                        <input type="text" placeholder="email" ng-model="lc.user.username" />
-                        <!-- need to change this to email once user db is setup -->
-                    </div>
-                    <div>
-                        <input type="password" placeholder="password" ng-model="lc.user.password" />
-                    </div>
-                    <div>
-                        <input class="btn btn-default" type="submit" name="submit" value="Log In" />
-                        
-                    </div>
-                </form>
+        <div class="container" layout="column" layout-align="start end">
+            <h4>
+                <a href="#register">Register</a> / <a href="#login">Login</a></h4>
+            
         </div>
     </div>
 </div>

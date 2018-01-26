@@ -86,16 +86,13 @@ li a:hover {
   color: #eee;
 }
 
+#login-btn {
+  margin-top: -25px;
+}
 
-
-
-
-
-
-
-
-
-
+.btn-green {
+  background-color: #1CCE28 !important;
+}
 
 .md-whiteframe-11dp{
   transition:all ease-in 1s;

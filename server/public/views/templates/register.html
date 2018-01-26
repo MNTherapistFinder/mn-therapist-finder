@@ -1,6 +1,6 @@
 <div class="container"  layout="column" layout-align="center center">
-  <h1 class="lead">Register As a Therapist</h1>
-  <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
+  <h1 class="lead">Register as a Therapist</h1>
+  <h4 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h4>
     <form ng-submit="lc.registerUser()">
       <div>
         <div class="container" layout="row">
@@ -28,4 +28,6 @@
         <md-button type="submit" class="md-primary md-raised">Register</md-button>
         <md-button href="#home" class="md-primary md-raised">Cancel</md-button>
       </div>
+      </div>
     </form>
+  </div>
