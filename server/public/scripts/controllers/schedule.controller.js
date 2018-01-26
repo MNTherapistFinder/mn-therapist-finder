@@ -1,9 +1,9 @@
-myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', function($http,$mdMedia,$mdDialog){
+myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserService', function ($http, $mdMedia, $mdDialog, UserService) {
     console.log('Schedule controller working')
-    var self = this 
-
+    var self = this
+    self.userObject = UserService.userObject
     self.message = 'Hello';
-    self.$http=$http;
+    self.$http = $http;
     self.appointment = [];
     self.slots = [];
     self.$mdMedia = $mdMedia;
@@ -14,132 +14,141 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', functi
     // Configure dates
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var mm = today.getMonth(); //January is 0!
     var yyyy = today.getFullYear();
-    
-    if(dd<10) {
-        dd='0'+dd
-    } 
 
-    if(mm<10) {
-        mm='0'+mm
-    } 
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
     // Create date and slots array
-    self.days = [{dd:dd,mm:mm,yyyy:yyyy},{dd:dd+1,mm:mm,yyyy:yyyy},{dd:dd+2,mm:mm,yyyy:yyyy},{dd:dd+3,mm:mm,yyyy:yyyy}];
-    self.slots= [{h:'10',m:'00'},{h:'10',m:'15'},{h:'10',m:'30'},{h:'10',m:'45'},{h:'11',m:'00'},{h:'11',m:'15'},{h:'11',m:'30'}];
-  
-    self.getAppointments = function(){
+    self.days = [{ dd: dd, mm: mm, yyyy: yyyy }, { dd: dd + 1, mm: mm, yyyy: yyyy }, { dd: dd + 2, mm: mm, yyyy: yyyy }, { dd: dd + 3, mm: mm, yyyy: yyyy }];
+    self.slots = [{ h: '10', m: '00' }, { h: '10', m: '15' }, { h: '10', m: '30' }, { h: '10', m: '45' }, { h: '11', m: '00' }, { h: '11', m: '15' }, { h: '11', m: '30' }];
 
-        this.$http.get('/schedule').then(response=>{
+    self.getAppointments = function () {
+        console.log('get Hit');
+        $http.get('/schedule').then(response => {
+            console.log('response is, ', response.data)
 
-            self.appointments = response.data;
-            self.dates = self.allot(self.slots,self.days,self.appointments);
+            self.appointments = response.data
+            console.log('self.appointments: ', self.appointments);
+            self.dates = self.allot(self.slots, self.days, self.appointments);
         });
-      }
-      self.getAppointments()
+    }
+    self.getAppointments()
 
-      
 
-    self.save = function (appointment){
-        self.appointment.active=true;
-        self.$http.post('/schedule',self.appointment).then(res=>{
-            self.dates = self.allot(self.slots,selfthis.days,self.appointments);
-            self.$http.get('/schedule').then(response=>{
-                self.appointments=response.data;
-                self.dates = self.allot(self.slots,self.days,self.appointments);
+
+    self.save = function (appointmentToSave) {
+        console.log(appointmentToSave);
+        self.appointmentToSave.active = true;
+        console.log('in save function. parameter passed is: ', appointmentToSave.date)
+        self.$http.post('/schedule', {available_from: appointmentToSave.date}).then(res => {
+            self.dates = self.allot(self.slots, self.days, self.appointments);
+            self.$http.get('/schedule').then(response => {
+                self.appointments = response.data[0].available_times;
+                self.dates = self.allot(self.slots, self.days, self.appointments);
             });
         });
-            
+
     }
 
- 
-      
-    
-      
-      self.allot = function(slots, days, appointments){
+
+
+
+
+    self.allot = function (slots, days, appointments) {
+        console.log('slots:', slots);
+        console.log('days:', days);
+        console.log('appointments:', appointments);
         var a = [];
-           _.each(days, function(d) { 
-               var k=new Date(d.yyyy,d.mm,d.dd);
-               var v = [];
-               _.each(slots, function(s) { 
-                   var x = new Date(d.yyyy,d.mm,d.dd,s.h,s.m);
-                   var mx = moment(x);
-                   var active = true;
-                   _.each(appointments, function(g) { 
-                       var sdt = moment(new Date(g.date));
-                       if(moment.duration(sdt.diff(mx))._milliseconds===0){
-                           active = false;
-                       }
-                   })
-                   v.push({date:x,active:active});
-               })
-               a.push({k:k,v:v});
-           })
-       return a;
-       }
-
-
-    
-self.showAdvanced = function(slot) {
-    var vm = this;
-  var useFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs'))  && this.customFullscreen;
-  this.$mdDialog.show({
-    controller: function($scope,$mdDialog,slot){
-        $scope.customer = {};
-        $scope.customer.slot = slot;
-      $scope.answer = function(answer){
-          $mdDialog.hide(answer);
-      };
-    },
-    templateUrl: '/views/templates/makeAvailable.html',
-    locals : {
-        slot : slot
-    },
-    clickOutsideToClose:true,
-    fullscreen: useFullScreen
-  })
-  .then(function(answer) {
-      answer.date = answer.slot.date;
-      vm.save(answer);
-  });
-  
-}
-
-self.getColor = function($index) {
-    var _d = ($index + 1) % 11;
-    var bg = '';
-
-    switch(_d) {
-      case 1:       bg = 'green';       break;
-      case 2:       bg = 'darkBlue';    break;
-      case 3:       bg = 'blue';        break;
-      case 4:       bg = 'yellow';      break;
-      case 5:       bg = 'pink';        break;
-      case 6:       bg = 'darkBlue';    break;
-      case 7:       bg = 'purple';      break;
-      case 8:       bg = 'deepBlue';    break;
-      case 9:       bg = 'lightPurple'; break;
-      case 10:      bg = 'red';         break;
-      default:      bg = 'yellow';      break;
+        _.each(days, function (d) {
+            var k = new Date(d.yyyy, d.mm, d.dd);
+            var v = [];
+            _.each(slots, function (s) {
+                var x = new Date(d.yyyy, d.mm, d.dd, s.h, s.m);
+                var mx = moment(x);
+                var active = true;
+                _.each(appointments, function (g) {
+                    var sdt = moment(new Date(g.available_times));
+                    if (moment.duration(sdt.diff(mx))._milliseconds === 0) {
+                        active = false;
+                    }
+                })
+                v.push({ date: x, active: active });
+            })
+            a.push({ k: k, v: v });
+        })
+        return a;
     }
 
-    return bg;
-  }
- 
+
+
+    self.showAdvanced = function (slot) {
+        var vm = this;
+        var useFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs')) && this.customFullscreen;
+        this.$mdDialog.show({
+            controller: function ($scope, $mdDialog, slot) {
+                $scope.customer = {};
+                $scope.customer.slot = slot;
+                $scope.answer = function (answer) {
+                    $mdDialog.hide(answer);
+                };
+            },
+            // template: '<h1>HELLO SHOW ME PLEASE</h1>',
+            templateUrl: '../views/partials/makeAvailable.html',
+            locals: {
+                slot: slot
+            },
+            clickOutsideToClose: true,
+            fullscreen: useFullScreen
+        })
+            .then(function (answer) {
+                answer.date = answer.slot;
+                console.log(answer.date);
+                vm.save(answer.date);
+            });
+
+    }
+
+    self.getColor = function ($index) {
+        var _d = ($index + 1) % 11;
+        var bg = '';
+
+        switch (_d) {
+            case 1: bg = 'green'; break;
+            case 2: bg = 'darkBlue'; break;
+            case 3: bg = 'blue'; break;
+            case 4: bg = 'yellow'; break;
+            case 5: bg = 'pink'; break;
+            case 6: bg = 'darkBlue'; break;
+            case 7: bg = 'purple'; break;
+            case 8: bg = 'deepBlue'; break;
+            case 9: bg = 'lightPurple'; break;
+            case 10: bg = 'red'; break;
+            default: bg = 'yellow'; break;
+        }
+
+        return bg;
+    }
+
 
 }])
 
-  
- 
-  
-  
-  
 
 
 
 
-  
-  
+
+
+
+
+
+
+
 
 
 

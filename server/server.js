@@ -12,7 +12,7 @@ var registerRouter = require('./routes/register.router');
 var emailRouter = require('./routes/email.router');
 var homeRouter = require('./routes/home.router');
 var directoryRouter = require('./routes/directory.router');
-var scheduleRouter = require('./routes/shcedule.router')
+var scheduleRouter = require('./routes/schedule.router')
 
 var port = process.env.PORT || 5000;
 
