@@ -3,11 +3,8 @@ myApp.controller('DirectoryController', function(DirectoryService) {
     var vm = this;
     vm.getTherapistInfo = DirectoryService.getTherapistInfo;
     vm.therapistInfo = DirectoryService.therapistInfo;
-    vm.getTherapistLicenseType = DirectoryService.getTherapistLicenseType;
-    vm.therapistLicense = DirectoryService.therapistLicense;
 
     
     DirectoryService.getTherapistInfo();
-    DirectoryService.getTherapistLicenseType();
   });
   
