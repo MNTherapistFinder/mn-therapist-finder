@@ -1,5 +1,5 @@
 myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', function($http,$mdMedia,$mdDialog){
-    console.log('controller working')
+    console.log('Schedule controller working')
     var self = this 
 
     self.message = 'Hello';
@@ -29,8 +29,9 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', functi
     self.slots= [{h:'10',m:'00'},{h:'10',m:'15'},{h:'10',m:'30'},{h:'10',m:'45'},{h:'11',m:'00'},{h:'11',m:'15'},{h:'11',m:'30'}];
   
     self.getAppointments = function(){
-        var vm = this;
-        this.$http.get('/appointments').then(response=>{
+
+        this.$http.get('/schedule').then(response=>{
+
             self.appointments = response.data;
             self.dates = self.allot(self.slots,self.days,self.appointments);
         });
@@ -41,11 +42,11 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', functi
 
     self.save = function (appointment){
         self.appointment.active=true;
-        this.$http.post('/api/appointments',self.appointment).then(res=>{
-            this.dates = this.allot(this.slots,this.days,this.appointments);
-            this.$http.get('/api/appointments').then(response=>{
-                this.appointments=response.data;
-                this.dates = this.allot(this.slots,this.days,this.appointments);
+        self.$http.post('/schedule',self.appointment).then(res=>{
+            self.dates = self.allot(self.slots,selfthis.days,self.appointments);
+            self.$http.get('/schedule').then(response=>{
+                self.appointments=response.data;
+                self.dates = self.allot(self.slots,self.days,self.appointments);
             });
         });
             
@@ -59,7 +60,6 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', functi
         var a = [];
            _.each(days, function(d) { 
                var k=new Date(d.yyyy,d.mm,d.dd);
-               
                var v = [];
                _.each(slots, function(s) { 
                    var x = new Date(d.yyyy,d.mm,d.dd,s.h,s.m);
