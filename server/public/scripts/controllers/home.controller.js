@@ -2,9 +2,13 @@ myApp.controller('HomeController', function(HomeService) {
     console.log('HomeController created');
     var vm = this;
 
-    vm.searchZipCodes = HomeService.searchZipCodes;
+    vm.searchIssues = HomeService.searchIssues;
+    vm.issues = HomeService.issues;
+    vm.selectedItemChange = HomeService.selectedItemChange;
+    vm.searchTextChange   = HomeService.searchTextChange;
 
 
+    HomeService.searchIssues();
   });
 
   myApp.directive('googleplace', function() {
