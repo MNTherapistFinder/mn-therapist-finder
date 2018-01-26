@@ -12,6 +12,7 @@ var registerRouter = require('./routes/register.router');
 var emailRouter = require('./routes/email.router');
 var homeRouter = require('./routes/home.router');
 var directoryRouter = require('./routes/directory.router');
+var scheduleRouter = require('./routes/shcedule.router')
 
 var port = process.env.PORT || 5000;
 
@@ -35,6 +36,7 @@ app.use('/user', userRouter);
 app.use('/email', emailRouter);
 app.use('/home', homeRouter);
 app.use('/directory', directoryRouter);
+app.use('/schedule', scheduleRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

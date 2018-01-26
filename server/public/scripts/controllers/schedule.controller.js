@@ -30,7 +30,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', functi
   
     self.getAppointments = function(){
         var vm = this;
-        this.$http.get('/api/appointments').then(response=>{
+        this.$http.get('/appointments').then(response=>{
             self.appointments = response.data;
             self.dates = self.allot(self.slots,self.days,self.appointments);
         });
