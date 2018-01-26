@@ -4,6 +4,9 @@
 <head>
     <title>MN Therapist Finder</title>
 
+    <script src="vendors/moment.min.js"></script>
+    <script src="vendors/lodash.js"></script>
+
     <!-- angular -->
     <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
     <script type="text/javascript" src="vendors/angular-route/angular-route.min.js"></script>
@@ -25,6 +28,7 @@
     <script type="text/javascript" src="scripts/controllers/user.controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/home.controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/directory.controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/schedule.controller.js"></script>
 
 
     <!-- services -->
@@ -38,6 +42,7 @@
     <header ng-include="'/views/partials/header.html'"></header>
 
     <main ng-view></main>
+    <!-- <schedule></schedule> -->
 
 </body>
 
