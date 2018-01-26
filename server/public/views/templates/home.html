@@ -5,7 +5,8 @@
     <!-- Zip code search box -->
        <div class="md-whiteframe-11dp"> 
        <h3> Start Your Search:</h3>
-       <md-autocomplete 
+       <input ng-model="chosenPlace" googleplace id="googleInput" placeholder="Enter your location"></input>{{chosenPlace}}
+       <!-- <md-autocomplete 
        md-selected-item = "hc.selectedItem"
        md-search-text-change = "hc.searchTextChange(hc.searchText)"
        md-search-text = "hc.searchText"
@@ -26,7 +27,7 @@
           <a ng-click = "hc.newIssue(hc.searchText)">Please pick an issue from the list.</a>
        </md-not-found>
 
-    </md-autocomplete>
+    </md-autocomplete> -->
     <br>
     <div layout = "row" layout-align= "end center" >
         <md-button class="md-primary md-raised" ng-click = "showme=true;hc.searchZipCodes();hideHsButtons=true">Search</md-button>
@@ -108,3 +109,12 @@
 
 </div>
 </div>
+
+<script>
+    function activatePlacesSearch() {
+      var input = document.getElementById('searchTerm');
+      var autcomplete = new google.maps.places.Autocomplete(input);
+    }
+  </script>
+  
+  
