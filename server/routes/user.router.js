@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
     // send back user object from database
     console.log('logged in', req.user);
     var userInfo = {
+      id: req.user.id,
       name : req.user.full_name,
       email : req.user.email
     };
