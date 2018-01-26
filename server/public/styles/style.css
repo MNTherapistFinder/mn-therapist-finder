@@ -21,6 +21,8 @@ body, html {
   padding-right: 50px;
 }
 
+/* header positioning */
+
 #header-absolute-1 {
   position: absolute;
   margin-left: -100px;
@@ -34,6 +36,8 @@ body, html {
   position: relative;
   width: 100%;
 }
+
+/* end header positioning */
 
 /* a {
   color: #1CCE28;
@@ -84,9 +88,9 @@ ul {
   overflow: hidden;
 }
 
-li {
+/* li {
   float: left;
-}
+} */
 
 li a {
   display: block;
@@ -140,12 +144,32 @@ li a:hover {
   
 }
 
+/* directory view */
+
 .directory-profile-photo-container {
-  height:300px;
-  width: 150px;
-  display: table-cell;
+  height: 250px;
+  width: 250px;
+  /* display: table-cell; */
+  overflow: hidden;
 }
 
-.directoryViewImg {
-  height: 300px;
+.directory-profile-photo-container img {
+  height: auto;
+  width: 350px;
 }
+
+.directory-container {
+  padding: 5px;
+}
+
+.therapist-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.therapist-title {
+  font-size: 12px;
+  width: 250px;
+}
+
+/* end directory view */
