@@ -1,18 +1,27 @@
-<div ng-controller="LoginController as lc" class="">
-    <div class="container" layout="row" layout-align="space-around center">
+<div ng-controller="LoginController as lc">
 
-        <h4>
-            <a href="#directory">Directory</a>
-        </h4>
-
-        <h1>
-            <a href="#home">MN Therapist Finder</a>
-        </h1>
-
-        <div class="container" layout="column" layout-align="start end">
+    <div class="container header" layout="row" layout-align="space-around start">
+        <div>
+        <div id="header-absolute-1" layout="column" layout-align="space-around center">
             <h4>
-                <a href="#register">Register</a> / <a href="#login">Login</a></h4>
-            
+                <a href="#directory">Directory</a>
+            </h4>
         </div>
     </div>
+        <div>
+        <div id="header-logo" layout="column" layout-align="space-around center">
+            <img src="/images/mntf-logo-01.png" height="150">
+            <h2><a href="#home">MN Therapist Finder</a></h2>
+        </div>
+    </div>
+    <div>
+        <div id="header-absolute-2" layout="column" layout-align="space-around center">
+            <h4>
+                <a href="#register">Register</a> /
+                <a href="#login">Login</a>
+            </h4>
+        </div>
+    </div>
+    </div>
+
 </div>

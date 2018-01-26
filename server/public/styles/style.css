@@ -16,22 +16,38 @@ body, html {
 .header {
   background-color: #f8f8f8;
   color: #3C3C3C;
-  padding: 15px;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#header-absolute-1 {
+  position: absolute;
+  margin-left: -100px;
+}
+
+#header-absolute-2 {
+  position: absolute;
+}
+
+#header-logo {
+  position: relative;
+  width: 100%;
 }
 
 /* a {
   color: #1CCE28;
 } */
 
-#entryForm {
+/* #entryForm {
   margin-top: 14px;
-}
+} */
 
 #container {
   margin-top: 10px;
 }
 
-.container p{
+/* .container p{
   margin-top : 14px;
 }
 
@@ -41,7 +57,7 @@ body, html {
 
 .message p {
   margin-left: 10px;
-}
+} */
 
 .message:nth-child(odd) {
    background-color: #eeeeee;
