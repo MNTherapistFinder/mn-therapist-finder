@@ -29,7 +29,9 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog', functi
     self.slots= [{h:'10',m:'00'},{h:'10',m:'15'},{h:'10',m:'30'},{h:'10',m:'45'},{h:'11',m:'00'},{h:'11',m:'15'},{h:'11',m:'30'}];
   
     self.getAppointments = function(){
+
         this.$http.get('/schedule').then(response=>{
+
             self.appointments = response.data;
             self.dates = self.allot(self.slots,self.days,self.appointments);
         });

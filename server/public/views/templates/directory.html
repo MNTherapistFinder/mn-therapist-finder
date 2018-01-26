@@ -1,1 +1,16 @@
 <h1>directory</h1>
+
+    <img src={{orgs.org_logo}}>
+
+
+<ul ng-repeat = "therapist in dc.therapistInfo.list">
+        <div class = "directory-profile-photo-container"><li>
+        <img class = "directoryViewImg"src={{therapist.profile_picture}}></li></div>
+    <li>{{therapist.full_name}}</li>
+</ul>
+
+<ul ng-repeat = "license in dc.therapistLicense.list">
+    <li>{{license.license_type}}</li>
+</ul>
+
+

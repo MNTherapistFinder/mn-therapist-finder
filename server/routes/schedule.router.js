@@ -2,15 +2,15 @@ var express = require('express');
 var router = express.Router();
 var pool = require('../modules/pool.js');
 
-
-//Query for getting therapist info on main directory page
-router.get('/therapistinfo', function (req, res) {
+router.get('/', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT * FROM therapists;`, function (errorMakingDatabaseQuery, result) {
+            client.query(`SELECT array_agg(availability.id) AS available_time_id, array_agg(availability.available_from) 
+            AS available_times  FROM availability JOIN therapists ON therapists.id = availability.therapists_id WHERE 
+            therapists.id = $1;`,[req.query.id], function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
                     console.log('error', errorMakingDatabaseQuery);
@@ -23,18 +23,15 @@ router.get('/therapistinfo', function (req, res) {
     });
 });
 
-//getting therapist license type for main directory view
-router.get('/therapistlicensetype', function (req, res) {
+
+router.post('/', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT license_type FROM qualifications
-            JOIN therapists_qualifications ON qualifications.id = therapists_qualifications.qualifications_id
-            JOIN therapists ON therapists.id = therapists_qualifications.therapists_id
-            WHERE therapists.id = 1;`, 
-            function (errorMakingDatabaseQuery, result) {
+            client.query(`INSERT INTO availability ("therapists_id", "available_from")
+            VALUES ($1, $2);`,[req.body.id, req.body.available_from], function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
                     console.log('error', errorMakingDatabaseQuery);
