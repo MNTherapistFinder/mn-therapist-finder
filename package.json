@@ -23,6 +23,8 @@
     "express": "^4.13.1",
     "express-session": "^1.13.0",
     "jquery": "^2.1.4",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
     "nodemailer": "^4.4.2",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",

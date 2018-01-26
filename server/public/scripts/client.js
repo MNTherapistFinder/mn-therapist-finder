@@ -8,6 +8,9 @@ myApp.config(function ($routeProvider, $locationProvider) {
     .when('/home', {
       templateUrl: '/views/templates/home.html',
       controller: 'HomeController as hc',
+    }).when('/schedule', {
+      templateUrl: '/views/templates/schedule.html',
+      controller: 'ScheduleController as sc',
     })
     .when('/login', {
       templateUrl: '/views/templates/login.html',
