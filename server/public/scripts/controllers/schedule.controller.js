@@ -31,11 +31,12 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserSe
     self.getAppointments = function () {
         console.log('get Hit');
         $http.get('/schedule').then(response => {
-            console.log('response is, ', response.data)
+            console.log('response is in getAppointments, ', response.data)
 
             self.appointments = response.data
-            console.log('self.appointments: ', self.appointments);
+            console.log('self.appointments in get appointments function: ', self.appointments);
             self.dates = self.allot(self.slots, self.days, self.appointments);
+            console.log(self.dates);
         });
     }
     self.getAppointments()
@@ -44,14 +45,17 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserSe
 
     self.save = function (appointmentToSave) {
         console.log(appointmentToSave);
-        self.appointmentToSave.active = true;
+        appointmentToSave.active = true;
         console.log('in save function. parameter passed is: ', appointmentToSave.date)
+        console.log(appointmentToSave.date)
         self.$http.post('/schedule', {available_from: appointmentToSave.date}).then(res => {
             self.dates = self.allot(self.slots, self.days, self.appointments);
-            self.$http.get('/schedule').then(response => {
-                self.appointments = response.data[0].available_times;
-                self.dates = self.allot(self.slots, self.days, self.appointments);
-            });
+            self.getAppointments();
+            // self.$http.get('/schedule').then(response => {
+            //     console.log('GET REQUEST AFTER SAVE', response.data);
+            //     self.appointments = response.data[0].available_times;
+            //     self.dates = self.allot(self.slots, self.days, self.appointments);
+            // });
         });
 
     }
@@ -73,6 +77,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserSe
                 var mx = moment(x);
                 var active = true;
                 _.each(appointments, function (g) {
+
                     var sdt = moment(new Date(g.available_times));
                     if (moment.duration(sdt.diff(mx))._milliseconds === 0) {
                         active = false;
