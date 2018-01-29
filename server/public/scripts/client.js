@@ -11,6 +11,11 @@ myApp.config(function ($routeProvider, $locationProvider) {
     }).when('/schedule', {
       templateUrl: '/views/templates/schedule.html',
       controller: 'ScheduleController as sc',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
     })
     .when('/login', {
       templateUrl: '/views/templates/login.html',
