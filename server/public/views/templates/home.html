@@ -1,35 +1,32 @@
 <div class="section">
     <h1>home</h1>
- <!-- Center column with search bars -->
+    <!-- Center column with search bars -->
     <div flex layout = "column" layout-align="center center" >
+      
     <!-- Zip code search box -->
        <div class="md-whiteframe-11dp"> 
        <h3> Start Your Search:</h3>
        <input ng-model="chosenPlace" googleplace id="googleInput" placeholder="Enter your location"></input>{{chosenPlace}}
-
-       
-    <br>
+        <br>
     <div layout = "row" layout-align= "end center" >
         <md-button class="md-primary md-raised" ng-click = "showme=true;hc.searchZipCodes();hideHsButtons=true">Search</md-button>
         <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
     </div>
     
-       </div>
-       <br>
+    </div>
+         <br>
 
 
-
-       <div class="md-whiteframe-11dp" ng-show ="showme" > 
+       <!-- Issues search box -->
+     <div class="md-whiteframe-11dp" ng-show ="showme" > 
             <h3> Struggles:</h3>
             <md-autocomplete
-            md-selected-item = "hc.selectedItem"
-            md-search-text-change = "hc.searchTextChange(hc.searchText)"
-            md-search-text = "hc.searchText"
-            md-selected-item-change = "hc.selectedItemChange(item)"
-            md-items = "item in hc.issuesTwo.list | filter : hc.searchText "
-            md-item-text = "item.issue_name"
-            md-min-length = "0"
-            placeholder = "What are you looking for help with?">
+              md-selected-item = "hc.selectedItemIssues"
+              md-search-text = "hc.searchText"
+              md-items = "item in hc.issuesTwo.list | filter : hc.searchText "
+              md-item-text = "item.issue_name"
+              md-min-length = "0"
+              placeholder = "What are you looking for help with?">
             
             <md-item-template>
                <span md-highlight-text = "hc.searchText"
@@ -41,61 +38,50 @@
                No issues matching "{{hc.searchText}}" were found.
                <a ng-click = "hc.newIssue(hc.searchText)">Please pick an issue from the list.</a>
             </md-not-found>
-    
-    
          </md-autocomplete>
        <br>
          <div layout = "row" layout-align= "end center" >
-         <md-button class="md-primary md-raised" ng-click = "showme2=true">Search</md-button>
-         <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
+            <md-button class="md-primary md-raised" ng-click = "showme2=true">Search</md-button>
+            <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
          </div>
 
     </div>
+   
 
     <br>
 
 <!-- Insurance Search box -->
 
-<!-- <div class="md-whiteframe-11dp" ng-show ="showme2" > 
+    <div class="md-whiteframe-11dp" ng-show ="showme2" > 
         <h3> Insurance:</h3>
         <md-autocomplete
-        md-selected-item = "hc.selectedItem"
-        md-search-text-change = "hc.searchTextChange(hc.searchText)"
-        md-search-text = "hc.searchText"
-        md-selected-item-change = "hc.selectedItemChange(item)"
-        md-items = "item in hc.issues  "
-        md-item-text = "item.name"
-        md-min-length = "0"
-        placeholder = "Type of insurance, if any.">
+            md-selected-item = "selectedItemInsurance"
+            md-search-text = "searchText"
+            md-items = "insurance in hc.insurance.list  "
+            md-item-text = "insurance.insurance_name"
+            md-min-length = "0"
+            placeholder = "Type of insurance, if any.">
         
         <md-item-template>
            <span md-highlight-text = "hc.searchText"
-              md-highlight-flags = "^i">{{item.name}}</span>
+              md-highlight-flags = "^i">{{insurance.insurance_name}}</span>
         </md-item-template>
  
         
         <md-not-found>
-           No issues matching "{{hc.searchText}}" were found.
-           <a ng-click = "hc.newIssue(hc.searchText)">Please pick an issue from the list.</a>
+           No issues matching "{{searchText}}" were found.
+           <a ng-click = "hc.newInsurance(searchText)">Please pick an issue from the list.</a>
         </md-not-found>
  
      </md-autocomplete>
    <br>
      <div layout = "row" layout-align= "end center">
-     <md-button class="md-primary md-raised" ng-click = "">Search</md-button>
-     <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
+        <md-button class="md-primary md-raised" ng-click = "">Search</md-button>
+        <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
      </div>
 
+  </div>
+</div>
 </div>
 
-</div>
-</div> -->
-
-<script>
-    function activatePlacesSearch() {
-      var input = document.getElementById('searchTerm');
-      var autcomplete = new google.maps.places.Autocomplete(input);
-    }
-  </script>
-  
   
