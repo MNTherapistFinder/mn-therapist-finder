@@ -92,7 +92,7 @@ ul {
   float: left;
 } */
 
-li a {
+/* li a {
   display: block;
   color: white;
   text-align: center;
@@ -104,7 +104,7 @@ li a {
 li a:hover {
   text-decoration: underline;
   color: #eee;
-}
+} */
 
 #login-btn {
   margin-top: -25px;
@@ -170,6 +170,10 @@ li a:hover {
 .therapist-title {
   font-size: 12px;
   width: 250px;
+}
+
+.pagination {
+  letter-spacing: 10px;
 }
 
 /* end directory view */
