@@ -1,15 +1,40 @@
-myApp.controller('HomeController', function(HomeService) {
+myApp.controller('HomeController', function(HomeService, $q, $log) {
     console.log('HomeController created');
     var vm = this;
 
-    vm.searchIssues = HomeService.searchIssues;
-    vm.issues = HomeService.issues;
-    vm.selectedItemChange = HomeService.selectedItemChange;
-    vm.searchTextChange   = HomeService.searchTextChange;
 
+    vm.selectedItemChange = HomeService.selectedItemChange;
+    vm.selectedIssuesArray = selectedIssuesArray;
+    vm.newIssue = newIssue;
+    vm.newIssueArray = []
+    vm.issuesTwo = HomeService.issuesTwo;
+    vm.searchIssues = HomeService.searchIssues;
 
     HomeService.searchIssues();
+
+
+   
+
+function newIssue(issue) {
+    alert("You must pick issues from the list.");
+ }
+ 
+
+
+ function selectedIssuesArray(item){
+     var newIssueArray = []
+     vm.newIssueArray.push(item)
+     return vm.newIssueArray;
+ }
+
+     
   });
+
+
+
+
+
+
 
   myApp.directive('googleplace', function() {
     var minnesotaBounds = new google.maps.LatLngBounds(
