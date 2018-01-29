@@ -1,5 +1,6 @@
 <div layout-wrap layout="row" layout-align="space-around start">
         <div dir-paginate="therapist in dc.therapistInfo.list | itemsPerPage:2">
+            <!-- change to 8 when we have more examples set up -->
                     <div class="directory-container">
                         <div class="directory-profile-photo-container">
                                 <img ng-src="{{therapist.profile_picture}}">
@@ -13,7 +14,9 @@
                     </div>
                 </div>
             </div>
-        
+
+            <div layout-margin>
             <div layout="row" layout-align="center center">
-                <dir-pagination-controls max-size="5" direction-links="false" boundary-links="true" template-url="/views/partials/dirPagination.tpl.html" auto-hide="true"><dir-pagination-controls>
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="false" template-url="/views/partials/dirPagination.tpl.html" auto-hide="true"><dir-pagination-controls>
             </div>
+        </div>
