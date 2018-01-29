@@ -101,7 +101,7 @@ ul {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+/* li a:hover {
   text-decoration: underline;
   color: #eee;
 } */
@@ -172,8 +172,50 @@ li a:hover {
   width: 250px;
 }
 
-.pagination {
-  letter-spacing: 10px;
+/* end directory view */
+
+/* pagination styling */
+
+.pagination-div {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  height: 50px;
+  width: 100%;
 }
 
-/* end directory view */
+.pagination {
+  position: relative;
+  width: 100%;
+}
+
+.page {
+  background-color: #1CCE28;
+  border: .5px solid #f8f8f8;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px;
+  color: #f8f8f8;
+  text-decoration: none;
+}
+
+.no-under {
+  text-decoration: none;
+}
+
+.page a:visited {
+  background-color: #1CCE28;
+  color: #f8f8f8;
+}
+
+.page:active {
+  background-color: #f8f8f8;
+  color: #1CCE28;
+}
+
+.page:hover {
+  background-color: #f8f8f8;
+  color: #1CCE28;
+}
+
+/* end pagination styling */
