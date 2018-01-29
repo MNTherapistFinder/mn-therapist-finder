@@ -60,4 +60,5 @@ Add additional notes about how to deploy this on a live system -->
 
 ## Acknowledgments
 
+* Pagination code from Michael Bromley's [angularUtils](https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination).
 * Thank you to Chris Black and Kris Szafranski for the built-out authentication starting repository.

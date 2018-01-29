@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngAnimate']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngAnimate', 'angularUtils.directives.dirPagination']);
 
 /// Routes ///
 myApp.config(function ($routeProvider, $locationProvider) {
@@ -8,7 +8,11 @@ myApp.config(function ($routeProvider, $locationProvider) {
     .when('/home', {
       templateUrl: '/views/templates/home.html',
       controller: 'HomeController as hc',
-    }).when('/schedule', {
+    }).when('/appointment', {
+      templateUrl: '/views/templates/appointment.html',
+      controller: 'AppointmentController as ac'
+    })
+    .when('/schedule', {
       templateUrl: '/views/templates/schedule.html',
       controller: 'ScheduleController as sc',
       resolve: {
@@ -16,7 +20,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
-    })
+    }) 
     .when('/login', {
       templateUrl: '/views/templates/login.html',
       controller: 'LoginController as lc',
