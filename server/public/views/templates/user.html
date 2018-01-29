@@ -4,3 +4,86 @@
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.list.name}}!</h1>
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 </div>
+<hr>
+<hr>
+<div layout="row">
+    <div id="leftColumn" layout="column" style="width:600px;">
+        <div layout="row">
+            <div style="background-color:#00A000;height: 300px;margin:20px;" flex="60">
+                <img src="" alt="hello" ng-click="uc.openPicker()">
+            </div>
+        </div>
+        <div layout="row">
+            <div style="background-color:#004444;height: 40px;margin:20px" flex="60">
+                WORKPLACE ADDRESS
+            </div>
+        </div>
+        <div layout="row">
+            <div style="background-color:#0077b3;height: 40px;margin:20px" flex="60">
+                WEBSITE ADDRESS
+            </div>
+        </div>
+        <div layout="row">
+            <div style="background-color:#b67171;height: 40px;margin:20px" flex="60">
+                Business Hours
+            </div>
+        </div>
+        <div layout="row">
+            <div style="background-color:#b67171;height: 40px;margin:20px" flex="60">
+                Profile Activity
+            </div>
+        </div>
+    </div>
+
+
+    <div layout="column" style="width:800px;">
+        <div layout="row">
+            <div style="height: 100px;margin:20px" flex="60">
+                <h1 id="therapistTitle">FIRST NAME LAST NAME</h1>
+            </div>
+        </div>
+        <div layout="row" flex>
+            <div style="height: 20px;margin:20px" flex="60">
+                <h3>Title, Qualifications</h3>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div layout="row">
+            <div style="background-color:#88bebe;height: 400px;margin:20px" flex="60">
+                ENTER BIOGRAPHICAL INFORMATION
+            </div>
+        </div>
+
+    </div>
+
+    <div layout="column" style="width:800px;margin-top:50px">
+            <div layout="row">
+                <div style="height:100px;" flex="60">
+                    <button>HELLO SAVE CHANGES PLEASE</button>
+                </div>
+            </div>
+            <div layout="row" flex>
+                <div style="height: 20px" flex="60">
+                    <h3>Add Changes</h3><br>
+                    <input type="text" placeholder="TYPEAHEAD SEARCH">
+                    <button>+</button>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div layout="row">
+                <div style="background-color:#88bebe;height: 400px;margin-bottom:20px" flex="60">
+                    Issues
+                </div>
+            </div>
+    
+        </div>
+    
+
+
+</div>
