@@ -1,21 +1,14 @@
-myApp.service('HomeService',['$http', '$q', '$log',function($http, $location, $q, $log){
+myApp.service('HomeService',['$http', '$log',function($http, $location, $log){
     console.log('HomeService Loaded');
     var self = this;
 
 
-
-
 //GET request for all issues for home page search. 
 
-self.selectedItemChange = function (item) {
-  // $log.info('Item changed to ' + JSON.stringify(item));
-  console.log('Item changed to ' + JSON.stringify(item));
-  
-}
 
 self.issuesTwo = {list:[]};
 
-self.searchIssues = function(){
+self.getIssues = function(){
     console.log('searchIssues run');
     
       $http({
@@ -29,6 +22,31 @@ self.searchIssues = function(){
   }
 
 
+self.newIssue = function (issue) {
+    alert("Please pick an issue from the list.");
+ }
+
+// GET request for a list of insurance types
+self.insurance = {list:[]};  
+
+self.getInsurance = function(){
+    console.log('getInsurance run');
+    
+      $http({
+        method: 'GET',
+        url: '/home/insurance'
+      }).then(function (response) {
+        console.log('response from getInsurance', response.data);
+        self.insurance.list = response.data;
+        
+    });
+  }
+
+
+self.newInsurance = function (issue) {
+    alert("Please select an insurance plan from the list.");
+ }
+ 
 
 
 

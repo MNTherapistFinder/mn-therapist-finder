@@ -18,3 +18,14 @@ myApp.service('DirectoryService', function ($http, $location) {
   } // end GET request for therapist information on main directory page
 
 });
+
+
+
+
+
+// FOR LATER
+// function selectedIssuesArray(item){
+//   var newIssueArray = []
+//   vm.newIssueArray.push(item)
+//   return vm.newIssueArray;
+// }
