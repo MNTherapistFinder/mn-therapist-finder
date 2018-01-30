@@ -219,3 +219,16 @@ ul {
 }
 
 /* end pagination styling */
+
+
+
+
+/* start therapist view */
+
+#leftColumn {
+  height: 100%;
+}
+
+#therapistTitle {
+  font-size: 50px;
+}
