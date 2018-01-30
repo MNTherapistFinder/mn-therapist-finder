@@ -4,7 +4,7 @@ myApp.controller('AppointmentController', ['$http', '$mdDialog','$mdMedia', func
     self.appointment = []
     self.$mdMedia = $mdMedia;
     self.$mdDialog = $mdDialog;
-    
+
     self.getAppointment = function () {
       console.log('get appointment hit');
       $http.get('/schedule').then(response => {
@@ -20,20 +20,35 @@ myApp.controller('AppointmentController', ['$http', '$mdDialog','$mdMedia', func
   }
   self.getAppointment()
   
-  self.appointmentForm = function (slot) {
-
+  self.appointmentForm = function (date) {
+    console.log(date.available_times)
     var useFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs')) && this.customFullscreen;
     this.$mdDialog.show({
-        controller: function ($scope, $mdDialog, slot) {
-            $scope.customer = {};
-            $scope.customer.slot = slot;
+        controller: function ($scope, $mdDialog, date, $http) {
+            $scope.patient = {};
+            $scope.patient.date = date.available_times;
             $scope.answer = function (answer) {
                 $mdDialog.hide(answer);
+              
             };
+            $scope.emailRequest = function(patient) {
+              $scope.truthValue = true
+              $http({
+                  url: '/email/appointment',
+                  method: 'POST',
+                  data: patient,
+              }).then(function(response){
+                  console.log(response.data);
+                  if (response.data == 'sent'){
+                      $scope.greeting = 'Email reqest has been sent'
+                      console.log(self.greeting);
+                  }
+              })
+            }
         },
         templateUrl: '../views/partials/appointmentRequest.html',
         locals: {
-            slot: slot
+            date: date
         },
         clickOutsideToClose: true,
         fullscreen: useFullScreen
@@ -45,6 +60,8 @@ myApp.controller('AppointmentController', ['$http', '$mdDialog','$mdMedia', func
         });
 
 }
+
+
 
   }]);
  
