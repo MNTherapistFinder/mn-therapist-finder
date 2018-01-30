@@ -1,8 +1,8 @@
 <md-dialog aria-label="Mango (Fruit)" ng-cloak flex-lg="25" flex="50" flex-sm="100">
-        <form ng-submit="answer(customer)"> 
+        <form ng-submit="emailRequest(patient)"> 
           <md-toolbar>
             <div class="md-toolbar-tools">
-              Appointment Request
+              Appointment Request: {{patient.date}}
               <span flex></span>
               <md-button class="md-icon-button" ng-click="cancel()">
                 <md-icon aria-label="Close dialog"></md-icon>
@@ -14,22 +14,23 @@
               <md-input-container>
                
                   <label>Name</label>
-                  <input >
+                  <input ng-model="patient.name" >
                 
               </md-input-container>
               <md-input-container>
                 <label for="email">Email</label>
-                <input type="email">
+                <input type="email" ng-model="patient.email">
               </md-input-container>
               <md-input-container>
                
                     <label>Phone Number</label>
-                   <input type="number">
+                   <input type="number" ng-model="patient.number">
                   
                 </md-input-container>
               <md-input-container layout-align="center center">
               </md-input-container>
             </md-content>
+            {{greeting}}
             <md-dialog-actions layout="row" layout-align="center center">
               <md-button type="submit" class="md-raised md-warn">Request Appointment</md-button>
             </md-dialog-actions>
