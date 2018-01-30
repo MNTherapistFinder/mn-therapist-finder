@@ -10,9 +10,7 @@ router.get('/therapistinfo', function (req, res) {
             console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT * FROM therapists
-            FULL OUTER JOIN therapists_qualifications ON therapists_qualifications.therapists_id = therapists.id
-            FULL OUTER JOIN qualifications ON qualifications.id = therapists_qualifications.qualifications_id;`, function (errorMakingDatabaseQuery, result) {
+            client.query(`SELECT * FROM therapists`, function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
                     console.log('error', errorMakingDatabaseQuery);
