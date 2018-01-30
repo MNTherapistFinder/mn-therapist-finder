@@ -177,3 +177,109 @@ li a:hover {
 }
 
 /* end directory view */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Therapist profile Modal */
+
+/* This here is not working */
+.md-dialog-content{
+  width: 900px;
+  height:900px;
+}
+
+.therapist-modal-photo-container {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+}
+
+.therapist-modal-photo-container img {
+  width: 100%;
+  height: auto;
+
+}
+
+#therapistModalCol1{
+  width: 30%;
+  padding: 5px;
+}
+
+#therapistModalCol2{
+  width: 50%;
+  padding: 0px 10px 5px 10px;
+}
+
+/* #therapistModalCol3{
+  width: 20%;
+  padding: 5px;
+} */

@@ -1,8 +1,9 @@
+<div id = "directoryContent">
 <div layout-wrap layout="row" layout-align="space-around start">
         <div dir-paginate="therapist in dc.therapistInfo.list | itemsPerPage:2">
                     <div class="directory-container">
                         <div class="directory-profile-photo-container">
-                                <img ng-src="{{therapist.profile_picture}}">
+                                <a href = "" ng-click = "dc.showTherapistInfo(therapist)"><img ng-src="{{therapist.profile_picture}}"></a>
                         </div>
                         <div>
                             <ul>
@@ -13,7 +14,8 @@
                     </div>
                 </div>
             </div>
-        
+
             <div layout="row" layout-align="center center">
                 <dir-pagination-controls max-size="5" direction-links="false" boundary-links="true" template-url="/views/partials/dirPagination.tpl.html" auto-hide="true"><dir-pagination-controls>
             </div>
+</div>
