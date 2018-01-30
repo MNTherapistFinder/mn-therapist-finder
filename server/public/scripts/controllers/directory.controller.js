@@ -8,6 +8,8 @@ myApp.controller('DirectoryController', function(DirectoryService) {
     vm.therapistModalInfo = DirectoryService.therapistModalInfo;
     vm.close = DirectoryService.close;
 
+    vm.openLeftMenu = DirectoryService.openLeftMenu;
+    // vm.startOpen = DirectoryService.startOpen;
     
     DirectoryService.getTherapistInfo();
   });

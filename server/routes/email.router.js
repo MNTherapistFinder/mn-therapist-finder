@@ -6,8 +6,8 @@ var router = express.Router();
 var smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-        user: "gagliano.joe1@gmail.com",
-        pass: process.env.EMAIL_PASS
+        user: "",
+        pass: ""
     }
 });
 var rand,mailOptions,host,link;
@@ -32,7 +32,8 @@ router.get('/send', function (req, res) {
             res.end("sent");
         }
     });
-});
+})
+
 
 router.get('/verify', function (req, res) {
     console.log('host', host);
@@ -52,7 +53,27 @@ router.get('/verify', function (req, res) {
     else {
         res.end("<h1>Request is from unknown source");
     }
+})
+
+router.post('/appointment', function (req, res) {
+    console.log('--------, ', req.body);
+    mailOptions = {
+        to: 'Nasirhussien@gmail.com',
+        subject: "Appointment Request",
+        html: "Hello you have a new appointment request with  " + req.body.name + " At "+ req.body.date +  "<br>"+ "They can be reached by email at " + req.body.email + " or by phone number at " + req.body.number
+    }
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function (error, response) {
+        if (error) {
+            console.log(error);
+            res.end("error with sending email");
+        } else {
+            console.log("Message sent: " + response.message);
+            res.end("sent");
+        }
+    });
 });
+
 
 
 

@@ -1,4 +1,4 @@
-myApp.service('DirectoryService', function ($http, $location, $mdDialog, $routeParams) {
+myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSidenav, $mdMedia) {
   console.log('DirectoryService Loaded');
   var self = this;
 
@@ -40,6 +40,12 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $routeP
     $mdDialog.cancel();
   };
   
+
+  self.openLeftMenu = function() {
+    $mdSidenav('left').toggle();
+  };
+
+  // self.startOpen = $mdMedia('gt-sm');
 
 });
 
