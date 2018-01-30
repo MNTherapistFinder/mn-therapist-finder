@@ -1,0 +1,26 @@
+<md-dialog>
+<div class="md-dialog-content" flex="90" >
+<md-dialog-content>
+<div layout = "row">
+        <div id = "therapistModalCol1">
+                <div class = "therapist-modal-photo-container">
+                        <img ng-src = "{{mc.modalData.event.profile_picture}}">
+                </div>
+        </div>
+        <div  id="therapistModalCol2">
+                <h2>{{mc.modalData.event.full_name}}</h2>
+                <p>{{mc.modalData.event.biography}}</p>
+        </div>
+        <div id = "therapistModalCol3">
+                     
+                 <p>other things</p>
+        </div>
+</div>
+</md-dialog-content>
+</div>
+
+<md-dialog-actions layout="row">
+        <md-button ng-click="mc.close()"> Close </md-button>
+</md-dialog-actions>
+
+</md-dialog>

@@ -1,4 +1,4 @@
-myApp.service('DirectoryService', function ($http, $location, $mdSidenav, $mdMedia) {
+myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSidenav, $mdMedia) {
   console.log('DirectoryService Loaded');
   var self = this;
 
@@ -15,7 +15,31 @@ myApp.service('DirectoryService', function ($http, $location, $mdSidenav, $mdMed
       console.log('response from getTherapistInfo', response);
       self.therapistInfo.list = response.data;
     });
-  } // end GET request for therapist information on main directory page
+  } 
+
+
+  self.showTherapistInfo = function(event) {
+    console.log('showTherapistInfo clicked');
+    $mdDialog.show({
+      parent: angular.element(document.body),
+      templateUrl: '/views/partials/therapist.modal.html',
+      controller: 'ModalController as mc',
+      targetEvent: event,
+      clickOutsideToClose:true,
+      fullscreen: self.customFullscreen,
+      locals: {
+        modalData:{
+          event: event
+        }
+      }
+
+    })};
+
+  
+  self.close = function() {
+    $mdDialog.cancel();
+  };
+  
 
   self.openLeftMenu = function() {
     $mdSidenav('left').toggle();
@@ -25,13 +49,3 @@ myApp.service('DirectoryService', function ($http, $location, $mdSidenav, $mdMed
 
 });
 
-
-
-
-
-// FOR LATER
-// function selectedIssuesArray(item){
-//   var newIssueArray = []
-//   vm.newIssueArray.push(item)
-//   return vm.newIssueArray;
-// }
