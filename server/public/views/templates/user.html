@@ -9,9 +9,8 @@
 <div layout="row">
     <div id="leftColumn" layout="column" style="width:600px;">
         <div layout="row">
-            <div style="background-color:#00A000;height: 300px;margin:20px;" flex="60">
-                <img src="" alt="hello" ng-click="uc.openPicker()">
-            </div>
+            <img style="height:300px; margin:20px;" ng-src="{{uc.therapist.list[0].profile_picture}}" alt="userImage" ng-click="uc.openPicker()"
+                flex="60">
         </div>
         <div layout="row">
             <div style="background-color:#004444;height: 40px;margin:20px" flex="60">
@@ -39,7 +38,7 @@
     <div layout="column" style="width:800px;">
         <div layout="row">
             <div style="height: 100px;margin:20px" flex="60">
-                <h1 id="therapistTitle">FIRST NAME LAST NAME</h1>
+                <h1 id="therapistTitle">{{uc.therapist.list[0].full_name}}</h1>
             </div>
         </div>
         <div layout="row" flex>
@@ -52,38 +51,67 @@
         <br>
         <br>
         <div layout="row">
-            <div style="background-color:#88bebe;height: 400px;margin:20px" flex="60">
+            <!-- <div style="background-color:#88bebe;height: 400px;margin:20px" flex="60">
                 ENTER BIOGRAPHICAL INFORMATION
+            </div> -->
+            <md-input-container style="height:400px;margin:20px;" flex="60">
+                <label>Enter your Biography here</label>
+                <textarea style="border-style: solid;border-width:2px" ng-model="uc.therapist.list[0].biography" md-maxlength="1500" rows="10"
+                    md-select-on-focus></textarea>
+            </md-input-container>
+        </div>
+
+    </div>
+
+    <div layout="column" style="width:800px;margin-top:50px;margin-bottom:60px;">
+        <div layout="row">
+            <div style="height:100px;" flex="60">
+                <button>HELLO SAVE CHANGES PLEASE</button>
+            </div>
+        </div>
+        <div layout="row" flex>
+            <div style="height: 20px" flex="60">
+                <h3>Add or edit an Issue</h3>
+                <br>
+                <md-autocomplete md-selected-item="uc.selectedItemIssuesHi" md-search-text="searchTextHi" md-items="theIssue in uc.issues.list | filter : searchTextHi "
+                    md-item-text="theIssue.issue_name" md-min-length="0" placeholder="What are you looking for help with?">
+
+                    <md-item-template>
+                        <span md-highlight-text="searchTextHi" md-highlight-flags="^i">{{theIssue.issue_name}}</span>
+                    </md-item-template>
+
+
+
+                    <md-not-found>
+                        No issues matching "{{searchTextHi}}" were found.
+                        <a ng-click="newIssueHi(searchTextHi)">Please pick an issue from the list.</a>
+                    </md-not-found>
+                </md-autocomplete>
+                <button ng-click="uc.addUserIssue(uc.selectedItemIssuesHi.id)">+</button>
+
+            </div>
+        </div>
+        <div layout="row">
+
+            <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px" flex="60">
+                <ul style="text-align: center;padding-top:10px;">
+
+                    <li ng-repeat="thing in uc.therapist.list[0].issues">
+                        {{thing}}
+                        <button><img src="icon_photos/delete.png" alt="deleteIcon"></button>
+                    </li>
+
+                </ul>
             </div>
         </div>
 
     </div>
 
-    <div layout="column" style="width:800px;margin-top:50px">
-            <div layout="row">
-                <div style="height:100px;" flex="60">
-                    <button>HELLO SAVE CHANGES PLEASE</button>
-                </div>
-            </div>
-            <div layout="row" flex>
-                <div style="height: 20px" flex="60">
-                    <h3>Add Changes</h3><br>
-                    <input type="text" placeholder="TYPEAHEAD SEARCH">
-                    <button>+</button>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div layout="row">
-                <div style="background-color:#88bebe;height: 400px;margin-bottom:20px" flex="60">
-                    Issues
-                </div>
-            </div>
-    
-        </div>
-    
 
 
 </div>
+
+
+<ul>
+    <li ng-repeat="thing in uc.issues.list">{{thing.issue_name}}</li>
+</ul>

@@ -3,6 +3,7 @@ myApp.service('UserService', function($http, $location){
   var self = this;
   self.userObject = { list: [] };
   self.therapist = {list: []}
+  self.issues = {list: []}
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -35,7 +36,25 @@ myApp.service('UserService', function($http, $location){
     console.log('hit');
     $http.get('/user/therapist').then(function(response){
       self.therapist.list = response.data;
-      console.log(self.therapist.list);
+      console.log(self.therapist);
+    })
+  }
+
+  self.getIssuesList = function() {
+    $http.get('user/issues').then(function(response){
+      self.issues.list = response.data;
+      console.log(self.issues.list);
+    })
+  }
+
+  self.addUserIssue = function(issueId){
+    $http({
+      url: 'user/issues',
+      method: 'POST',
+      data: {id: issueId}
+    }).then(function(response){
+      console.log(response);
+      self.getTherapist();
     })
   }
    
