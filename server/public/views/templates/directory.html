@@ -1,22 +1,26 @@
 <div layout="column" layout-align="space-around center">
 
-    <md-sidenav layout="column" layout-align="center center" md-component-id="left" class="md-sidenav-left">
-        sidebar content
+    <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
+            <a href="#home"><img src="/images/mntf-logo-01.png" height="100"></a>
+            <br>
+            <input ng-model="therapistSearch.full_name" placeholder="search by name">
+            <input ng-model="therapistSearch.workplace_street_address" placeholder="filter by city">
+            <!-- these need to be built out more once we have issues / fake data -->
         <br>
         <md-button id="close-btn" class="btn-green" layout="column" layout-align="center center" ng-click="dc.openLeftMenu()">CLOSE</md-button>
     </md-sidenav>
 
     <!-- ^ IF WE WANT SIDEBAR TO START OPEN: md-is-open="dc.startOpen" ^ -->
 
-    <md-content>
-        sidebar
+    <md-content id="side-nav-in">
+        <!-- sidebar -->
         <md-button ng-click="dc.openLeftMenu()" layout-align="start start">
             filter results
         </md-button>
     </md-content>
 
     <div layout-wrap layout="row" layout-align="space-around center">
-        <div dir-paginate="therapist in dc.therapistInfo.list | itemsPerPage:8">
+        <div dir-paginate="therapist in dc.therapistInfo.list | itemsPerPage:8 | filter:therapistSearch">
             <!-- change to 8 when we have more examples set up -->
             <div class="directory-container" md-is-locked-open="$mdMedia('min-width: 333px')">
                 <div class="directory-profile-photo-container">

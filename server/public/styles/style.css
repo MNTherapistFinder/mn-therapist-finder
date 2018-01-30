@@ -236,11 +236,25 @@ ul {
 /* sidebar styling */
 
 #close-btn {
-  /* padding: 0;
-  margin: 0; */
-  /* float: left; */
-  /* position: relative; */
   width: 50%;
 }
 
+#side-nav-out {
+  padding-top: 20px;
+  background-color: #f8f8f8;
+  width: 20%;
+}
+
+#side-nav-in {
+  /* background-color: #1CCE28; */
+  /* height: 3000px; */
+  /* width: 10%; */
+}
+
 /* end sidebar styling */
+
+
+
+
+
+
