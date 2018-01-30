@@ -1,4 +1,4 @@
-myApp.service('DirectoryService', function ($http, $location) {
+myApp.service('DirectoryService', function ($http, $location, $mdSidenav, $mdMedia) {
   console.log('DirectoryService Loaded');
   var self = this;
 
@@ -16,6 +16,12 @@ myApp.service('DirectoryService', function ($http, $location) {
       self.therapistInfo.list = response.data;
     });
   } // end GET request for therapist information on main directory page
+
+  self.openLeftMenu = function() {
+    $mdSidenav('left').toggle();
+  };
+
+  // self.startOpen = $mdMedia('gt-sm');
 
 });
 
