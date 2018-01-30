@@ -2,6 +2,7 @@ myApp.service('UserService', function($http, $location){
   console.log('UserService Loaded');
   var self = this;
   self.userObject = { list: [] };
+  self.therapist = {list: []}
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -29,4 +30,13 @@ myApp.service('UserService', function($http, $location){
       $location.path("/home");
     });
   }
+
+  self.getTherapist = function() {
+    console.log('hit');
+    $http.get('/user/therapist').then(function(response){
+      self.therapist.list = response.data;
+      console.log(self.therapist.list);
+    })
+  }
+   
 });
