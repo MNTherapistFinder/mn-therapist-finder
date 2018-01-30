@@ -4,6 +4,8 @@ myApp.controller('DirectoryController', function(DirectoryService) {
     vm.getTherapistInfo = DirectoryService.getTherapistInfo;
     vm.therapistInfo = DirectoryService.therapistInfo;
 
+    vm.openLeftMenu = DirectoryService.openLeftMenu;
+    // vm.startOpen = DirectoryService.startOpen;
     
     DirectoryService.getTherapistInfo();
   });
