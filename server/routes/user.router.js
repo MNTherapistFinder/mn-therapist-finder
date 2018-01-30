@@ -45,7 +45,7 @@ router.get('/therapist', function (req, res) {
       AS issues, array_agg(DISTINCT specialties.specialty_name) AS specialties FROM therapists JOIN therapists_insurance_plans 
       ON therapists.id = therapists_insurance_plans.therapists_id JOIN insurance_plans 
       ON therapists_insurance_plans.insurance_plans_id = insurance_plans.id JOIN therapists_issues 
-      ON therapists.id = therapists_issues.therpaists_id JOIN issues ON therapists_issues.issues_id = issues.id 
+      ON therapists.id = therapists_issues.therapists_id JOIN issues ON therapists_issues.issues_id = issues.id 
       LEFT JOIN therapists_specialties ON therapists.id = therapists_specialties.therapists_id LEFT JOIN specialties 
       ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 
       GROUP BY therapists.full_name, therapists.email, therapists.profile_picture, therapists.biography, 
@@ -57,6 +57,45 @@ router.get('/therapist', function (req, res) {
             res.sendStatus(500);
           } else {
             res.send(result.rows);
+          }
+        });
+    }
+  });
+});
+
+router.get('/issues', function (req, res) {
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+    if (errorConnectingToDatabase) {
+      console.log('error', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query(`SELECT * FROM issues`, function (errorMakingDatabaseQuery, result) {
+          done();
+          if (errorMakingDatabaseQuery) {
+            console.log('error', errorMakingDatabaseQuery);
+            res.sendStatus(500);
+          } else {
+            res.send(result.rows);
+          }
+        });
+    }
+  });
+})
+
+router.post('/issues', function (req, res) {
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+    if (errorConnectingToDatabase) {
+      console.log('error', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query(`INSERT INTO therapists_issues ("therapists_id","issues_id")
+      VALUES ($1,$2)`,[req.user.id, req.body.id], function (errorMakingDatabaseQuery, result) {
+          done();
+          if (errorMakingDatabaseQuery) {
+            console.log('error', errorMakingDatabaseQuery);
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(201);
           }
         });
     }

@@ -232,3 +232,7 @@ ul {
 #therapistTitle {
   font-size: 50px;
 }
+
+#listContainer {
+  width: 5px;
+}
