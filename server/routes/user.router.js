@@ -43,9 +43,9 @@ router.get('/therapist', function (req, res) {
       therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, 
       array_agg(DISTINCT insurance_plans.insurance_name) AS insurance_plans, array_agg(DISTINCT issues.issue_name) 
       AS issues, array_agg(DISTINCT specialties.specialty_name) AS specialties FROM therapists JOIN therapists_insurance_plans 
-      ON therapists.id = therapists_insurance_plans.therapists_id JOIN insurance_plans 
+      ON therapists.id = therapists_insurance_plans.therapists_id LEFT JOIN insurance_plans 
       ON therapists_insurance_plans.insurance_plans_id = insurance_plans.id JOIN therapists_issues 
-      ON therapists.id = therapists_issues.therapists_id JOIN issues ON therapists_issues.issues_id = issues.id 
+      ON therapists.id = therapists_issues.therapists_id LEFT JOIN issues ON therapists_issues.issues_id = issues.id 
       LEFT JOIN therapists_specialties ON therapists.id = therapists_specialties.therapists_id LEFT JOIN specialties 
       ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 
       GROUP BY therapists.full_name, therapists.email, therapists.profile_picture, therapists.biography, 
