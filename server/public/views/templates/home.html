@@ -8,7 +8,10 @@
     <!-- Zip code search box -->
        <div class="md-whiteframe-11dp"> 
        <h3> Start Your Search:</h3>
-       <input ng-model="chosenPlace" googleplace id="googleInput" placeholder="Enter your location"></input>{{chosenPlace}}
+       <md-input-container>
+          <label>Enter your location</label>
+          <input  ng-model="chosenPlace" googleplace id="googleInput">
+       </md-input-container>
         <br>
     <div layout = "row" layout-align= "end center" >
         <md-button class="md-primary md-raised" ng-click = "showme=true;hc.searchZipCodes();hideHsButtons=true">Search</md-button>
@@ -28,7 +31,8 @@
               md-items = "item in hc.issuesTwo.list | filter : hc.searchText "
               md-item-text = "item.issue_name"
               md-min-length = "0"
-              placeholder = "What are you looking for help with?">
+              placeholder = "What are you looking for help with?"
+              md-floating-label="What are you looking for help with?">
             
             <md-item-template>
                <span md-highlight-text = "hc.searchText"

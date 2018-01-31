@@ -118,6 +118,14 @@ ul {
   background-color: rgba(28, 206, 40, 0.9) !important;
 }
 
+.md-input-focused label {
+  color: rgba(28, 206, 40, 0.9) !important;
+}
+
+.md-input-container .md-input  {
+  border-color: red !important;
+}
+
 .md-whiteframe-11dp{
   transition:all ease-in 1s;
   background-color: lightblue;
