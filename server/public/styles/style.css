@@ -2,10 +2,13 @@ body, html {
   background-color: #f8f8f8;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  font-size: 14px;
+  font-family: 'Karla', sans-serif;
+  /* font-weight: 200; */
+  font-size: 16px;
   color: #3C3C3C;
 }
+
+/* header styling */
 
 .header .container h1 {
   font-size: 32px;
@@ -21,9 +24,15 @@ body, html {
   padding-right: 50px;
 }
 
+#funny-slash {
+  color:  rgba(28, 206, 40, 0.9);
+}
+
 .slim-header {
   height: 50px;
 }
+
+/* end header styling */
 
 /* header positioning */
 
@@ -43,29 +52,20 @@ body, html {
 
 /* end header positioning */
 
-/* a {
-  color: #1CCE28;
-} */
+/* misc styling */
 
-/* #entryForm {
-  margin-top: 14px;
-} */
+a {
+  color: rgba(28, 206, 40, 0.9);
+  text-decoration: none;
+}
+
+a:hover {
+  color:  #3C3C3C;
+}
 
 #container {
   margin-top: 10px;
 }
-
-/* .container p{
-  margin-top : 14px;
-}
-
-.message {
-  padding: 10px 0;
-}
-
-.message p {
-  margin-left: 10px;
-} */
 
 .message:nth-child(odd) {
    background-color: #eeeeee;
@@ -115,7 +115,7 @@ ul {
 }
 
 .btn-green {
-  background-color: rgba(28, 206, 40, 0.7) !important;
+  background-color: rgba(28, 206, 40, 0.9) !important;
 }
 
 .md-whiteframe-11dp{
@@ -147,6 +147,8 @@ ul {
   width: 380px;
   
 }
+
+/* end misc styling */
 
 /* directory view */
 
@@ -198,7 +200,7 @@ ul {
 }
 
 .page {
-  background-color: rgba(28, 206, 40, 0.7);
+  background-color: rgba(28, 206, 40, 0.9);
   border: .5px solid #f8f8f8;
   font-size: 14px;
   padding: 10px;
@@ -211,26 +213,23 @@ ul {
 }
 
 .page a:visited {
-  background-color: #1CCE28;
+  background-color: rgba(28, 206, 40, 0.9);
   color: #f8f8f8;
 }
 
 .page:active {
   background-color: #f8f8f8;
-  color: #1CCE28;
+  color: rgba(28, 206, 40, 0.9);
 }
 
 .page:hover {
   background-color: #f8f8f8;
-  color: #1CCE28;
+  color: rgba(28, 206, 40, 0.9);
 }
-
-
 
 /* end pagination styling */
 
-
-/* Therapist profile Modal */
+/* therapist profile modal */
 
 /* This here is not working */
 .md-dialog-content{
@@ -265,8 +264,9 @@ ul {
   padding: 5px;
 } */
 
+/* end therapist profile modal */
 
-/* start therapist view */
+/* therapist view */
 
 #leftColumn {
   height: 100%;
@@ -276,6 +276,7 @@ ul {
   font-size: 50px;
 }
 
+/* end therapist view */
 
 /* sidebar styling */
 
@@ -289,11 +290,11 @@ ul {
   width: 20%;
 }
 
-#side-nav-in {
-  /* background-color: #1CCE28; */
-  /* height: 3000px; */
-  /* width: 10%; */
-}
+/* #side-nav-in {
+  background-color: #1CCE28;
+  height: 3000px;
+  width: 10%;
+} */
 
 /* end sidebar styling */
 
