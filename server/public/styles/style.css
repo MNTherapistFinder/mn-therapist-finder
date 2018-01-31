@@ -21,6 +21,10 @@ body, html {
   padding-right: 50px;
 }
 
+.slim-header {
+  height: 50px;
+}
+
 /* header positioning */
 
 #header-absolute-1 {
@@ -111,7 +115,7 @@ ul {
 }
 
 .btn-green {
-  background-color: #1CCE28 !important;
+  background-color: rgba(28, 206, 40, 0.7) !important;
 }
 
 .md-whiteframe-11dp{
@@ -172,6 +176,10 @@ ul {
   width: 250px;
 }
 
+#directory-grid {
+  width: 1050px;
+}
+
 /* end directory view */
 
 /* pagination styling */
@@ -190,12 +198,11 @@ ul {
 }
 
 .page {
-  background-color: #1CCE28;
+  background-color: rgba(28, 206, 40, 0.7);
   border: .5px solid #f8f8f8;
-  font-weight: bold;
   font-size: 14px;
   padding: 10px;
-  color: #f8f8f8;
+  color: #3C3C3C;
   text-decoration: none;
 }
 
