@@ -1,3 +1,5 @@
+<header ng-include="'/views/partials/slimHeader.html'"></header>
+
 <div layout="column" layout-align="space-around center">
 
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
@@ -14,15 +16,18 @@
 
     <md-content id="side-nav-in">
         <!-- sidebar -->
-        <md-button ng-click="dc.openLeftMenu()" layout-align="start start">
+        <md-button class="btn-green" ng-click="dc.openLeftMenu()" layout-align="start start">
             filter results
         </md-button>
     </md-content>
+<!-- </div> -->
 
-    <div layout-wrap layout="row" layout-align="space-around center">
+<!-- <div layout="column" layout-align-"center center"> -->
+
+    <div layout-wrap layout="row" layout-align="center center" layout-xs="column" layout-s="column" id="directory-grid">
         <div dir-paginate="therapist in dc.therapistInfo.list | itemsPerPage:8 | filter:therapistSearch">
             <!-- change to 8 when we have more examples set up -->
-            <div class="directory-container" md-is-locked-open="$mdMedia('min-width: 333px')">
+            <div class="directory-container">
                 <div class="directory-profile-photo-container">
                      <a href = "" ng-click = "dc.showTherapistInfo(therapist)"><img ng-src="{{therapist.profile_picture}}"></a>
                     </div>
@@ -43,4 +48,5 @@
                 <dir-pagination-controls>
         </div>
     </div>
-    
+
+</div>
