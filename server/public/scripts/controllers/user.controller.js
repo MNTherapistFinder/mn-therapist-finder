@@ -1,4 +1,4 @@
-myApp.controller('UserController', ['$scope', 'UserService', function ($scope, UserService) {
+myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', function ($scope,$mdSidenav, UserService) {
   console.log('UserController created');
   var vm = this;
   vm.therapist = UserService.therapist;
@@ -13,7 +13,13 @@ myApp.controller('UserController', ['$scope', 'UserService', function ($scope, U
   vm.getTherapist();
   vm.getIssuesList();
 
+  vm.openLeftMenu = function() {
+    $mdSidenav('left').toggle();
+  };
+
+
   $scope.issueIdToPass = 'hey'
+  $scope.editEmailIcon = false;
 
   vm.hello = function (){
     console.log('please work');

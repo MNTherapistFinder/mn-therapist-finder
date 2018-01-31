@@ -266,17 +266,7 @@ ul {
 
 /* end therapist profile modal */
 
-/* therapist view */
 
-#leftColumn {
-  height: 100%;
-}
-
-#therapistTitle {
-  font-size: 50px;
-}
-
-/* end therapist view */
 
 /* sidebar styling */
 
@@ -297,4 +287,19 @@ ul {
 } */
 
 /* end sidebar styling */
+
+/* therapist view */
+
+#leftColumn {
+  height: 100%;
+}
+
+#therapistTitle {
+  font-size: 50px;
+}
+
+#menuOpenIcon:hover {
+  opacity: 0.7
+}
+
 
