@@ -257,12 +257,31 @@ ul {
 #therapistModalCol2{
   width: 50%;
   padding: 0px 10px 5px 10px;
+  font-size: 12.5px;
 }
 
-/* #therapistModalCol3{
+#therapistModalCol3{
   width: 20%;
   padding: 5px;
-} */
+  margin-left:20px;
+}
+
+#specialtiesBulletIcon {
+  list-style-image: url('/images/ic_stars_black_18dp_1x.png') !important;
+  /* list-style-type: circle !important; */
+  overflow: visible !important;
+  vertical-align: bottom;
+  margin-left: 25px;
+}
+
+#issuesBulletIcon {
+  list-style: disc !important;
+  /* list-style-type: circle !important; */
+  overflow: visible !important;
+  vertical-align: bottom;
+  margin-left: 25px;
+}
+
 
 /* end therapist profile modal */
 
