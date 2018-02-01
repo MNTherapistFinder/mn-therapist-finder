@@ -68,7 +68,7 @@ body, html {
 
 /* end header positioning */
 
-/* misc styling */
+/* home page + misc styling */
 
 a {
   color: #88BF44;
@@ -218,8 +218,7 @@ md-input-container .md-input {
 
 } */
 
-
-/* end misc styling */
+/* end home page + misc styling */
 
 /* directory view */
 
@@ -337,8 +336,6 @@ md-input-container .md-input {
 
 /* end therapist profile modal */
 
-
-
 /* sidebar styling */
 
 #close-btn {
@@ -362,8 +359,7 @@ md-input-container .md-input {
 
 /* end sidebar styling */
 
-
-
+/* modal styling */
 
 #registerConfirmModal{
   height:375px;
@@ -375,6 +371,9 @@ md-input-container .md-input {
   font-size: 70px;
   padding-bottom: -10px;
 }
+
+/* end modal styling */
+
 /* therapist view */
 
 #leftColumn {
@@ -389,4 +388,4 @@ md-input-container .md-input {
   opacity: 0.7
 }
 
-
+/* end therapist view */
