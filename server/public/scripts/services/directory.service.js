@@ -3,6 +3,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
   var self = this;
 
   self.therapistInfo = { list: [] }
+  self.therapistProfileInfo = { list: [] }
 
   // GET request for therapist information on main directory page
   self.getTherapistInfo = function () {
@@ -17,6 +18,20 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
     });
   } 
 
+
+
+  self.getTherapistProfileInfo = function (therapistId) {
+    console.log('in getTherapistProfileInfo');
+
+    $http({
+      method: 'GET',
+      url: '/directory/therapistprofileinfo',
+      params: therapistId
+    }).then(function (response) {
+      console.log('response from getTherapistProfileInfo', response);
+      self.therapistProfileInfo.list = response.data;
+    });
+  } 
 
   self.showTherapistInfo = function(event) {
     console.log('showTherapistInfo clicked');
