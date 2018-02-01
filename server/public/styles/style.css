@@ -265,17 +265,7 @@ ul {
 
 /* end therapist profile modal */
 
-/* therapist view */
 
-#leftColumn {
-  height: 100%;
-}
-
-#therapistTitle {
-  font-size: 50px;
-}
-
-/* end therapist view */
 
 /* sidebar styling */
 
@@ -300,28 +290,6 @@ ul {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #registerConfirmModal{
   height:375px;
   width: 600px;
@@ -332,3 +300,18 @@ ul {
   font-size: 70px;
   padding-bottom: -10px;
 }
+/* therapist view */
+
+#leftColumn {
+  height: 100%;
+}
+
+#therapistTitle {
+  font-size: 50px;
+}
+
+#menuOpenIcon:hover {
+  opacity: 0.7
+}
+
+
