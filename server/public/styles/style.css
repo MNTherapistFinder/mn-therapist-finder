@@ -233,8 +233,7 @@ ul {
 
 /* This here is not working */
 .md-dialog-content{
-  width: 900px;
-  height:900px;
+  text-align: center;
 }
 
 .therapist-modal-photo-container {
@@ -298,3 +297,38 @@ ul {
 
 /* end sidebar styling */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#registerConfirmModal{
+  height:375px;
+  width: 600px;
+  text-align: center;
+}
+
+#emailIcon{
+  font-size: 70px;
+  padding-bottom: -10px;
+}

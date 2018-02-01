@@ -1,4 +1,4 @@
-myApp.controller('LoginController', function($http, $location, UserService) {
+myApp.controller('LoginController', function($http, $location, UserService, $mdDialog) {
     console.log('LoginController created');
     var vm = this;
     vm.truthValue = false;
@@ -40,7 +40,9 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         console.log('LoginController -- registerUser -- sending to server...', vm.user);
         $http.post('/register', vm.user).then(function(response) {
           console.log('LoginController -- registerUser -- success');
-          $location.path('/home');
+          // swal("Check your email!", "You will receive an email from xx@mntherapistfinder.com asking you to confirm your email address.\n\nYou may begin building your profile, but you will not be listed in search results until your email has been confirmed.");
+          vm.showRegisterConfirm(event);
+          // $location.path('/home');
         }).catch(function(response) {
           console.log('LoginController -- registerUser -- error');
           vm.message = "Please try again."
@@ -63,4 +65,22 @@ myApp.controller('LoginController', function($http, $location, UserService) {
           }
       })
   }
+
+  vm.showRegisterConfirm = function(event) {
+    console.log('showTherapistInfo clicked');
+    $mdDialog.show({
+      parent: angular.element(document.body),
+      templateUrl: '/views/partials/registerconfirm.modal.html',
+      controller: 'ModalController as mc',
+      targetEvent: event,
+      clickOutsideToClose:false,
+      fullscreen: vm.customFullscreen,
+      locals: {
+        modalData:{
+          event: event
+        }
+      }
+
+    })};
+
 });
