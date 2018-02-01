@@ -4,6 +4,7 @@ myApp.service('UserService', function($http, $location){
   self.userObject = { list: [] };
   self.therapist = {list: []}
   self.issues = {list: []}
+  self.healthcare = {list: []}
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -57,6 +58,44 @@ myApp.service('UserService', function($http, $location){
       self.getTherapist();
     })
   }
-  // self.deleteUserIssue =
+  self.deleteUserIssue = function(issueId){
+    $http({
+      url: 'user/issues',
+      method: 'DELETE',
+      params: {issues_id: issueId}
+    }).then(function(response){
+      console.log(response);
+      self.getTherapist();
+    })
+  }
    
+  self.getHealthcareList = function(){
+    $http.get('user/healthcare').then(function(response){
+      self.healthcare.list = response.data
+      console.log(response.data);
+    })
+  }
+
+  self.addHealthcareProvider = function(insuranceId){
+    $http({
+      url: 'user/healthcare',
+      method: 'POST',
+      data: {id: insuranceId}
+    }).then(function(response){
+      console.log(response);
+      self.getTherapist();
+    })
+  }
+
+  self.deleteHealthcare = function(healthcareId){
+    $http({
+      url: 'user/healthcare',
+      method: 'DELETE',
+      params: {id: healthcareId}
+    }).then(function(response){
+      console.log(response);
+      self.getTherapist();
+    })
+  }
+
 });
