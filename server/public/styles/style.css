@@ -25,11 +25,27 @@ body, html {
 }
 
 #funny-slash {
-  color:  rgba(28, 206, 40, 0.9);
+  color: #88BF44;
 }
 
 .slim-header {
-  height: 50px;
+  height: 60px;
+  background-color: #88BF44;
+}
+
+.slim-header-text {
+  margin-left: 5%;
+  margin-right: 5px;
+  /* float: left; */
+}
+
+.slim-header a {
+  /* height: 50px; */
+  color: #f8f8f8;
+}
+
+.green-background {
+  background-color: #88BF44 !important;
 }
 
 /* end header styling */
@@ -55,7 +71,7 @@ body, html {
 /* misc styling */
 
 a {
-  color: rgba(28, 206, 40, 0.9);
+  color: #88BF44;
   text-decoration: none;
 }
 
@@ -115,26 +131,78 @@ ul {
 }
 
 .btn-green {
-  background-color: rgba(28, 206, 40, 0.9) !important;
+  background-color: #88BF44 !important;
+  color: #f8f8f8 !important;
+}
+
+.btn-dkgrn {
+  background-color: #266B26 !important;
+  color: #f8f8f8 !important;
+}
+
+input {
+  color: #3C3C3C !important;
+  font-family: 'Karla', sans-serif;
+  
+}
+
+#googleInput {
+  /* height: 40px; */
+  width: 380px;
+}
+
+.info-box {
+  width: 25%;
+  height: 150px;
+  margin: 10px;
+  margin-bottom: 50px;
+  background-color: #f8f8f8;
+}
+
+
+md-input-container .md-input {
+  border-color: #3C3C3C;
+  /* color: black; */
 }
 
 .md-input-focused label {
-  color: rgba(28, 206, 40, 0.9) !important;
+  color: #88BF44 !important;
 }
 
-.md-input-container .md-input  {
-  border-color: red !important;
+.md-input-focused .md-input  {
+  border-color: #88BF44 !important;
 }
 
-.md-whiteframe-11dp{
-  transition:all ease-in 1s;
-  background-color: lightblue;
-  height: 175px;
-  width: 400px;
+#start-search {
+  font-size: 24px;
+  color: #f8f8f8;
+  margin-bottom: 10px;
+}
+
+/* #top-search {
+  margin-top: 40px;
+} */
+
+.search-bars {
+  width: 380px;
+  /* height: 40px; */
+}
+
+.md-whiteframe {
+  /* transition:all ease-in 1s; */
+  background-color: #f8f8f8;
+  height: 70px;
+  width: 70%;
+  margin-top: 10px;
   padding:10px;
-  padding-bottom:0px !important;
-  border-radius: 1%
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border-radius: 1% */
 }
+
+/* .md-visually-hidden {
+  background-color: #88bf44 !important;
+} */
 
 .ng-hide {
   height: 0;
@@ -150,11 +218,6 @@ ul {
 
 } */
 
-#googleInput {
-  height: 40px;
-  width: 380px;
-  
-}
 
 /* end misc styling */
 
@@ -173,7 +236,8 @@ ul {
 }
 
 .directory-container {
-  padding: 5px;
+  padding: 20px;
+  padding-top: 0px;
 }
 
 .therapist-name {
@@ -187,7 +251,7 @@ ul {
 }
 
 #directory-grid {
-  width: 1050px;
+  width: 1200px;
 }
 
 /* end directory view */
@@ -208,11 +272,11 @@ ul {
 }
 
 .page {
-  background-color: rgba(28, 206, 40, 0.9);
+  background-color: #88BF44;
   border: .5px solid #f8f8f8;
   font-size: 14px;
   padding: 10px;
-  color: #3C3C3C;
+  color: #f8f8f8;
   text-decoration: none;
 }
 
@@ -221,18 +285,18 @@ ul {
 }
 
 .page a:visited {
-  background-color: rgba(28, 206, 40, 0.9);
+  background-color: #88BF44
   color: #f8f8f8;
 }
 
 .page:active {
   background-color: #f8f8f8;
-  color: rgba(28, 206, 40, 0.9);
+  color: #88BF44;
 }
 
 .page:hover {
   background-color: #f8f8f8;
-  color: rgba(28, 206, 40, 0.9);
+  color: #88BF44;
 }
 
 /* end pagination styling */
@@ -298,11 +362,14 @@ ul {
   width: 20%;
 }
 
-/* #side-nav-in {
-  background-color: #1CCE28;
+#side-nav-in {
+  /* background-color: #1CCE28;
   height: 3000px;
-  width: 10%;
-} */
+  width: 10%; */
+  margin-left: 10.5%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 /* end sidebar styling */
 
