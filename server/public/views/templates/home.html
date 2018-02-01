@@ -1,89 +1,79 @@
 <header ng-include="'/views/partials/header.html'"></header>
+<div class="green-background">
+  <div class="section">
 
-<div class="section">
-  <br>
     <!-- Center column with search bars -->
-    <div flex layout = "column" layout-align="center center" >
-      
-    <!-- Zip code search box -->
-       <div class="md-whiteframe-11dp"> 
-       <h3> Start Your Search:</h3>
-       <input ng-model="chosenPlace" googleplace id="googleInput" placeholder="Enter your location"></input>{{chosenPlace}}
-        <br>
-    <div layout = "row" layout-align= "end center" >
-        <md-button class="md-primary md-raised" ng-click = "showme=true;hc.searchZipCodes();hideHsButtons=true">Search</md-button>
-        <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
+    <div flex layout="column" layout-align="center center">
+
+        <p id="start-search">Start Your Search</h4>
+
+      <!-- Zip code search box -->
+      <div class="md-whiteframe" id="top-search" layout="row" layout-align="space-around center">
+        <md-input-container>
+          <!-- <label>Enter your location</label> -->
+          <input ng-model="chosenPlace" googleplace id="googleInput">
+        </md-input-container>
+
+        <md-button class="btn-dkgrn md-raised" ng-click="showme=true;hc.searchZipCodes();hideHsButtons=true">Next</md-button>
+        <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
+
+      </div>
+
+      <!-- Issues search box -->
+      <div class="md-whiteframe" layout="row" layout-align="space-around center" ng-show="showme">
+        <!-- <h4>Struggles:</h4> -->
+        <md-autocomplete class="search-bars" md-selected-item="hc.selectedItemIssues" md-search-text="hc.searchText" md-items="item in hc.issuesTwo.list | filter : hc.searchText "
+          md-item-text="item.issue_name" md-min-length="0" md-floating-label="What are you looking for help with?">
+
+          <md-item-template>
+            <span md-highlight-text="hc.searchText" md-highlight-flags="^i">{{item.issue_name}}</span>
+          </md-item-template>
+
+          <md-not-found>
+            No issues matching "{{hc.searchText}}" were found.
+            <a ng-click="hc.newIssue(hc.searchText)">Please pick an issue from the list.</a>
+          </md-not-found>
+        </md-autocomplete>
+
+        <md-button class="btn-dkgrn md-raised" ng-click="showme2=true">Next</md-button>
+        <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
+      </div>
+
+      <!-- Insurance Search box -->
+      <div class="md-whiteframe" layout="row" layout-align="space-around center" ng-show="showme2">
+        <!-- <h4>Insurance:</h4> -->
+        <md-autocomplete class="search-bars" md-selected-item="selectedItemInsurance" md-search-text="searchText" md-items="insurance in hc.insurance.list  "
+          md-item-text="insurance.insurance_name" md-min-length="0"  md-floating-label="Type of insurance, if any.">
+
+          <md-item-template>
+            <span md-highlight-text="hc.searchText" md-highlight-flags="^i">{{insurance.insurance_name}}</span>
+          </md-item-template>
+
+
+          <md-not-found>
+            No issues matching "{{searchText}}" were found.
+            <a ng-click="hc.newInsurance(searchText)">Please pick an issue from the list.</a>
+          </md-not-found>
+
+        </md-autocomplete>
+
+        <md-button class="btn-dkgrn md-raised" ng-click="">Search</md-button>
+        <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
+      </div>
     </div>
-    
+  </div>
+  <br>
+  <br>
+  <br>
+  <div layout="row" layout-align="center center">
+    <div class="info-box" layout="column" layout-align="center center">
+      mission statement
     </div>
-         <br>
 
-
-       <!-- Issues search box -->
-     <div class="md-whiteframe-11dp" ng-show ="showme" > 
-            <h3> Struggles:</h3>
-            <md-autocomplete
-              md-selected-item = "hc.selectedItemIssues"
-              md-search-text = "hc.searchText"
-              md-items = "item in hc.issuesTwo.list | filter : hc.searchText "
-              md-item-text = "item.issue_name"
-              md-min-length = "0"
-              placeholder = "What are you looking for help with?">
-            
-            <md-item-template>
-               <span md-highlight-text = "hc.searchText"
-                  md-highlight-flags = "^i">{{item.issue_name}}</span>
-            </md-item-template>
-            
-            
-            <md-not-found>
-               No issues matching "{{hc.searchText}}" were found.
-               <a ng-click = "hc.newIssue(hc.searchText)">Please pick an issue from the list.</a>
-            </md-not-found>
-         </md-autocomplete>
-       <br>
-         <div layout = "row" layout-align= "end center" >
-            <md-button class="md-primary md-raised" ng-click = "showme2=true">Search</md-button>
-            <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
-         </div>
-
+    <div class="info-box" layout="column" layout-align="center center">
+      register as a therapist
     </div>
-   
-
-    <br>
-
-<!-- Insurance Search box -->
-
-    <div class="md-whiteframe-11dp" ng-show ="showme2" > 
-        <h3> Insurance:</h3>
-        <md-autocomplete
-            md-selected-item = "selectedItemInsurance"
-            md-search-text = "searchText"
-            md-items = "insurance in hc.insurance.list  "
-            md-item-text = "insurance.insurance_name"
-            md-min-length = "0"
-            placeholder = "Type of insurance, if any.">
-        
-        <md-item-template>
-           <span md-highlight-text = "hc.searchText"
-              md-highlight-flags = "^i">{{insurance.insurance_name}}</span>
-        </md-item-template>
- 
-        
-        <md-not-found>
-           No issues matching "{{searchText}}" were found.
-           <a ng-click = "hc.newInsurance(searchText)">Please pick an issue from the list.</a>
-        </md-not-found>
- 
-     </md-autocomplete>
-   <br>
-     <div layout = "row" layout-align= "end center">
-        <md-button class="md-primary md-raised" ng-click = "">Search</md-button>
-        <md-button class="md-primary md-raised" ng-click = "">Skip</md-button>
-     </div>
-
   </div>
 </div>
 </div>
-
-  
+</div>
