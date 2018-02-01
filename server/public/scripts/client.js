@@ -11,8 +11,10 @@ myApp.config(function ($routeProvider, $locationProvider) {
     }).when('/appointment', {
       templateUrl: '/views/templates/appointment.html',
       controller: 'AppointmentController as ac'
-    })
-    .when('/schedule', {
+    }).when('/directory/therapists/:id', {
+      templateUrl: '/views/templates/profile.html',
+      controller: 'ProfileController as pc'
+    }).when('/schedule', {
       templateUrl: '/views/templates/schedule.html',
       controller: 'ScheduleController as sc',
       resolve: {
