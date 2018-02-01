@@ -7,6 +7,9 @@ myApp.controller('ModalController', function(DirectoryService, $routeParams, mod
     vm.therapistModalInfo = DirectoryService.therapistModalInfo
     vm.close = DirectoryService.close;
 
+    vm.closeToLogin = DirectoryService.closeToLogin;
+
+
     vm.modalData = modalData;
 
     

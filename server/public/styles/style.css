@@ -305,8 +305,7 @@ md-input-container .md-input {
 
 /* This here is not working */
 .md-dialog-content{
-  width: 900px;
-  height:900px;
+  text-align: center;
 }
 
 .therapist-modal-photo-container {
@@ -338,17 +337,7 @@ md-input-container .md-input {
 
 /* end therapist profile modal */
 
-/* therapist view */
 
-#leftColumn {
-  height: 100%;
-}
-
-#therapistTitle {
-  font-size: 50px;
-}
-
-/* end therapist view */
 
 /* sidebar styling */
 
@@ -372,4 +361,32 @@ md-input-container .md-input {
 }
 
 /* end sidebar styling */
+
+
+
+
+#registerConfirmModal{
+  height:375px;
+  width: 600px;
+  text-align: center;
+}
+
+#emailIcon{
+  font-size: 70px;
+  padding-bottom: -10px;
+}
+/* therapist view */
+
+#leftColumn {
+  height: 100%;
+}
+
+#therapistTitle {
+  font-size: 50px;
+}
+
+#menuOpenIcon:hover {
+  opacity: 0.7
+}
+
 

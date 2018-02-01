@@ -39,6 +39,12 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
   self.close = function() {
     $mdDialog.cancel();
   };
+
+  self.closeToLogin = function() {
+    $mdDialog.cancel();
+    $location.path('/login');
+
+  };
   
 
   self.openLeftMenu = function() {

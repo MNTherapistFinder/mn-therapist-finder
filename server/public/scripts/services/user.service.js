@@ -57,5 +57,6 @@ myApp.service('UserService', function($http, $location){
       self.getTherapist();
     })
   }
+  // self.deleteUserIssue =
    
 });
