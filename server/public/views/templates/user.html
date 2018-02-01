@@ -36,32 +36,29 @@
                 flex="60">
         </div>
         <div layout="row">
-
-            <!-- <div style="height: 40px;margin:20px" flex="60" ng-hide="editEmailIcon">
-                {{uc.therapist.list[0].email}}
-            </div> -->
-
-            <md-input-container flex="60" >
+            <md-input-container flex="60">
                 <label>Enter your Biography here</label>
-                <textarea style="border-style: solid;border-width:2px" ng-model="uc.therapist.list[0].email" rows="1"
-                    md-select-on-focus></textarea>
+                <textarea style="border-style: solid;border-width:2px" ng-model="uc.therapist.list[0].email" rows="1" md-select-on-focus></textarea>
             </md-input-container>
             <!-- <button ng-click="editEmailIcon = !editEmailIcon"><img src="images/edit.png" alt=""></button> -->
         </div>
         <div layout="row">
-            <div style="height: 40px;margin:20px" flex="60">
-                WEBSITE ADDRESS
-            </div>
+            <md-input-container flex="60">
+                <label>Website Address</label>
+                <textarea style="border-style: solid;border-width:2px" rows="1" md-select-on-focus></textarea>
+            </md-input-container>
         </div>
         <div layout="row">
-            <div style="background-color:#b67171;height: 40px;margin:20px" flex="60">
-                Business Hours
-            </div>
+            <md-input-container flex="60">
+                <label>Business Hours</label>
+                <textarea style="border-style: solid;border-width:2px" rows="1" md-select-on-focus></textarea>
+            </md-input-container>
         </div>
+        <label for="">Active?</label>
         <div layout="row">
-            <div style="background-color:#b67171;height: 40px;margin:20px" flex="60">
-                Profile Activity
-            </div>
+            <md-switch ng-model="data.cb1" aria-label="Switch 1">
+                Switch 1: {{ data.cb1 }}
+            </md-switch>
         </div>
     </div>
 
@@ -81,23 +78,60 @@
         <br>
         <br>
         <br>
-        <div layout="row">
-            <!-- <div style="background-color:#88bebe;height: 400px;margin:20px" flex="60">
-                ENTER BIOGRAPHICAL INFORMATION
-            </div> -->
+        <div layout="row" id="biographyTextArea">
             <md-input-container style="height:400px;margin:20px;" flex="60">
                 <label>Enter your Biography here</label>
                 <textarea style="border-style: solid;border-width:2px" ng-model="uc.therapist.list[0].biography" md-maxlength="1500" rows="10"
                     md-select-on-focus></textarea>
             </md-input-container>
         </div>
+        <div layout="row" id="healthcareTypeahead" flex>
+            <div style="height: 20px" flex="60">
+                <h3>Add or edit a Healthcare Provider</h3>
+                <br>
+                <md-autocomplete md-selected-item="uc.selectedInsurance" md-search-text="searchTextHi" md-items="provider in uc.healthcare.list | filter : searchTextHi "
+                    md-item-text="provider.insurance_name" md-min-length="0" placeholder="Add Healthcare Provider">
+
+                    <md-item-template>
+                        <span md-highlight-text="searchTextHi" md-highlight-flags="^i">{{provider.insurance_name}}</span>
+                    </md-item-template>
+
+
+
+                    <md-not-found>
+                        No issues matching "{{searchTextHi}}" were found.
+                        <a ng-click="newIssueHi(searchTextHi)">Please pick an issue from the list.</a>
+                    </md-not-found>
+                </md-autocomplete>
+                <button ng-click="uc.addHealthcareProvider(uc.selectedInsurance.id)">+</button>{{uc.selectedInsurance}}
+            </div>
+        </div>
+        
+        <div layout="row" id="userHealthcareListContainer" style="margin-top:150px;">
+
+            <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px" flex="60">
+                <ul style="text-align: center;padding-top:10px;">
+
+                    <li ng-repeat="healthcare in uc.therapist.list[0].insurance_plans">
+                        
+                        {{healthcare.name}}
+                        <button ng-click="uc.deleteHealthcare(healthcare.id)">
+                            <img src="images/delete.png" alt="deleteIcon">
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
 
     </div>
+
 
     <div layout="column" style="width:800px;margin-top:50px;margin-bottom:60px;">
         <div layout="row">
             <div style="height:100px;" flex="60">
-                <button>HELLO SAVE CHANGES PLEASE</button>
+                <button>Save your profile Changes</button>
             </div>
         </div>
         <div layout="row" flex>
@@ -122,14 +156,15 @@
 
             </div>
         </div>
-        <div layout="row">
+
+        <div layout="row" id="userIssuesListContainer">
 
             <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px" flex="60">
                 <ul style="text-align: center;padding-top:10px;">
 
                     <li ng-repeat="thing in uc.therapist.list[0].issues">
-                        {{thing}}
-                        <button ng-click="">
+                        {{thing.name}}
+                        <button ng-click="uc.deleteUserIssue(thing.id)">
                             <img src="images/delete.png" alt="deleteIcon">
                         </button>
                     </li>
@@ -143,8 +178,3 @@
 
 
 </div>
-
-
-<ul>
-    <li ng-repeat="thing in uc.issues.list">{{thing.issue_name}}</li>
-</ul>

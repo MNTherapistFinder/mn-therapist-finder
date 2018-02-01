@@ -3,15 +3,21 @@ myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', functi
   var vm = this;
   vm.therapist = UserService.therapist;
   vm.issues = UserService.issues;
+  vm.healthcare = UserService.healthcare;
   vm.getTherapist = UserService.getTherapist;
   vm.getIssuesList = UserService.getIssuesList;
+  vm.getHealthcareList = UserService.getHealthcareList
+  vm.deleteUserIssue = UserService.deleteUserIssue;
+  vm.deleteHealthcare = UserService.deleteHealthcare;
   vm.addUserIssue = UserService.addUserIssue;
+  vm.addHealthcareProvider = UserService.addHealthcareProvider;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
   vm.client = filestack.init("AfkCNgWSJyFwF5crXkNAVz");
 
   vm.getTherapist();
   vm.getIssuesList();
+  vm.getHealthcareList();
 
   vm.openLeftMenu = function() {
     $mdSidenav('left').toggle();
