@@ -6,6 +6,8 @@ myApp.service('UserService', function($http, $location){
   self.issues = {list: []}
   self.healthcare = {list: []}
   self.specialties = {list: [] }
+  self.therapistOld = {list: []}
+
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -39,6 +41,11 @@ myApp.service('UserService', function($http, $location){
     $http.get('/user/therapist').then(function(response){
       self.therapist.list = response.data;
       console.log(self.therapist);
+    }).then(function(response){
+      if (!self.someVar){
+        self.therapistOld.list = angular.copy(self.therapist.list);
+        self.someVar = true
+      }
     })
   }
 
