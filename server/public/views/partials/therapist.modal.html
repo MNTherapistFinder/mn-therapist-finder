@@ -7,13 +7,26 @@
                         <img ng-src = "{{mc.modalData.event.profile_picture}}">
                 </div>
         </div>
-        <div  id="therapistModalCol2">
-                <h2>{{mc.modalData.event.full_name}}</h2>
+        <div id="therapistModalCol2">
+                <h1>{{mc.modalData.event.full_name}}</h1>
+                <p>{{mc.modalData.event.license_number}}</p>
                 <p>{{mc.modalData.event.biography}}</p>
         </div>
         <div id = "therapistModalCol3">
-                     
-                 <p>other things</p>
+                        <h3>Specialties:</h3>
+                        <ul id="specialtiesBulletIcon" ng-repeat = "specialties in mc.modalData.event.specialties">
+                                <li>{{specialties}}</li>
+                        </ul>
+             
+                   <h3>Issues treated:</h3>
+                        <ul id="issuesBulletIcon" ng-repeat = "issue in mc.modalData.event.issues">
+                                <li>{{issue}}</li>
+                       </ul>
+                <!-- <h3>Issues treated:</h3>
+                     <ul ng-repeat = "issue in mc.modalData.event.issues">
+                             <li>{{issue}}</li>
+                     </ul> -->
+               
         </div>
 </div>
 </md-dialog-content>
@@ -21,6 +34,7 @@
 
 <md-dialog-actions layout="row">
         <md-button ng-click="mc.close()"> Close </md-button>
+        <md-button ng-click="mc.close()" href="#directory/therapists/{{mc.modalData.event.id}}"> See full profile </md-button>
 </md-dialog-actions>
 
 </md-dialog>
