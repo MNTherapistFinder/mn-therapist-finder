@@ -43,7 +43,7 @@ router.get('/therapist', function (req, res) {
       therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, 
       array_agg(DISTINCT insurance_plans.id) AS insurance_id,
       array_agg(DISTINCT insurance_plans.insurance_name) AS insurance_plans, array_agg(DISTINCT issues.id) AS issueid, array_agg(DISTINCT issues.issue_name) 
-      AS issues, array_agg(DISTINCT specialties.specialty_name) AS specialties FROM therapists LEFT JOIN therapists_insurance_plans 
+      AS issues,array_agg(DISTINCT specialties.id) AS specialty_id ,array_agg(DISTINCT specialties.specialty_name) AS specialties FROM therapists LEFT JOIN therapists_insurance_plans 
       ON therapists.id = therapists_insurance_plans.therapists_id LEFT JOIN insurance_plans 
       ON therapists_insurance_plans.insurance_plans_id = insurance_plans.id LEFT JOIN therapists_issues 
       ON therapists.id = therapists_issues.therapists_id LEFT JOIN issues ON therapists_issues.issues_id = issues.id 
@@ -60,6 +60,7 @@ router.get('/therapist', function (req, res) {
             console.log('----------------', result.rows[0].issues);
             newArr = []
             newArrHealthcare = [];
+            newArrSpecialties = [];
             for (var i = 0; i < result.rows[0].issues.length; i++) {
               var obj = { name: result.rows[0].issues[i], id: result.rows[0].issueid[i] }
 
@@ -69,9 +70,14 @@ router.get('/therapist', function (req, res) {
               var objh = {name: result.rows[0].insurance_plans[i], id: result.rows[0].insurance_id[i]}
               newArrHealthcare.push(objh);
             }
+            for (var i = 0; i<result.rows[0].specialties.length;i++){
+              var objs = {name: result.rows[0].specialties[i], id: result.rows[0].specialty_id[i]}
+              newArrSpecialties.push(objs);
+            }
               console.log('---------', newArr)
             result.rows[0].issues = newArr;
             result.rows[0].insurance_plans = newArrHealthcare;
+            result.rows[0].specialties = newArrSpecialties;
             res.send(result.rows);
           }
         });
@@ -195,6 +201,67 @@ router.delete('/healthcare', function (req, res) {
       });
     }
   });
-})
+});
+
+
+router.get('/specialty', function (req, res) {
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+    if (errorConnectingToDatabase) {
+      console.log('error', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query(`SELECT * FROM specialties`, function (errorMakingDatabaseQuery, result) {
+        done();
+        if (errorMakingDatabaseQuery) {
+          console.log('error', errorMakingDatabaseQuery);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});
+
+router.post('/specialty', function (req, res) {
+  console.log('HEYHEY HEY HEYHEY', req.body);
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+    if (errorConnectingToDatabase) {
+      console.log('error', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query(`INSERT INTO therapists_specialties ("specialties_id","therapists_id")
+      VALUES ($1,$2)`, [req.body.id, req.user.id], function (errorMakingDatabaseQuery, result) {
+          done();
+          if (errorMakingDatabaseQuery) {
+            console.log('error', errorMakingDatabaseQuery);
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(201);
+          }
+        });
+    }
+  });
+});
+router.delete('/specialty', function (req, res) {
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+    if (errorConnectingToDatabase) {
+      console.log('error', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query(`DELETE FROM therapists_specialties WHERE  therapists_id = $1  AND specialties_id=$2  `, [req.user.id,req.query.id], function (errorMakingDatabaseQuery, result) {
+        done();
+        if (errorMakingDatabaseQuery) {
+          console.log('error', errorMakingDatabaseQuery);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});
+
+
 
 module.exports = router;
