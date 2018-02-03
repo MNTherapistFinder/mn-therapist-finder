@@ -8,20 +8,24 @@
         <p id="start-search">Start Your Search</h4>
 
       <!-- Zip code search box -->
+      <div layout="row">
       <div class="md-whiteframe" id="top-search" layout="row" layout-align="space-around center">
-        <md-input-container>
+        <md-input-container class="search-input search-bars">
           <!-- <label>Enter your location</label> -->
-          <input ng-model="hc.searchObject.location" googleplace id="googleInput" ng-keyup="hc.runOnEnter()">
+          <input ng-model="hc.searchObject.location" googleplace aria-label="google place" ng-keyup="hc.runOnEnter()">
         </md-input-container>
 
+        <div layout="row" layout-align="center center">
         <md-button class="btn-dkgrn md-raised" ng-click="showme=true;hc.searchZipCodes();hideHsButtons=true">Next</md-button>
         <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
-
       </div>
+      </div>
+    </div>
 
       <!-- Issues search box -->
       <div class="md-whiteframe" layout="row" layout-align="space-around center" ng-show="showme">
         <!-- <h4>Struggles:</h4> -->
+        <div class="search-input">
         <md-autocomplete class="search-bars" md-selected-item="hc.searchObject.issues" md-search-text="hc.searchText" md-items="item in hc.issuesTwo.list | filter : hc.searchText "
           md-item-text="item.issue_name" md-min-length="0" md-floating-label="What are you looking for help with?">
 
@@ -34,14 +38,18 @@
             <a ng-click="hc.newIssue(hc.searchText)">Please pick an issue from the list.</a>
           </md-not-found>
         </md-autocomplete>
+      </div>
 
+      <div layout-align="center center">
         <md-button class="btn-dkgrn md-raised" ng-click="showme2=true">Next</md-button>
         <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
+      </div>
       </div>
 
       <!-- Insurance Search box -->
       <div class="md-whiteframe" layout="row" layout-align="space-around center" ng-show="showme2">
         <!-- <h4>Insurance:</h4> -->
+        <div class="search-input">
         <md-autocomplete class="search-bars" md-selected-item="hc.searchObject.insurance" md-search-text="searchText" md-items="insurance in hc.insurance.list  "
           md-item-text="insurance.insurance_name" md-min-length="0"  md-floating-label="Type of insurance, if any.">
 
@@ -56,12 +64,14 @@
           </md-not-found>
 
         </md-autocomplete>
+      </div>
   
+      <div layout-align="center center">
         <md-button class="btn-dkgrn md-raised" ng-click="">Search</md-button>
         <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
       </div>
     </div>
-  </div>
+    </div>
   <br>
   <br>
   <br>
@@ -74,7 +84,7 @@
       register as a therapist
     </div>
   </div>
+  {{hc.searchObject}}
 </div>
 </div>
 </div>
-{{hc.searchObject}}
