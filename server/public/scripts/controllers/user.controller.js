@@ -1,16 +1,32 @@
-myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', function ($scope,$mdSidenav, UserService) {
+myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', function ($scope, $mdSidenav, UserService) {
   console.log('UserController created');
   var vm = this;
   vm.therapist = UserService.therapist;
+  $scope.therapist = UserService.therapist;
+  vm.therapistOld = UserService.therapistOld;
+  vm.therapistObjectsEqual = true;
+
+
+
+  
   vm.issues = UserService.issues;
   vm.healthcare = UserService.healthcare;
+  vm.specialties = UserService.specialties;
+  
   vm.getTherapist = UserService.getTherapist;
   vm.getIssuesList = UserService.getIssuesList;
-  vm.getHealthcareList = UserService.getHealthcareList
+  vm.getHealthcareList = UserService.getHealthcareList;
+  vm.getSpecialtiesList = UserService.getSpecialtiesList;
+
+  
   vm.deleteUserIssue = UserService.deleteUserIssue;
   vm.deleteHealthcare = UserService.deleteHealthcare;
+  vm.deleteSpecialty = UserService.deleteSpecialty;
+  
   vm.addUserIssue = UserService.addUserIssue;
   vm.addHealthcareProvider = UserService.addHealthcareProvider;
+  vm.addSpecialty = UserService.addSpecialty;
+  
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
   vm.client = filestack.init("AfkCNgWSJyFwF5crXkNAVz");
@@ -18,6 +34,7 @@ myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', functi
   vm.getTherapist();
   vm.getIssuesList();
   vm.getHealthcareList();
+  vm.getSpecialtiesList();
 
   vm.openLeftMenu = function() {
     $mdSidenav('left').toggle();
@@ -40,5 +57,16 @@ myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', functi
       // declare this function to handle response
       console.log(response.filesUploaded[0].url);
     });
+  }
+
+  vm.checkTherapistObjects =function(){
+    console.log('in function')
+    if (vm.therapist == vm.therapistOld){
+      console.log('true hit')
+      vm.therapistObjectsEqual = true
+    }else {
+      console.log('false hit');
+      vm.therapistObjectsEqual = false;
+    }
   }
 }]);

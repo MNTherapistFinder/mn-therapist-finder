@@ -5,6 +5,9 @@ myApp.service('UserService', function($http, $location){
   self.therapist = {list: []}
   self.issues = {list: []}
   self.healthcare = {list: []}
+  self.specialties = {list: [] }
+  self.therapistOld = {list: []}
+
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -38,6 +41,11 @@ myApp.service('UserService', function($http, $location){
     $http.get('/user/therapist').then(function(response){
       self.therapist.list = response.data;
       console.log(self.therapist);
+    }).then(function(response){
+      if (!self.someVar){
+        self.therapistOld.list = angular.copy(self.therapist.list);
+        self.someVar = true
+      }
     })
   }
 
@@ -98,4 +106,35 @@ myApp.service('UserService', function($http, $location){
     })
   }
 
+
+  self.getSpecialtiesList = function(){
+    $http.get('user/specialty').then(function(response){
+      self.specialties.list = response.data
+      console.log(response.data);
+    })
+  }
+
+  self.addSpecialty = function(specialtyId){
+    console.log(specialtyId);
+    $http({
+      url: 'user/specialty',
+      method: 'POST',
+      data: {id: specialtyId}
+    }).then(function(response){
+      console.log(response);
+      self.getTherapist();
+    })
+  }
+
+
+  self.deleteSpecialty = function(specialtyId){
+    $http({
+      url: 'user/specialty',
+      method: 'DELETE',
+      params: {id: specialtyId}
+    }).then(function(response){
+      console.log(response);
+      self.getTherapist();
+    })
+  }
 });
