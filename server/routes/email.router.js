@@ -6,7 +6,7 @@ var router = express.Router();
 var smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-        user: "",
+        user: "mntherapistfinder@gmail.com",
         pass: ""
     }
 });
@@ -58,7 +58,7 @@ router.get('/verify', function (req, res) {
 router.post('/appointment', function (req, res) {
     console.log('--------, ', req.body);
     mailOptions = {
-        to: 'Nasirhussien@gmail.com',
+        to: 'gagliano.joe1@gmail.com',
         subject: "Appointment Request",
         html: "Hello you have a new appointment request with  " + req.body.name + " At "+ req.body.date +  "<br>"+ "They can be reached by email at " + req.body.email + " or by phone number at " + req.body.number
     }
