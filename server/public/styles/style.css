@@ -19,13 +19,17 @@ body, html {
 .header {
   background-color: #f8f8f8;
   color: #3C3C3C;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 50px;
   padding-right: 50px;
 }
 
 #funny-slash {
   color: #88BF44;
+}
+
+.header-small {
+  font-size: 20px;
 }
 
 .slim-header {
@@ -46,6 +50,8 @@ body, html {
 
 .green-background {
   background-color: #88BF44 !important;
+  height: 100vh;
+  /* overflow: inherit; */
 }
 
 /* end header styling */
@@ -148,12 +154,17 @@ input {
 
 #googleInput {
   /* height: 40px; */
+  padding-top: 25px;
   width: 380px;
 }
 
+.search-input {
+  padding-top: 30px;
+}
+
 .info-box {
-  width: 25%;
-  height: 150px;
+  width: 20%;
+  height: 100px;
   margin: 10px;
   margin-bottom: 50px;
   background-color: #f8f8f8;
@@ -174,7 +185,7 @@ md-input-container .md-input {
 }
 
 #start-search {
-  font-size: 24px;
+  font-size: 22px;
   color: #f8f8f8;
   margin-bottom: 10px;
 }
@@ -192,7 +203,7 @@ md-input-container .md-input {
   /* transition:all ease-in 1s; */
   background-color: #f8f8f8;
   height: 70px;
-  width: 70%;
+  width: 700px;
   margin-top: 10px;
   padding:10px;
   padding-top: 10px;
