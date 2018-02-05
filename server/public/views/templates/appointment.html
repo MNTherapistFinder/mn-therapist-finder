@@ -1,4 +1,16 @@
-<h1>Avaliable Appointments</h1>
+<header ng-include="'/views/partials/slimHeader.html'"></header>
+<div class="container"  layout-padding layout-margin layout="row">
+    <div flex = "10">
+<div class = "therapist-profile-photo-container-appts" >
+        <img ng-src = "{{pc.therapistProfileInfo.list[0].profile_picture}}">
+      </div>
+    </div>
+    <div flex>
+      <h2>{{pc.therapistProfileInfo.list[0].full_name}}</h2>
+          <strong><p>{{pc.therapistProfileInfo.list[0].license_type}}</p></strong>
+        </div>
+</div>
+
 <md-card ng-repeat="date in pc.therapistAppointments.list">
     <md-card-content/>
     <p> 
@@ -6,4 +18,32 @@
     </p>
 </md-card-content>
     </md-card>
+
+    {{pc}}
+
+<!-- working on date section layout -->
+
+    
+            <md-content layout="row" flex="66" layout-wrap>
+                <md-card ng-repeat="d in pc.days"  class="md-whiteframe-z2" flex flex-sm="40" flex-xs="100">
+                    <md-card-content>
+                        <h2>{{d.k | date:'dd-MMM-yyyy'}}</h2>
+                        <p layout="column">
+
+                                <md-card ng-repeat="date in pc.therapistAppointments.list">
+                                        <md-card-content/>
+                                        <p> 
+                                              <md-button class="md-accent md-raised" ng-click="pc.appointmentForm(date)" >{{date.available_times}}</md-button> 
+                                        </p>
+                                    </md-card-content>
+                                        </md-card>
+                        </p>
+                    </md-card-content>
+                    <md-card-footer></md-card-footer>
+                </md-card>
+                
+            </md-content>
+
+
+
 

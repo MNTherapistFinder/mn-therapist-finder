@@ -22,7 +22,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
 
 
 
-  self.getTherapistProfileInfo = function (therapistId) {
+self.getTherapistProfileInfo = function (therapistId) {
     console.log('in getTherapistProfileInfo');
 
     $http({
@@ -34,6 +34,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
       self.therapistProfileInfo.list = response.data;
     });
   } 
+
 
   self.showTherapistInfo = function(event) {
     console.log('showTherapistInfo clicked');
@@ -51,6 +52,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
       }
 
     })};
+
 
 self.getTherapistAppointments = function (therapistId) {
       console.log('in getTherapistAppointments');
@@ -134,7 +136,11 @@ self.appointmentForm = function (date) {
     $mdSidenav('left').toggle();
   };
 
-  // self.startOpen = $mdMedia('gt-sm');
+
+
+
+
+
 
 });
 

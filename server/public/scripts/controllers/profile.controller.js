@@ -11,7 +11,10 @@ myApp.controller('ProfileController', function(DirectoryService, $routeParams) {
     vm.appointmentForm = DirectoryService.appointmentForm;
     vm.patient = DirectoryService.patient;
     vm.answer = DirectoryService.answer
+
     DirectoryService.getTherapistAppointments($routeParams);
+
+
 
 
     
