@@ -8,12 +8,15 @@ myApp.config(function ($routeProvider, $locationProvider) {
     .when('/home', {
       templateUrl: '/views/templates/home.html',
       controller: 'HomeController as hc',
-    }).when('/appointment', {
-      templateUrl: '/views/templates/appointment.html',
-      controller: 'AppointmentController as ac'
     }).when('/directory/therapists/:id', {
       templateUrl: '/views/templates/profile.html',
       controller: 'ProfileController as pc'
+    }).when('/directory/therapists/:id/appointment', {
+      templateUrl: '/views/templates/appointment.html',
+      controller: 'ProfileController as pc'
+    }).when('/appointment', {
+        templateUrl: '/views/templates/appointment.html',
+        controller: 'AppointmentController as ac'   
     }).when('/schedule', {
       templateUrl: '/views/templates/schedule.html',
       controller: 'ScheduleController as sc',

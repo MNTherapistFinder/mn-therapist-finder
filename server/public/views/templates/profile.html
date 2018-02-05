@@ -1,9 +1,40 @@
 <header ng-include="'/views/partials/slimHeader.html'"></header>
 
-<div class="container"  layout="column">
-  <h1>hello world</h1>
-  {{pc.therapistProfileInfo.list[0].full_name}}
-
-
- 
+<div class="container"  layout-padding layout-margin layout="row">
+  
+  <div flex = "25">
+    <div class = "therapist-profile-photo-container" flex = "100">
+      <img ng-src = "{{pc.therapistProfileInfo.list[0].profile_picture}}">
+    </div>
+      <p>{{pc.therapistProfileInfo.list[0].workplace_street_address}}&nbsp{{pc.therapistProfileInfo.list[0].workplace_zipcode}}</p>
+      <md-button href="{{pc.therapistProfileInfo.list[0].website}}" class="btn-green md-raised">Therapist's website</md-button>
+      <p><strong>Phone:</strong> {{pc.therapistProfileInfo.list[0].phone}}</p>
+      <p><strong>License #:</strong> {{pc.therapistProfileInfo.list[0].license_number}}</p>
+      <p><strong>Education: </strong>{{pc.therapistProfileInfo.list[0].school}}</p>
+      <p><strong>Years in practice: </strong>{{pc.therapistProfileInfo.list[0].years_in_practice}}</p>
   </div>
+
+
+
+  <div flex= "50">
+          <h1>{{pc.therapistProfileInfo.list[0].full_name}}</h1>
+          <strong><p>{{pc.therapistProfileInfo.list[0].license_type}}</p></strong>
+          
+  <br>
+          <p>{{pc.therapistProfileInfo.list[0].biography}}</p>
+  </div>
+
+
+<div flex= "25">
+    <md-button href="#directory/therapists/{{pc.therapistProfileInfo.list[0].id}}/appointment" class="btn-appt md-raised">Request an appointment</md-button>
+    <h3>Specialties:</h3>
+      <ul id="specialtiesBulletIcon" ng-repeat = "specialties in pc.therapistProfileInfo.list[0].specialties">
+            <li>{{specialties}}</li>
+      </ul>
+
+    <h3>Issues treated:</h3>
+      <ul id="issuesBulletIcon" ng-repeat = "issue in pc.therapistProfileInfo.list[0].issues">
+            <li>{{issue}}</li>
+    </ul>
+  </div>
+</div>

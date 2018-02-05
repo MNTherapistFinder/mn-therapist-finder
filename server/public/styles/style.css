@@ -3,7 +3,6 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Karla', sans-serif;
-  /* font-weight: 200; */
   font-size: 16px;
   color: #3C3C3C;
 }
@@ -13,19 +12,22 @@ body, html {
 .header .container h1 {
   font-size: 32px;
   font-weight: 600;
-  /* color: #1CCE28; */
 }
 
 .header {
   background-color: #f8f8f8;
   color: #3C3C3C;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 50px;
   padding-right: 50px;
 }
 
 #funny-slash {
   color: #88BF44;
+}
+
+.header-small {
+  font-size: 20px;
 }
 
 .slim-header {
@@ -36,16 +38,15 @@ body, html {
 .slim-header-text {
   margin-left: 5%;
   margin-right: 5px;
-  /* float: left; */
 }
 
 .slim-header a {
-  /* height: 50px; */
   color: #f8f8f8;
 }
 
 .green-background {
   background-color: #88BF44 !important;
+  height: 100vh;
 }
 
 /* end header styling */
@@ -83,23 +84,23 @@ a:hover {
   margin-top: 10px;
 }
 
-.message:nth-child(odd) {
+/* .message:nth-child(odd) {
    background-color: #eeeeee;
 }
 
 .message:nth-child(even) {
   background-color: #f8f8f8;
-}
+} */
 
-.btn-danger{
+/* .btn-danger{
   margin-left: 10px;
-}
+} */
 
-.navbar {
+/* .navbar {
   background-color: #3C3C3C;
   width: 100%;
   border-radius: 0px;
-}
+} */
 
 ul {
   list-style-type: none;
@@ -147,13 +148,17 @@ input {
 }
 
 #googleInput {
-  /* height: 40px; */
+  padding-top: 25px;
   width: 380px;
 }
 
+.search-input {
+  padding-top: 30px;
+}
+
 .info-box {
-  width: 25%;
-  height: 150px;
+  width: 20%;
+  height: 100px;
   margin: 10px;
   margin-bottom: 50px;
   background-color: #f8f8f8;
@@ -162,7 +167,6 @@ input {
 
 md-input-container .md-input {
   border-color: #3C3C3C;
-  /* color: black; */
 }
 
 .md-input-focused label {
@@ -174,14 +178,10 @@ md-input-container .md-input {
 }
 
 #start-search {
-  font-size: 24px;
+  font-size: 22px;
   color: #f8f8f8;
   margin-bottom: 10px;
 }
-
-/* #top-search {
-  margin-top: 40px;
-} */
 
 .search-bars {
   width: 380px;
@@ -192,17 +192,13 @@ md-input-container .md-input {
   /* transition:all ease-in 1s; */
   background-color: #f8f8f8;
   height: 70px;
-  width: 70%;
+  width: 700px;
   margin-top: 10px;
   padding:10px;
   padding-top: 10px;
   padding-bottom: 10px;
   /* border-radius: 1% */
 }
-
-/* .md-visually-hidden {
-  background-color: #88bf44 !important;
-} */
 
 .ng-hide {
   height: 0;
@@ -225,7 +221,6 @@ md-input-container .md-input {
 .directory-profile-photo-container {
   height: 250px;
   width: 250px;
-  /* display: table-cell; */
   overflow: hidden;
 }
 
@@ -284,7 +279,7 @@ md-input-container .md-input {
 }
 
 .page a:visited {
-  background-color: #88BF44
+  background-color: #88BF44;
   color: #f8f8f8;
 }
 
@@ -316,7 +311,6 @@ md-input-container .md-input {
 .therapist-modal-photo-container img {
   width: 100%;
   height: auto;
-
 }
 
 #therapistModalCol1{
@@ -325,15 +319,18 @@ md-input-container .md-input {
 }
 
 #therapistModalCol2{
-  width: 50%;
-  padding: 0px 10px 5px 10px;
-  font-size: 12.5px;
+  width: 70%;
+  padding: 0px 10px 0px 10px;
+  font-size: 14px;
+  text-align: left;
+  margin:5px;
+  margin-left: 15px;
 }
 
 #therapistModalCol3{
-  width: 20%;
+  width: 25%;
   padding: 5px;
-  margin-left:20px;
+  margin-left:5px;
 }
 
 #specialtiesBulletIcon {
@@ -376,6 +373,10 @@ md-input-container .md-input {
   padding-bottom: 10px;
 }
 
+#sidebar-button {
+  padding: 0px !important;
+}
+
 /* end sidebar styling */
 
 /* modal styling */
@@ -393,18 +394,120 @@ md-input-container .md-input {
 
 /* end modal styling */
 
-/* therapist view */
+/* therapist profile dashboard view */
 
 #leftColumn {
   height: 100%;
 }
 
-#therapistTitle {
-  font-size: 50px;
-}
-
-#menuOpenIcon:hover {
+/* #menuOpenIcon:hover {
   opacity: 0.7
+} */
+
+#therapistTitle {
+  margin-bottom: 0px;
 }
 
-/* end therapist view */
+.therapist-column {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.therapist-input {
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+textarea {
+  font-family: 'Karla', sans-serif;
+}
+
+.top-container {
+  margin-top: 25px;
+}
+
+#active {
+  font-size: 12px;
+  font-style: italic;
+}
+
+#bio-box {
+  border-style: solid;
+  border-width:1px;
+  width: 100%;
+  height: 300px !important;
+  overflow-y: scroll;
+  /* margin-bottom: -500px; */
+}
+
+#healthcareTypeahead {
+  margin-top: 0px;
+}
+
+#healthcare-box {
+  border-style: solid;
+  border-width:1px;
+  width: 100%;
+  height:100px !important;
+  overflow-y: scroll;
+  margin-top: 0px !important;
+}
+
+.therapist-preferences {
+  margin-top: 0px;
+}
+
+#specialties-box {
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  height:100px;
+  margin-bottom:20px;
+  margin-top:150px;
+}
+
+#struggles-box {
+  border-style: solid;
+  border-width:1px;
+  width: 100%;
+  height:100px;
+  margin-bottom:20px;
+  margin-top:150px;
+}
+
+/* end therapist profile dashboard view */
+
+/* therapist public profile view */
+
+.therapist-profile-photo-container {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+}
+
+.therapist-profile-photo-container img {
+  width: 400px;
+  height: auto;
+}
+
+.btn-appt {
+  background-color: rgb(255, 196, 0) !important;
+  color: black !important;
+  margin-top: 30px;
+}
+
+/* end therapist public profile view */
+
+/* appointments page */
+.therapist-profile-photo-container-appts{
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+
+.therapist-profile-photo-container-appts img{
+  width: 100%;
+  height: auto;
+}
+
+/* end appointments page */
