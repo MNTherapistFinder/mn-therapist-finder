@@ -27,7 +27,7 @@
         <!-- <h4>Struggles:</h4> -->
         <div class="search-input">
         <md-autocomplete class="search-bars" md-selected-item="hc.searchObject.issues" md-search-text="hc.searchText" md-items="item in hc.issuesTwo.list | filter : hc.searchText "
-          md-item-text="item.issue_name" md-min-length="0" md-floating-label="What are you looking for help with?">
+          md-item-text="item.issue_name" md-min-length="0" md-floating-label="What are you looking for help with?" ng-click="hc.runOnEnter2()">
 
           <md-item-template>
             <span md-highlight-text="hc.searchText" md-highlight-flags="^i" ng-model="hc.searchObject.issue">{{item.issue_name}}</span>
@@ -67,7 +67,7 @@
       </div>
   
       <div layout-align="center center">
-        <md-button class="btn-dkgrn md-raised" ng-click="">Search</md-button>
+        <md-button class="btn-dkgrn md-raised" ng-click="hc.getSearchResults(hc.searchObject)">Search</md-button>
         <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
       </div>
     </div>
