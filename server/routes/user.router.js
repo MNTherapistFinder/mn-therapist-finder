@@ -47,7 +47,7 @@ router.get('/therapist', function (req, res) {
       ON therapists_insurance_plans.insurance_plans_id = insurance_plans.id LEFT JOIN therapists_issues 
       ON therapists.id = therapists_issues.therapists_id LEFT JOIN issues ON therapists_issues.issues_id = issues.id 
       LEFT JOIN therapists_specialties ON therapists.id = therapists_specialties.therapists_id LEFT JOIN specialties 
-      ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =2 GROUP BY
+      ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 GROUP BY
       therapists.full_name, therapists.email, therapists.profile_picture, 
       therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
       therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
