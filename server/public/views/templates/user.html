@@ -3,7 +3,7 @@
 
 <div class="container" layout-padding layout-margin layout="row">
 
-<!-- sidebar -->
+    <!-- sidebar -->
 
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
         <a href="#home">
@@ -33,7 +33,7 @@
             </md-content>
         </div>
 
-<!-- first column -->
+        <!-- first column -->
 
         <div flex="25" class="therapist-column">
             <div class="therapist-profile-photo-container" flex="100">
@@ -61,15 +61,15 @@
                 Switch 1: {{ data.cb1 }}
                 <br>
                 <br>
-                <p id="active">Profile must be set to active to appear in search results.</p>
             </md-switch>
+            <p id="active">Profile must be set to active to appear in search results.</p>
 
 
         </div>
 
-<!-- second column -->
+        <!-- second column -->
 
-        <div flex="50" class="therapist-column" layout="column">
+        <div flex="50" class="therapist-column" layout="column" layout-align="center none">
 
             <div layout="row">
                 <div>
@@ -85,44 +85,38 @@
 
             <md-input-container>
                 <label>Your Biography</label>
-                <textarea id="bio-box" style="border-style: solid;border-width:1px" ng-model="uc.therapist.list[0].biography" ng-change="uc.checkTherapistObjects()"
-                    md-maxlength="1500" rows="10" md-select-on-focus></textarea>
+                <textarea id="bio-box" ng-model="uc.therapist.list[0].biography" ng-change="uc.checkTherapistObjects()" md-maxlength="1500"
+                    rows="10" md-select-on-focus></textarea>
             </md-input-container>
 
+            <div layout="row" layout-align="start center" id="healthcareTypeahead" flex>
+                <div class="therapist-input">
+                    <form ng-submit="uc.addHealthcareProvider(uc.selectedInsurance.id)">
+                        <h3>Accepted Insurance</h3>
+                        <br>
+                        <md-autocomplete md-selected-item="uc.selectedInsurance" md-search-text="searchTextInsurance" md-items="provider in uc.healthcare.list | filter : searchTextInsurance "
+                            md-item-text="provider.insurance_name" md-min-length="0" placeholder="Select A Healthcare Provider">
 
-            <div layout="row" id="healthcareTypeahead" flex>
-                <div style="height: 20px" flex="60">
-                    <h3>Add or edit a Healthcare Provider</h3>
-                    <br>
-                    <md-autocomplete md-selected-item="uc.selectedInsurance" md-search-text="searchTextInsurance" md-items="provider in uc.healthcare.list | filter : searchTextInsurance "
-                        md-item-text="provider.insurance_name" md-min-length="0" placeholder="Add Healthcare Provider">
+                            <md-item-template>
+                                <span md-highlight-text="searchTextInsurance" md-highlight-flags="^i">{{provider.insurance_name}}</span>
+                            </md-item-template>
 
-                        <md-item-template>
-                            <span md-highlight-text="searchTextInsurance" md-highlight-flags="^i">{{provider.insurance_name}}</span>
-                        </md-item-template>
-
-
-
-                        <md-not-found>
-                            No issues matching "{{searchTextInsurance}}" were found.
-                            <a ng-click="newIssueHi(searchTextInsurance)">Please pick an issue from the list.</a>
-                        </md-not-found>
-                    </md-autocomplete>
-                    <button ng-click="uc.addHealthcareProvider(uc.selectedInsurance.id)">+</button>
+                            <md-not-found>
+                                No issues matching "{{searchTextInsurance}}" were found.
+                                <a ng-click="newIssueHi(searchTextInsurance)">Please pick an issue from the list.</a>
+                            </md-not-found>
+                        </md-autocomplete>
+                    </form>
                 </div>
             </div>
 
-            <div layout="row" id="userHealthcareListContainer" style="margin-top:150px;">
+            <div layout="row" class="therapist-preferences">
 
-                <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px" flex="60">
-                    <ul style="text-align: center;padding-top:10px;" ng-repeat="healthcare in uc.therapist.list[0].insurance_plans" ng-change="uc.checkTherapistObjects()"
-                        ng-model="uc.therapist.list[0].insurance_plans">
-
+                <div id="healthcare-box">
+                    <ul ng-repeat="healthcare in uc.therapist.list[0].insurance_plans" ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].insurance_plans">
                         <li>
                             {{healthcare.name}}
-                            <button ng-click="uc.deleteHealthcare(healthcare.id)">
-                                <img src="images/delete.png" alt="deleteIcon">
-                            </button>
+                            <i class="material-icons" ng-click="uc.deleteHealthcare(healthcare.id)">cancel</i>
                         </li>
 
                     </ul>
@@ -130,83 +124,87 @@
             </div>
         </div>
 
-<!-- third column -->
+        <!-- third column -->
 
         <div flex="25" class="therapist-column">
             <div layout="column" flex>
                 <div style="height: 20px" flex="60">
-                    <h3>Add or edit a Specialty</h3>
-                    <br>
-                    <md-autocomplete md-selected-item="uc.selectedSpecialty" md-search-text="searchTextSpecialty" md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
-                        md-item-text="specialty.specialty_name" md-min-length="0" placeholder="What are you looking for help with?">
+                    <form ng-submit="uc.addSpecialty(uc.selectedSpecialty.id)">
+                        <h3>Treatment Specialties</h3>
+                        <br>
+                        <div class="therapist-input">
 
-                        <md-item-template>
-                            <span md-highlight-text="searchTextSpecialty" md-highlight-flags="^i">{{specialty.specialty_name}}</span>
-                        </md-item-template>
+                            <md-autocomplete md-selected-item="uc.selectedSpecialty" md-search-text="searchTextSpecialty" md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
+                                md-item-text="specialty.specialty_name" md-min-length="0" placeholder="What treatments do you specialize in?">
+
+                                <md-item-template>
+                                    <span md-highlight-text="searchTextSpecialty" md-highlight-flags="^i">{{specialty.specialty_name}}</span>
+                                </md-item-template>
 
 
 
-                        <md-not-found>
-                            No issues matching "{{searchTextSpecialty}}" were found.
-                            <a ng-click="newSpecialty(searchTextSpecialty)">Please pick an issue from the list.</a>
-                        </md-not-found>
-                    </md-autocomplete>
-                    <button ng-click="uc.addSpecialty(uc.selectedSpecialty.id)">+</button>
-
+                                <md-not-found>
+                                    No specialties matching "{{searchTextSpecialty}}" were found.
+                                    <a ng-click="newSpecialty(searchTextSpecialty)">Please pick an specialty from the list.</a>
+                                </md-not-found>
+                            </md-autocomplete>
+                    </form>
+                    </div>
                 </div>
             </div>
 
-            <div layout="row" id="userTherapistListContainer">
+            <div layout="row" class="therapist-preferences">
 
-                <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px;margin-top:150px;" flex="60">
+                <div id="specialties-box">
                     <ul style="text-align: center;padding-top:10px;" ng-repeat="specialty in uc.therapist.list[0].specialties" ng-model="uc.therapist.list[0].specialties"
                         ng-change="uc.checkTherapistObjects()">
 
                         <li>
                             {{specialty.name}}
-                            <button ng-click="uc.deleteSpecialty(specialty.id)">
-                                <img src="images/delete.png" alt="deleteIcon">
-                            </button>
+                            <i class="material-icons" ng-click="uc.deleteSpecialty(specialty.id)">cancel</i>
                         </li>
 
                     </ul>
                 </div>
             </div>
 
-            <div layout="row" flex>
+            <div layout="row">
                 <div style="height: 20px" flex="60">
-                    <h3>Add or edit an Issue</h3>
-                    <br>
-                    <md-autocomplete md-selected-item="uc.selectedItemIssuesHi" md-search-text="searchTextIssue" md-items="theIssue in uc.issues.list | filter : searchTextIssue "
-                        md-item-text="theIssue.issue_name" md-min-length="0" placeholder="What are you looking for help with?">
+                        <div class="therapist-input">
 
-                        <md-item-template>
-                            <span md-highlight-text="searchTextIssue" md-highlight-flags="^i">{{theIssue.issue_name}}</span>
-                        </md-item-template>
+                    <form ng-submit="uc.addUserIssue(uc.selectedItemIssuesHi.id)">
+
+                        <h3>Struggles</h3>
+                        <br>
+                            <md-autocomplete md-selected-item="uc.selectedItemIssuesHi" md-search-text="searchTextIssue" md-items="theIssue in uc.issues.list | filter : searchTextIssue "
+                                md-item-text="theIssue.issue_name" md-min-length="0" placeholder="What struggles do you work with?">
+
+                                <md-item-template>
+                                    <span md-highlight-text="searchTextIssue" md-highlight-flags="^i">{{theIssue.issue_name}}</span>
+                                </md-item-template>
 
 
 
-                        <md-not-found>
-                            No issues matching "{{searchTextIssue}}" were found.
-                            <a ng-click="newIssueHi(searchTextIssue)">Please pick an issue from the list.</a>
-                        </md-not-found>
-                    </md-autocomplete>
-                    <button ng-click="uc.addUserIssue(uc.selectedItemIssuesHi.id)">+</button>
+                                <md-not-found>
+                                    No struggles matching "{{searchTextIssue}}" were found.
+                                    <a ng-click="newIssueHi(searchTextIssue)">Please pick an issue from the list.</a>
+                                </md-not-found>
+                            </md-autocomplete>
 
+                    </form>
+                    </div>
                 </div>
             </div>
 
-            <div layout="row" id="userIssuesListContainer">
+            <div layout="row" id="therapist-preferences">
 
-                <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px;margin-top:150px;" flex="60">
+                <div id="struggles-box">
                     <ul style="text-align: center;padding-top:10px;" ng-repeat="thing in uc.therapist.list[0].issues" ng-model="uc.therapist.list[0].issues"
                         ng-change="uc.checkTherapistObjects()">
 
                         <li>
                             {{thing.name}}
-                            <button ng-click="uc.deleteUserIssue(thing.id)">
-                                <img src="images/delete.png" alt="deleteIcon">
-                            </button>
+                            <i class="material-icons" ng-click="uc.deleteUserIssue(thing.id)">cancel</i>
                         </li>
 
                     </ul>
@@ -215,7 +213,7 @@
         </div>
 
 
-<!-- ORIGINAL CODE -->
+        <!-- ORIGINAL CODE -->
 
         <!-- FIRST COLUMN -->
         <!-- <div id="leftColumn" layout="column" style="width:600px;">
