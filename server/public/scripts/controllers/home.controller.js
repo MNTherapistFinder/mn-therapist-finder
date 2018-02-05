@@ -1,4 +1,4 @@
-myApp.controller('HomeController',['$scope','HomeService', function ($scope, HomeService) {
+myApp.controller('HomeController', ['$scope', 'HomeService', function ($scope, HomeService) {
     console.log('HomeController created');
     var vm = this;
 
@@ -13,10 +13,18 @@ myApp.controller('HomeController',['$scope','HomeService', function ($scope, Hom
     HomeService.getIssues();
     HomeService.getInsurance();
     $scope.showme;
+    $scope.showme2;
 
-    vm.runOnEnter = function(vente){
-        if (event.keyCode == 13){
+    vm.runOnEnter = function (vente) {
+        if (event.keyCode == 13) {
             $scope.showme = true;
+
+        }
+    }
+
+    vm.runOnEnter2 = function (vente) {
+        if (event.keyCode == 13) {
+            $scope.showme2 = true;
 
         }
     }
