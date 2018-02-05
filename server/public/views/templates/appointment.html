@@ -1,4 +1,16 @@
-<h1>Avaliable Appointments</h1>
+<header ng-include="'/views/partials/slimHeader.html'"></header>
+<div class="container"  layout-padding layout-margin layout="row">
+    <div flex = "10">
+<div class = "therapist-profile-photo-container-appts" >
+        <img ng-src = "{{pc.therapistProfileInfo.list[0].profile_picture}}">
+      </div>
+    </div>
+    <div flex>
+      <h2>{{pc.therapistProfileInfo.list[0].full_name}}</h2>
+          <strong><p>{{pc.therapistProfileInfo.list[0].license_type}}</p></strong>
+        </div>
+</div>
+
 <md-card ng-repeat="date in pc.therapistAppointments.list">
     <md-card-content/>
     <p> 
@@ -6,4 +18,7 @@
     </p>
 </md-card-content>
     </md-card>
+
+
+
 

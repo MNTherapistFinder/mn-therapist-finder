@@ -17,6 +17,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserSe
     var mm = today.getMonth(); //January is 0!
     var yyyy = today.getFullYear();
 
+
     // Create date and slots array
     self.days = [{ dd: dd, mm: mm, yyyy: yyyy }, { dd: dd + 1, mm: mm, yyyy: yyyy }, { dd: dd + 2, mm: mm, yyyy: yyyy }, { dd: dd + 3, mm: mm, yyyy: yyyy }];
     self.slots = [{ h: '10', m: '00' }, { h: '10', m: '15' }, { h: '10', m: '30' }, { h: '10', m: '45' }, { h: '11', m: '00' }, { h: '11', m: '15' }, { h: '11', m: '30' }];
