@@ -14,7 +14,7 @@
 <md-card ng-repeat="date in pc.therapistAppointments.list">
     <md-card-content/>
     <p> 
-          <md-button class="md-accent md-raised" ng-click="pc.appointmentForm(date)" >{{date.available_times}}</md-button> 
+          <md-button class="md-accent md-raised" ng-click="pc.appointmentForm(date, pc.therapistProfileInfo.list[0].email)" >{{date.available_times}}</md-button> 
     </p>
 </md-card-content>
     </md-card>
