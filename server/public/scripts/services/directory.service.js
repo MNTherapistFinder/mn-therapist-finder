@@ -22,7 +22,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
 
 
 
-  self.getTherapistProfileInfo = function (therapistId) {
+self.getTherapistProfileInfo = function (therapistId) {
     console.log('in getTherapistProfileInfo');
 
     $http({
@@ -34,6 +34,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
       self.therapistProfileInfo.list = response.data;
     });
   } 
+
 
   self.showTherapistInfo = function(event) {
     console.log('showTherapistInfo clicked');
@@ -51,6 +52,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
       }
 
     })};
+
 
 self.getTherapistAppointments = function (therapistId) {
       console.log('in getTherapistAppointments');
@@ -74,12 +76,13 @@ self.getTherapistAppointments = function (therapistId) {
     } 
 
 
-self.appointmentForm = function (date) {
+self.appointmentForm = function (date, therapist_email) {
       console.log(date.available_times)
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && self.customFullscreen;
       $mdDialog.show({
           controller: function ($scope, $mdDialog, date, $http) {
               $scope.patient = {};
+              $scope.patient.therapist_email = therapist_email
               $scope.patient.date = date.available_times;
               $scope.answer = function (answer) {
                   $mdDialog.hide(answer);
@@ -134,7 +137,11 @@ self.appointmentForm = function (date) {
     $mdSidenav('left').toggle();
   };
 
-  // self.startOpen = $mdMedia('gt-sm');
+
+
+
+
+
 
 });
 
