@@ -298,8 +298,9 @@ md-input-container .md-input {
 /* therapist profile modal */
 
 /* This here is not working */
-.md-dialog-content{
-  text-align: center;
+.md-dialog-content {
+  /* text-align: center; */
+  width: 600px;
 }
 
 .therapist-modal-photo-container {
@@ -323,8 +324,8 @@ md-input-container .md-input {
   padding: 0px 10px 0px 10px;
   font-size: 14px;
   text-align: left;
-  margin:5px;
-  margin-left: 15px;
+  /* margin: 5px; */
+  margin-left: 25px;
 }
 
 #therapistModalCol3{
@@ -347,6 +348,15 @@ md-input-container .md-input {
   overflow: visible !important;
   vertical-align: bottom;
   margin-left: 25px;
+}
+
+#therapist-modal-buttons {
+  margin-bottom: 15px;
+}
+
+.modal-name {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 
