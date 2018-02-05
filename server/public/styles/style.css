@@ -7,9 +7,37 @@ body, html {
   color: #3C3C3C;
 }
 
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px !important;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  overflow: visible !important;
+  vertical-align: bottom;
+  /* margin-left: 25px; */
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 /* header styling */
 
-.header .container h1 {
+.header h1 {
   font-size: 32px;
   font-weight: 600;
 }
@@ -334,7 +362,7 @@ md-input-container .md-input {
   margin-left:5px;
 }
 
-#specialtiesBulletIcon {
+/* #specialtiesBulletIcon {
   list-style-image: url('/images/ic_stars_black_18dp_1x.png') !important;
   /* list-style-type: circle !important; */
   overflow: visible !important;
@@ -348,7 +376,7 @@ md-input-container .md-input {
   overflow: visible !important;
   vertical-align: bottom;
   margin-left: 25px;
-}
+} */
 
 #therapist-modal-buttons {
   margin-bottom: 15px;
@@ -458,7 +486,7 @@ textarea {
   border-style: solid;
   border-width:1px;
   width: 100%;
-  height:100px !important;
+  /* height:100px !important; */
   overflow-y: scroll;
   margin-top: 0px !important;
 }
@@ -471,7 +499,7 @@ textarea {
   border-style: solid;
   border-width: 1px;
   width: 100%;
-  height:100px;
+  /* height:100px; */
   margin-bottom:20px;
   margin-top:150px;
 }
@@ -480,7 +508,7 @@ textarea {
   border-style: solid;
   border-width:1px;
   width: 100%;
-  height:100px;
+  /* height:100px; */
   margin-bottom:20px;
   margin-top:150px;
 }

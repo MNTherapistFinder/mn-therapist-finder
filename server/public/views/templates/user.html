@@ -1,7 +1,7 @@
 <!-- <div ng-include="'views/partials/nav.html'"></div> -->
 <header ng-include="'/views/partials/therapistheader.html'"></header>
 
-<div class="container" layout-padding layout-margin layout="row">
+<div class="container" layout-padding layout="row">
 
     <!-- sidebar -->
 
@@ -51,7 +51,7 @@
             </md-input-container>
 
             <md-input-container class="therapist-input">
-                <label>Business Hours</label>
+                <label>Address</label>
                 <textarea rows="1" md-select-on-focus></textarea>
             </md-input-container>
 
@@ -95,7 +95,7 @@
                         <h3>Accepted Insurance</h3>
                         <br>
                         <md-autocomplete md-selected-item="uc.selectedInsurance" md-search-text="searchTextInsurance" md-items="provider in uc.healthcare.list | filter : searchTextInsurance "
-                            md-item-text="provider.insurance_name" md-min-length="0" placeholder="Select A Healthcare Provider">
+                            md-item-text="provider.insurance_name" md-min-length="0" placeholder="Select healthcare providers">
 
                             <md-item-template>
                                 <span md-highlight-text="searchTextInsurance" md-highlight-flags="^i">{{provider.insurance_name}}</span>
@@ -109,15 +109,15 @@
                     </form>
                 </div>
             </div>
-            {{uc.selectedInsurance}}
+            <!-- {{uc.selectedInsurance}} -->
             <div layout="row" class="therapist-preferences">
 
                 <div id="healthcare-box">
-                    <ul ng-repeat="insurance in uc.therapist.list[0].insurance_id" ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].insurance_plans">
-                        <li>
-                            {{uc.findNameById(uc.healthcare.list, insurance).insurance_name}}
+                    <div layout="row" layout-align="none center" ng-repeat="insurance in uc.therapist.list[0].insurance_id" ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].insurance_plans">
+                        <!-- <li> -->
+                            <div>{{uc.findNameById(uc.healthcare.list, insurance).insurance_name}}</div>
                             <i class="material-icons" ng-click="uc.deleteHealthcare(insurance)">cancel</i>
-                        </li>
+                        </div>
 
                     </ul>
                 </div>
@@ -131,11 +131,13 @@
                 <div style="height: 20px" flex="60">
                     <form ng-submit="uc.addSpecialty(uc.selectedSpecialty.id)">
                         <h3>Treatment Specialties</h3>
+                        <p id="active">Please limit to 3 specialties.</p>
+
                         <br>
                         <div class="therapist-input">
 
                             <md-autocomplete md-selected-item="uc.selectedSpecialty" md-search-text="searchTextSpecialty" md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
-                                md-item-text="specialty.specialty_name" md-min-length="0" placeholder="What treatments do you specialize in?">
+                                md-item-text="specialty.specialty_name" md-min-length="0" placeholder="Select specialties">
 
                                 <md-item-template>
                                     <span md-highlight-text="searchTextSpecialty" md-highlight-flags="^i">{{specialty.specialty_name}}</span>
@@ -175,9 +177,10 @@
                     <form ng-submit="uc.addUserIssue(uc.selectedItemIssuesHi.id)">
 
                         <h3>Struggles</h3>
+                        <p id="active">Please limit to 10 struggles.</p>
                         <br>
                             <md-autocomplete md-selected-item="uc.selectedItemIssuesHi" md-search-text="searchTextIssue" md-items="theIssue in uc.issues.list | filter : searchTextIssue "
-                                md-item-text="theIssue.issue_name" md-min-length="0" placeholder="What struggles do you work with?">
+                                md-item-text="theIssue.issue_name" md-min-length="0" placeholder="Select struggles">
 
                                 <md-item-template>
                                     <span md-highlight-text="searchTextIssue" md-highlight-flags="^i">{{theIssue.issue_name}}</span>
@@ -211,6 +214,7 @@
                     </ul>
                 </div>
             </div>
+        </div>
         </div>
 
 
