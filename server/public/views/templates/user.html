@@ -109,14 +109,14 @@
                     </form>
                 </div>
             </div>
-
+            {{uc.selectedInsurance}}
             <div layout="row" class="therapist-preferences">
 
                 <div id="healthcare-box">
-                    <ul ng-repeat="healthcare in uc.therapist.list[0].insurance_plans" ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].insurance_plans">
+                    <ul ng-repeat="insurance in uc.therapist.list[0].insurance_id" ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].insurance_plans">
                         <li>
-                            {{healthcare.name}}
-                            <i class="material-icons" ng-click="uc.deleteHealthcare(healthcare.id)">cancel</i>
+                            {{uc.findNameById(uc.healthcare.list, insurance).insurance_name}}
+                            <i class="material-icons" ng-click="uc.deleteHealthcare(insurance)">cancel</i>
                         </li>
 
                     </ul>
@@ -156,12 +156,12 @@
             <div layout="row" class="therapist-preferences">
 
                 <div id="specialties-box">
-                    <ul style="text-align: center;padding-top:10px;" ng-repeat="specialty in uc.therapist.list[0].specialties" ng-model="uc.therapist.list[0].specialties"
+                    <ul style="text-align: center;padding-top:10px;" ng-repeat="specialty in uc.therapist.list[0].specialty_id" ng-model="uc.therapist.list[0].specialties"
                         ng-change="uc.checkTherapistObjects()">
 
                         <li>
-                            {{specialty.name}}
-                            <i class="material-icons" ng-click="uc.deleteSpecialty(specialty.id)">cancel</i>
+                            {{uc.findNameById(uc.specialties.list, specialty).specialty_name}}
+                            <i class="material-icons" ng-click="uc.deleteSpecialty(specialty)">cancel</i>
                         </li>
 
                     </ul>
@@ -199,12 +199,13 @@
             <div layout="row" id="therapist-preferences">
 
                 <div id="struggles-box">
-                    <ul style="text-align: center;padding-top:10px;" ng-repeat="thing in uc.therapist.list[0].issues" ng-model="uc.therapist.list[0].issues"
+                    <ul style="text-align: center;padding-top:10px;" ng-repeat="issue in uc.therapist.list[0].issueid" ng-model="uc.therapist.list[0].issues"
                         ng-change="uc.checkTherapistObjects()">
 
                         <li>
-                            {{thing.name}}
-                            <i class="material-icons" ng-click="uc.deleteUserIssue(thing.id)">cancel</i>
+                            {{uc.findNameById(uc.issues.list, issue).issue_name}}
+
+                            <i class="material-icons" ng-click="uc.deleteUserIssue(issue)">cancel</i>
                         </li>
 
                     </ul>
