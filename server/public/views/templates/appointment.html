@@ -10,14 +10,14 @@
           <strong><p>{{pc.therapistProfileInfo.list[0].license_type}}</p></strong>
         </div>
 </div>
-<div id = "cardRow"layout = "row">
-<md-card id = "apptCard" ng-repeat = "day in pc.days track by $index;" >
-        <h3>{{day.date}}</h3>
-        <md-card-content ng-repeat = "date in day.apptArray;">
-        <md-button id = "apptButton" ng-click="pc.appointmentForm(date)" >{{date}}</md-button> 
+<div class = "cardRow" layout-wrap layout="row" layout-align="center start" layout-xs="column" layout-s="column">
+<md-card id = "apptCard" ng-repeat = "day in pc.days track by $index">
+        <h4>{{day.date}}</h4>
+        <h4 id = "todayBorder" ng-if = "day === pc.days[0]">TODAY</h4>
+    <md-card-content id = "apptCardContent" ng-repeat = "date in day.apptArray;">
+        <md-button id = "apptButton"  ng-click = "pc.appointmentForm(date,pc.therapistProfileInfo.list[0].email)" >{{date}}</md-button> 
 
 </md-card-content>
     </md-card>
 </div>
-
 
