@@ -128,7 +128,6 @@
             <div layout="column" flex>
                 <div style="height: 20px" flex="60">
                     <!-- specialties chip -->
-                    <!-- <form ng-submit="uc.addSpecialty(uc.selectedSpecialty.id)"> -->
                         <h3>Treatment Specialties</h3>
                         <p id="active">Please limit to 3 specialties.</p>
 
@@ -159,46 +158,14 @@
                         </md-chip-template>
                       </md-chips>
 
-                            <!-- <md-autocomplete md-selected-item="uc.selectedSpecialty" md-search-text="searchTextSpecialty" md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
-                                md-item-text="specialty.specialty_name" md-min-length="0" placeholder="Select specialties">
-
-                                <md-item-template>
-                                    <span md-highlight-text="searchTextSpecialty" md-highlight-flags="^i">{{specialty.specialty_name}}</span>
-                                </md-item-template>
-
-
-
-                                <md-not-found>
-                                    No specialties matching "{{searchTextSpecialty}}" were found.
-                                    <a ng-click="newSpecialty(searchTextSpecialty)">Please pick an specialty from the list.</a>
-                                </md-not-found>
-                            </md-autocomplete>
-                    </form> -->
                     </div>
                 </div>
             </div>
-<!-- 
-            <div layout="row" class="therapist-preferences">
 
-                <div id="specialties-box">
-                    <ul style="text-align: center;padding-top:10px;" ng-repeat="specialty in uc.therapist.list[0].specialty_id" ng-model="uc.therapist.list[0].specialties"
-                        ng-change="uc.checkTherapistObjects()">
 
-                        <li>
-                            {{uc.findNameById(uc.specialties.list, specialty).specialty_name}}
-                            <i class="material-icons" ng-click="uc.deleteSpecialty(specialty)">cancel</i>
-                        </li>
-
-                    </ul>
-                </div>
-            </div> -->
-
-            <div layout="row">
+            <div layout="column">
                 <div style="margin-top:300px; height: 20px" flex="60">
                     <div class="therapist-input">
-
-                        <!-- <form ng-submit="uc.addUserIssue(uc.selectedItemIssuesHi.id)"> -->
-
                             <h3>Struggles</h3>
                             <p id="active">Please limit to 10 struggles.</p>
                             <br>
@@ -225,44 +192,12 @@
                     </md-chip-template>
                   </md-chips>
 
-                            <!-- <md-autocomplete md-selected-item="uc.selectedItemIssuesHi" md-search-text="searchTextIssue" md-items="theIssue in uc.issues.list | filter : searchTextIssue "
-                                md-item-text="theIssue.issue_name" md-min-length="0" placeholder="Select struggles">
-
-                                <md-item-template>
-                                    <span md-highlight-text="searchTextIssue" md-highlight-flags="^i">{{theIssue.issue_name}}</span>
-                                </md-item-template>
 
 
-
-                                <md-not-found>
-                                    No struggles matching "{{searchTextIssue}}" were found.
-                                    <a ng-click="newIssueHi(searchTextIssue)">Please pick an issue from the list.</a>
-                                </md-not-found>
-                            </md-autocomplete>
-
-                        </form>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- <div layout="row" id="therapist-preferences">
-
-                <div id="struggles-box">
-                    <ul style="text-align: center;padding-top:10px;" ng-repeat="issue in uc.therapist.list[0].issueid" ng-model="uc.therapist.list[0].issues"
-                        ng-change="uc.checkTherapistObjects()">
-
-                        <li>
-                            {{uc.findNameById(uc.issues.list, issue).issue_name}}
-
-                            <i class="material-icons" ng-click="uc.deleteUserIssue(issue)">cancel</i>
-                        </li>
-
-                    </ul>
-                </div>
-            </div> -->
         </div>
     </div>
-
+</div>
+</div>
 
     <!-- ORIGINAL CODE -->
 
