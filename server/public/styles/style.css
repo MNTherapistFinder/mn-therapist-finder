@@ -520,4 +520,27 @@ textarea {
   height: auto;
 }
 
-/* end appointments page */
+#apptButton {
+  padding:2px;
+  margin: 0px;
+  margin-bottom: -15px;
+}
+
+#apptButton:hover {
+  background-color:rgb(255, 196, 0)!important;
+}
+
+/* appointment page */
+
+#apptCard {
+  width: 30%;
+}
+
+#apptCard h3{
+  margin:5px;
+}
+
+#cardRow{
+  margin-left:15px;
+  margin-right:15px;
+}
