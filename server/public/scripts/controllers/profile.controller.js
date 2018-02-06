@@ -14,9 +14,15 @@ myApp.controller('ProfileController', function(DirectoryService, $routeParams) {
 
     DirectoryService.getTherapistAppointments($routeParams);
 
+    vm.days = DirectoryService.days;
+    vm.dateCompare = DirectoryService.dateCompare;
+
+    vm.dayOneAppts = DirectoryService.dayOneAppts;
+
+    vm.theDate = DirectoryService.theDate;
+
+    vm.days = DirectoryService.days;
 
 
-
-    
   });
   
