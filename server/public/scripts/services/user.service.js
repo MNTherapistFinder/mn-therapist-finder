@@ -8,6 +8,20 @@ myApp.service('UserService', function($http, $location){
   self.specialties = {list: [] }
   self.therapistOld = {list: []}
 
+  self.insuranceDropDown = [];
+  self.specialtiesDropDown = [];
+  self.strugglesDropDown = [];
+
+
+  self.transformChip = function(chip) {
+    console.log('transform chip', chip);
+    
+    // If it is an object, it's already a known chip
+    if (angular.isObject(chip)) {
+      return chip;
+    }
+  }
+
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -32,6 +46,9 @@ myApp.service('UserService', function($http, $location){
     console.log('UserService -- logout');
     $http.get('/user/logout').then(function(response) {
       console.log('UserService -- logout -- logged out');
+      self.insuranceDropDown=[];
+      self.specialtiesDropDown = [];
+      self.strugglesDropDown = [];
       $location.path("/home");
     });
   }
@@ -40,8 +57,21 @@ myApp.service('UserService', function($http, $location){
     console.log('hit');
     $http.get('/user/therapist').then(function(response){
       self.therapist.list = response.data;
-      console.log(self.therapist);
-    }).then(function(response){
+      console.log('insurance ids', self.therapist.list[0].insurance_id);
+      console.log('specialty ids', self.therapist.list[0].specialty_id);
+      console.log('struggle ids', self.therapist.list[0].issueid);
+      for (var i = 0; i < self.therapist.list[0].insurance_id.length; i++) {
+        self.insuranceDropDown.push({id:self.therapist.list[0].insurance_id[i]})
+      };
+      for (var i = 0; i < self.therapist.list[0].specialty_id.length; i++) {
+        self.specialtiesDropDown.push({id:self.therapist.list[0].specialty_id[i]})
+      };
+      for (var i = 0; i < self.therapist.list[0].issueid.length; i++) {
+        self.strugglesDropDown.push({id:self.therapist.list[0].issueid[i]})
+      };
+     
+    })
+    .then(function(response){
       if (!self.someVar){
         self.therapistOld.list = angular.copy(self.therapist.list);
         self.someVar = true
@@ -63,6 +93,9 @@ myApp.service('UserService', function($http, $location){
       data: {id: issueId}
     }).then(function(response){
       console.log(response);
+      self.insuranceDropDown=[];
+      self.specialtiesDropDown = [];
+      self.strugglesDropDown = [];
       self.getTherapist();
     })
   }
@@ -73,6 +106,9 @@ myApp.service('UserService', function($http, $location){
       params: {issues_id: issueId}
     }).then(function(response){
       console.log(response);
+      self.insuranceDropDown=[];
+      self.specialtiesDropDown = [];
+      self.strugglesDropDown = [];
       self.getTherapist();
     })
   }
@@ -85,12 +121,17 @@ myApp.service('UserService', function($http, $location){
   }
 
   self.addHealthcareProvider = function(insuranceId){
+    console.log('hit add healthcare');
+    
     $http({
       url: 'user/healthcare',
       method: 'POST',
       data: {id: insuranceId}
     }).then(function(response){
       console.log(response);
+      self.insuranceDropDown=[];
+      self.specialtiesDropDown = [];
+      self.strugglesDropDown = [];
       self.getTherapist();
     })
   }
@@ -102,6 +143,9 @@ myApp.service('UserService', function($http, $location){
       params: {id: healthcareId}
     }).then(function(response){
       console.log(response);
+      self.insuranceDropDown=[];
+      self.specialtiesDropDown = [];
+      self.strugglesDropDown = [];
       self.getTherapist();
     })
   }
@@ -122,6 +166,9 @@ myApp.service('UserService', function($http, $location){
       data: {id: specialtyId}
     }).then(function(response){
       console.log(response);
+      self.insuranceDropDown=[];
+      self.specialtiesDropDown = [];
+      self.strugglesDropDown = [];
       self.getTherapist();
     })
   }
@@ -134,6 +181,9 @@ myApp.service('UserService', function($http, $location){
       params: {id: specialtyId}
     }).then(function(response){
       console.log(response);
+      self.insuranceDropDown=[];
+      self.specialtiesDropDown = [];
+      self.strugglesDropDown = [];
       self.getTherapist();
     })
   }
