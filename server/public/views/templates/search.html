@@ -1,0 +1,52 @@
+<header ng-include="'/views/partials/slimHeader.html'"></header>
+
+<div layout="column" layout-align="start start">
+
+    <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
+            <a href="#home"><img src="/images/mntf-logo-light.png" height="100"></a>
+            <br>
+            <input ng-model="therapistSearch.full_name" placeholder="search by name">
+            <input ng-model="therapistSearch.workplace_street_address" placeholder="filter by city">
+            <!-- these need to be built out more once we have issues / fake data -->
+        <br>
+        <md-button id="close-btn" class="btn-green" layout="column" layout-align="center center" ng-click="sc.openLeftMenu()">CLOSE</md-button>
+    </md-sidenav>
+
+    <!-- ^ IF WE WANT SIDEBAR TO START OPEN: md-is-open="dc.startOpen" ^ -->
+
+    <md-content id="side-nav-in" layout="row" layout-align="start center">
+        <!-- sidebar -->
+        <md-button class="btn-green" ng-click="sc.openLeftMenu()" layout-align="start center">
+            filter results
+        </md-button>
+    </md-content>
+</div>
+<!-- </div> -->
+
+<!-- <div layout="column" layout-align-"center center"> -->
+<div layout="column" layout-align="space-around center">
+    <div layout-wrap layout="row" layout-align="center center" layout-xs="column" layout-s="column" id="directory-grid">
+        <div dir-paginate="therapist in sc.searchResults.list | itemsPerPage:8 | filter:therapistSearch">
+            <!-- change to 8 when we have more examples set up -->
+            <div class="directory-container">
+                <div class="directory-profile-photo-container">
+                     <a href = "" ng-click = "sc.showTherapistInfo(therapist)"><img ng-src="{{therapist.profile_picture}}"></a>
+                    </div>
+                <div>
+                    <ul>
+                        <li class="therapist-name">{{therapist.full_name}}</li>
+                        <li class="therapist-title">{{therapist.license_type}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div layout-margin>
+        <div layout="row" layout-align="center center">
+            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="false" template-url="/views/partials/dirPagination.tpl.html"
+                auto-hide="true">
+                <dir-pagination-controls>
+        </div>
+    </div>
