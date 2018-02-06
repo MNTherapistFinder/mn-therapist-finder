@@ -107,12 +107,15 @@ self.dateCompare = function(){
 }
 
 
-self.appointmentForm = function (date) {
+
+
+self.appointmentForm = function (date, therapist_email) {
       console.log(date.available_times)
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && self.customFullscreen;
       $mdDialog.show({
           controller: function ($scope, $mdDialog, date, $http) {
               $scope.patient = {};
+              $scope.patient.therapist_email = therapist_email
               $scope.patient.date = date.available_times;
               $scope.answer = function (answer) {
                   $mdDialog.hide(answer);

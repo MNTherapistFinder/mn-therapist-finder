@@ -1,4 +1,4 @@
-myApp.controller('HomeController',['$scope','HomeService', function ($scope, HomeService) {
+myApp.controller('HomeController', ['$scope','$location', 'HomeService', function ($scope, $location, HomeService) {
     console.log('HomeController created');
     var vm = this;
 
@@ -9,16 +9,29 @@ myApp.controller('HomeController',['$scope','HomeService', function ($scope, Hom
     vm.insurance = HomeService.insurance;
     vm.newIssue = HomeService.newIssue;
     vm.newInsurance = HomeService.newInsurance;
+    vm.getSearchResults = HomeService.getSearchResults
 
     HomeService.getIssues();
     HomeService.getInsurance();
     $scope.showme;
+    $scope.showme2;
 
-    vm.runOnEnter = function(vente){
-        if (event.keyCode == 13){
+    vm.runOnEnter = function (vente) {
+        if (event.keyCode == 13) {
             $scope.showme = true;
 
         }
+    }
+
+    vm.runOnEnter2 = function (vente) {
+        if (event.keyCode == 13) {
+            $scope.showme2 = true;
+
+        }
+    }
+
+    vm.goToSearch = function(){
+        $location.path('/search');
     }
 
 
@@ -46,10 +59,8 @@ myApp.directive('googleplace', function () {
                     if (status === 'OK') {
                         var lat = results[0].geometry.location.lat();
                         var lng = results[0].geometry.location.lng();
-                        console.log(lat, lng);
-                        console.log(element.val())
                         scope.$apply(function () {
-                            model.$setViewValue({ lat: lat, lng: lng, addressString: element.val() });
+                            model.$setViewValue({ lng: lng,lat:lat, addressString: element.val() });
                         });
                     }
                 });

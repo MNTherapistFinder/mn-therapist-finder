@@ -34,6 +34,10 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/register.html',
       controller: 'LoginController as lc'
     })
+    .when('/search', {
+      templateUrl: '/views/templates/search.html',
+      controller: 'SearchController as sc'
+    })
     .when('/directory', {
       templateUrl: '/views/templates/directory.html',
       controller: 'DirectoryController as dc'

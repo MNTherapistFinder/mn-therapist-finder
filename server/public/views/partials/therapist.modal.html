@@ -1,23 +1,28 @@
 <md-dialog>
-<div class="md-dialog-content" flex="90" >
-<md-dialog-content>
-<div layout = "row">
-        
-        <div id = "therapistModalCol1">
-                <div class = "therapist-modal-photo-container">
-                        <img ng-src = "{{mc.modalData.event.profile_picture}}">
-                </div>
-        </div>
-        <div id="therapistModalCol2" >
-                <h1>{{mc.modalData.event.full_name}}</h1>
-                <strong><p>{{mc.modalData.event.license_type}}</p></strong>
-                <p>{{mc.modalData.event.bio_preview}}</p>
-                <h3>Specialties:</h3>
-                <ul id="specialtiesBulletIcon" ng-repeat = "specialties in mc.modalData.event.specialties">
-                        <li>{{specialties}}</li>
-                </ul>
-        </div>
-        <!-- <div id = "therapistModalCol3">
+        <div class="md-dialog-content">
+                <md-dialog-content>
+                        <div layout="row">
+
+                                <div id="therapistModalCol1">
+                                        <div class="therapist-modal-photo-container">
+                                                <img ng-src="{{mc.modalData.event.profile_picture}}">
+                                        </div>
+                                        <div layout="column" layout-align="start none">
+                                                <h4>{{mc.modalData.event.workplace_street_address}}</h4>
+                                        </div>
+                                </div>
+                                <div id="therapistModalCol2">
+                                        <h1 class="modal-name">{{mc.modalData.event.full_name}}</h1>
+                                        <strong>
+                                                <p class="modal-name">{{mc.modalData.event.license_type}}</p>
+                                        </strong>
+                                        <p>{{mc.modalData.event.bio_preview}}</p>
+                                        <h3>Specialties:</h3>
+                                        <ul id="specialtiesBulletIcon" ng-repeat="specialties in mc.modalData.event.specialties">
+                                                <li>{{specialties}}</li>
+                                        </ul>
+                                </div>
+                                <!-- <div id = "therapistModalCol3">
                         <h3>Specialties:</h3>
                         <ul id="specialtiesBulletIcon" ng-repeat = "specialties in mc.modalData.event.specialties">
                                 <li>{{specialties}}</li>
@@ -27,13 +32,13 @@
 
                
         </div> -->
-</div>
-</md-dialog-content>
-</div>
+                        </div>
+                </md-dialog-content>
+        </div>
 
-<md-dialog-actions layout="row" layout-align = "center center">
-        <md-button class = "md-raised" ng-click="mc.close()"> Close </md-button>
-        <md-button class="btn-green md-raised" ng-click="mc.close()" href="#directory/therapists/{{mc.modalData.event.id}}"> See full profile </md-button>
-</md-dialog-actions>
+        <md-dialog-actions id="therapist-modal-buttons" layout="row" layout-align="center center">
+                <md-button class="btn-green md-raised" ng-click="mc.close()"> Close </md-button>
+                <md-button class="btn-dkgrn md-raised" ng-click="mc.close()" href="#directory/therapists/{{mc.modalData.event.id}}"> See full profile </md-button>
+        </md-dialog-actions>
 
 </md-dialog>

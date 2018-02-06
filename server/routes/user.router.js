@@ -40,44 +40,22 @@ router.get('/therapist', function (req, res) {
     } else {
       client.query(`SELECT therapists.full_name, therapists.email, therapists.profile_picture, 
       therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
-      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, 
-      array_agg(DISTINCT insurance_plans.id) AS insurance_id,
-      array_agg(DISTINCT insurance_plans.insurance_name) AS insurance_plans, array_agg(DISTINCT issues.id) AS issueid, array_agg(DISTINCT issues.issue_name) 
-      AS issues,array_agg(DISTINCT specialties.id) AS specialty_id ,array_agg(DISTINCT specialties.specialty_name) AS specialties FROM therapists LEFT JOIN therapists_insurance_plans 
+      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type,
+      array_agg(DISTINCT insurance_plans.id) AS insurance_id, array_agg(DISTINCT issues.id) AS issueid, 
+      array_agg(DISTINCT specialties.id) AS specialty_id FROM therapists LEFT JOIN therapists_insurance_plans 
       ON therapists.id = therapists_insurance_plans.therapists_id LEFT JOIN insurance_plans 
       ON therapists_insurance_plans.insurance_plans_id = insurance_plans.id LEFT JOIN therapists_issues 
       ON therapists.id = therapists_issues.therapists_id LEFT JOIN issues ON therapists_issues.issues_id = issues.id 
       LEFT JOIN therapists_specialties ON therapists.id = therapists_specialties.therapists_id LEFT JOIN specialties 
-      ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 
-      GROUP BY therapists.full_name, therapists.email, therapists.profile_picture, therapists.biography, 
-      therapists.workplace_street_address, therapists.workplace_zipcode, therapists.years_in_practice, 
-      therapists.school, therapists.year_graduated, therapists.license_number;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
+      ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 GROUP BY
+      therapists.full_name, therapists.email, therapists.profile_picture, 
+      therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
+      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
             console.log('error', errorMakingDatabaseQuery);
             res.sendStatus(500);
           } else {
-            console.log('----------------', result.rows[0].issues);
-            newArr = []
-            newArrHealthcare = [];
-            newArrSpecialties = [];
-            for (var i = 0; i < result.rows[0].issues.length; i++) {
-              var obj = { name: result.rows[0].issues[i], id: result.rows[0].issueid[i] }
-
-              newArr.push(obj);
-            }
-            for (var i = 0; i < result.rows[0].insurance_plans.length;i++){
-              var objh = {name: result.rows[0].insurance_plans[i], id: result.rows[0].insurance_id[i]}
-              newArrHealthcare.push(objh);
-            }
-            for (var i = 0; i<result.rows[0].specialties.length;i++){
-              var objs = {name: result.rows[0].specialties[i], id: result.rows[0].specialty_id[i]}
-              newArrSpecialties.push(objs);
-            }
-              console.log('---------', newArr)
-            result.rows[0].issues = newArr;
-            result.rows[0].insurance_plans = newArrHealthcare;
-            result.rows[0].specialties = newArrSpecialties;
             res.send(result.rows);
           }
         });
