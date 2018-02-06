@@ -5,7 +5,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
   self.therapistInfo = { list: [] }
   self.therapistProfileInfo = { list: [] }
   self.therapistAppointments = { list: [] }
-  // self.dayOneAppts = []
+  
 
   self.patient = {}
 
@@ -85,38 +85,39 @@ self.getTherapistAppointments = function (therapistId) {
 self.dateCompare = function(){
   
   for (var j = 0; j < self.therapistAppointments.list.length; j++){
-    var therapistApptDate = moment(self.therapistAppointments.list[j].available_times).format('dddd MMM Do')
-    // console.log('self.therapistAppointments.list[j].available_times',therapistApptDate );
+    var therapistApptDate = moment(self.therapistAppointments.list[j].available_times).format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), '')
 
     for (var i = 0; i < self.days.length; i++) {
       var dayDate = self.days[i].date
-      // console.log('self.days[i]', dayDate);
+      var firstDay = self.days[0].date
+      console.log('firstDay',self.days[0].date);
+      
 
       if (therapistApptDate === dayDate) {
         console.log('therapistApptDate', therapistApptDate);
-              self.days[i].apptArray.push(moment(self.therapistAppointments.list[j].available_times).format('LT'))
+              self.days[i].apptArray.push(moment((self.therapistAppointments.list[j].available_times)).format('LT'))
               self.days[i].apptArray.reverse()
-              
               console.log('in push dayOneAppts', self.days[i].apptArray);         
 
             } 
     }
 
   } 
- 
+
 }
 
 
 
-
 self.appointmentForm = function (date, therapist_email) {
-      console.log(date.available_times)
+     var date = moment(date,'LT').format('LLL')
+      console.log(date)  
+
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && self.customFullscreen;
       $mdDialog.show({
           controller: function ($scope, $mdDialog, date, $http) {
               $scope.patient = {};
               $scope.patient.therapist_email = therapist_email
-              $scope.patient.date = date.available_times;
+              $scope.patient.date = date;
               $scope.answer = function (answer) {
                   $mdDialog.hide(answer);
                 
@@ -174,29 +175,65 @@ self.appointmentForm = function (date, therapist_email) {
   var yyyy = today.getFullYear();
 
   var dayOne = { dd: dd, mm: mm, yyyy: yyyy };
-  var dayTwo = {dd: dd + 1, mm: mm, yyyy: yyyy };
-  var dayThree = {dd: dd + 2, mm: mm, yyyy: yyyy }
-  var dayFour = {dd: dd + 3, mm: mm, yyyy: yyyy };
+
 
   self.days = [ {
-                  date: moment(dayOne).format("dddd MMM Do"),
+                  date: moment(dayOne).format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
                   apptArray: []
                 }, 
                 {
-                  date: moment(dayOne).add(1, 'days').format("dddd MMM Do"),
+                  date: moment(dayOne).add(1, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
                   apptArray: []
                 }, 
                 {
-                  date: moment(dayOne).add(2, 'days').format("dddd MMM Do"),
+                  date: moment(dayOne).add(2, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
                   apptArray:[]
                 },
                 {
-                  date: moment(dayOne).add(3, 'days').format("dddd MMM Do"),
-                  apptArray: []},
-                {
-                  date: moment(dayOne).add(4, 'days').format("dddd MMM Do"),
+                  date: moment(dayOne).add(3, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
                   apptArray: []
-                }]
+                },
+                {
+                  date: moment(dayOne).add(4, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(5, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(6, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(7, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(8, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(9, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(10, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(11, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(12, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(13, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+              ]
 
 
   self.dayOneAppts = [];
