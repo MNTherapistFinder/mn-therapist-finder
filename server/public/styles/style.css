@@ -425,6 +425,10 @@ md-input-container .md-input {
   padding: 0px !important;
 }
 
+.sidebar-filter {
+  margin: 5px;
+}
+
 /* end sidebar styling */
 
 /* modal styling */
