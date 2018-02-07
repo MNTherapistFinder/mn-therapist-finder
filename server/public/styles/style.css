@@ -521,3 +521,34 @@ textarea {
 }
 
 /* end appointments page */
+
+
+
+
+
+
+#carousel{
+  width: 25%;
+}
+.box-container {
+  width: 800px;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.carousel-prev {
+  position: absolute;
+  top: 50%;
+  left: -80px;
+}
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  right: -80px;
+}
+
+.slider {
+  -webkit-box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32); 
+box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32);
+}
+
