@@ -1,4 +1,3 @@
-<!-- <div ng-include="'views/partials/nav.html'"></div> -->
 <header ng-include="'/views/partials/slimHeader.html'"></header>
 
 <div class="container" layout-padding layout="row">
@@ -22,183 +21,188 @@
     </md-sidenav>
 
     <div layout="row">
-        <div id="leftColumn" layout="column" style="width:60px;" id="menuOpen">
 
-            <md-content id="side-nav-in">
-                <!-- sidebar -->
-                <md-button class="btn-green" ng-click="uc.openLeftMenu()" layout-align="start center" aria-label="open sidenav">
-                    <img src="images/openMenu.png" height="20" alt="menuItem">
-                    <!-- <md-button ng-click="uc.openLeftMenu()" layout-align="start start" style="background-color:#b3bbbe;padding-right:40px;border-radius:4px;">
-                <img src="images/openMenu.png" alt="menuItem"> -->
-                </md-button>
-            </md-content>
+        <md-content id="side-nav-in" layout="row" layout-align="start start">
+
+            <i id="menu-open" class="material-icons" ng-click="uc.openLeftMenu()">more_vert</i>
+
+        </md-content>
+    </div>
+
+    <!-- first column -->
+
+    <div flex="25" id="first-column" class="therapist-column">
+        <div id="photo-upload" class="therapist-profile-photo-container" flex="100">
+            <img ng-src="{{uc.therapist.list[0].profile_picture}}" ng-click="uc.openPicker()" ng-model="uc.therapist.list[0].profile_picture">
         </div>
-
-        <!-- first column -->
-
-        <div flex="25" class="therapist-column">
-            <div class="therapist-profile-photo-container" flex="100">
-                <img ng-src="{{uc.therapist.list[0].profile_picture}}" ng-click="uc.openPicker()" ng-model="uc.therapist.list[0].profile_picture">
-            </div>
-
+        <form>
             <md-input-container class="therapist-input top-container">
                 <label>Email Address</label>
-                <textarea ng-model="uc.therapist.list[0].email" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus></textarea>
+                <input ng-model="uc.therapist.list[0].email" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
+            </md-input-container>
+
+            <md-input-container class="therapist-input">
+                <label>Phone Number</label>
+                <input ng-model="uc.therapist.list[0].phone" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
             </md-input-container>
 
             <md-input-container class="therapist-input">
                 <label>Website</label>
-                <textarea rows="1" md-select-on-focus></textarea>
+                <input ng-model="uc.therapist.list[0].website" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
             </md-input-container>
 
-            <md-input-container class="therapist-input">
-                <label>Address</label>
-                <textarea rows="1" md-select-on-focus></textarea>
+            <div layout="row">
+                <md-input-container id="address" class="therapist-input">
+                    <label>Street Address</label>
+                    <input ng-model="uc.therapist.list[0].workplace_street_address" ng-change="uc.checkTherapistObjects()">
+                </md-input-container>
+
+                <md-input-container id="zip" class="therapist-input">
+                    <label>Zip Code</label>
+                    <input ng-model="uc.therapist.list[0].workplace_zipcode" ng-change="uc.checkTherapistObjects()">
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-input-container id="address" class="therapist-input">
+                    <label>Education</label>
+                    <input ng-model="uc.therapist.list[0].schoool" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
+                </md-input-container>
+
+                <md-input-container id="zip" class="therapist-input">
+                    <label>Years Practicing</label>
+                    <input ng-model="uc.therapist.list[0].years_in_practice" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
+                </md-input-container>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- second column -->
+
+    <div flex="50" class="therapist-column" layout="column" layout-align="center none">
+
+        <div layout="row">
+
+            <md-input-container id="name">
+                <label>Name</label>
+                <input ng-model="uc.therapist.list[0].full_name" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
             </md-input-container>
+            <!-- <h1 id="therapistTitle">{{uc.therapist.list[0].full_name}}</h1> -->
 
-
-            <md-switch class="top-container" ng-model="data.cb1" aria-label="Switch 1">
-                <label>Active?</label>
-                Switch 1: {{ data.cb1 }}
-                <br>
-                <br>
-            </md-switch>
-            <p id="active">Profile must be set to active to appear in search results.</p>
-
-
+            <md-input-container id="license">
+                <label>License Type</label>
+                <input ng-model="uc.therapist.list[0].license_type" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
+            </md-input-container>
         </div>
+        <!-- <div layout="row">
+            <div> -->
+                <!-- <h4 class="title">{{uc.therapist.list[0].license_type}}</h4> -->
+            <!-- </div> -->
+        <!-- </div> -->
 
-        <!-- second column -->
+        <!-- biography -->
+        <md-input-container md-no-float class="titles">
+            <!-- <label>Your Biography</label> -->
+            <textarea id="bio-box" ng-model="uc.therapist.list[0].biography" ng-change="uc.checkTherapistObjects()" md-maxlength="1500"
+                rows="10" md-select-on-focus placeholder="Enter your bio here! The first 300 characters will be displayed as a preview to potential patients."></textarea>
+        </md-input-container>
 
-        <div flex="50" class="therapist-column" layout="column" layout-align="center none">
+        <div layout-align="start center" id="healthcareTypeahead" flex>
+            <div class="therapist-input">
+                <h3 class="titles">Accepted Insurance</h3>
+                <br>
+                <!-- insurance chips -->
+                <md-chips ng-model="uc.insuranceDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addHealthcareProvider($chip.id)"
+                    md-require-match="uc.autocompleteDemoRequireMatch" md-on-remove="uc.deleteHealthcare($chip.id)">
 
-            <div layout="row">
-                <div>
-                    <h1 id="therapistTitle">{{uc.therapist.list[0].full_name}}</h1>
-                </div>
-            </div>
-            <div layout="row">
-                <div>
-                    <h4>{{uc.therapist.list[0].license_type}}</h4>
-                </div>
-            </div>
+                    <md-autocomplete md-selected-item="uc.selectedInsurance" md-search-text="searchTextInsurance" md-items="provider in uc.healthcare.list | filter : searchTextInsurance "
+                        md-item-text="provider.insurance_name" placeholder="Healthcare providers">
 
-            <!-- biography -->
-            <md-input-container>
-                <label>Your Biography</label>
-                <textarea id="bio-box" ng-model="uc.therapist.list[0].biography" ng-change="uc.checkTherapistObjects()" md-maxlength="1500"
-                    rows="10" md-select-on-focus></textarea>
-            </md-input-container>
+                        <span md-highlight-text="searchTextInsurance" class="chippies">{{provider.insurance_name}}</span>
 
-            <div layout="row" layout-align="start center" id="healthcareTypeahead" flex>
-                    <div class="therapist-input">
-                            <h3>Accepted Insurance</h3>
-                            <br>
-            <!-- insurance chips -->                            
-            <md-chips ng-model="uc.insuranceDropDown" md-autocomplete-snap
-              md-transform-chip="uc.transformChip($chip); uc.addHealthcareProvider($chip.id)"
-              md-require-match="uc.autocompleteDemoRequireMatch"
-              md-on-remove="uc.deleteHealthcare($chip.id)">
-
-              <md-autocomplete md-selected-item="uc.selectedInsurance" 
-              md-search-text="searchTextInsurance" 
-              md-items="provider in uc.healthcare.list | filter : searchTextInsurance "
-              md-item-text="provider.insurance_name" 
-              placeholder="Healthcare providers">
-
-        <span md-highlight-text="searchTextInsurance" class="chippies">{{provider.insurance_name}}</span>
-    
-      </md-autocomplete>
-
-      <md-chip-template>
-        <span>
-          <div class="chippies">{{uc.findNameById(uc.healthcare.list, $chip.id).insurance_name}}</div>
-        </span>
-      </md-chip-template>
-    </md-chips>
-          
-</div>
-</div>
-</div>
-
-        <!-- third column -->
-
-        <div flex="25" class="therapist-column">
-            <div layout="column" flex>
-                <div style="height: 20px" flex="60">
-                    <!-- specialties chip -->
-                        <h3>Treatment Specialties</h3>
-                        <p id="active">Please limit to 3 specialties.</p>
-
-                        <br>
-                        <div class="therapist-input">
-
-                                <md-chips ng-model="uc.specialtiesDropDown" md-autocomplete-snap
-                                md-transform-chip="uc.transformChip($chip); uc.addSpecialty($chip.id)"
-                                md-require-match="uc.autocompleteDemoRequireMatch"
-                                md-max-chips="3"
-                                md-min-length="0"
-                                md-on-remove="uc.deleteSpecialty($chip.id)">
-
-                                <md-autocomplete md-selected-item="uc.selectedSpecialty" 
-                                md-search-text="searchTextSpecialty" 
-                                md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
-                                md-item-text="specialty.specialty_name"  
-                                placeholder="Select specialties">
-                  
-                          <span md-highlight-text="searchTextSpecialty" class="chippies">{{specialty.specialty_name}}</span>
-                      
-                        </md-autocomplete>
-                  
-                        <md-chip-template>
-                          <span>
-                            <div class="chippies">{{uc.findNameById(uc.specialties.list, $chip.id).specialty_name}}</div>
-                          </span>
-                        </md-chip-template>
-                      </md-chips>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div layout="column">
-                <div style="margin-top:300px; height: 20px" flex="60">
-                    <div class="therapist-input">
-                            <h3>Struggles</h3>
-                            <p id="active">Please limit to 10 struggles.</p>
-                            <br>
-                            <!-- struggles chips -->
-                            <md-chips ng-model="uc.strugglesDropDown" md-autocomplete-snap
-                            md-transform-chip="uc.transformChip($chip); uc.addUserIssue($chip.id)"
-                            md-require-match="uc.autocompleteDemoRequireMatch"
-                            md-max-chips="10"
-                            md-min-length="0"
-                            md-on-remove="uc.deleteUserIssue($chip.id)">
-              
-                            <md-autocomplete md-selected-item="us.selectedItemIssues" 
-                            md-search-text="searchTextIssue" 
-                            md-items="theIssue in uc.issues.list | filter : searchTextIssue"
-                            md-item-text="theIssue.issue_name" 
-                            placeholder="Select struggles">
-              
-                      <span md-highlight-text="searchTextIssues" class="chippies">{{theIssue.issue_name}}</span>
-                  
                     </md-autocomplete>
-              
+
                     <md-chip-template>
-                      <span>
-                        <div class="chippies">{{uc.findNameById(uc.issues.list, $chip.id).issue_name}}</div>
-                      </span>
+                        <span>
+                            <div class="chippies">{{uc.findNameById(uc.healthcare.list, $chip.id).insurance_name}}</div>
+                        </span>
                     </md-chip-template>
-                  </md-chips>
+                </md-chips>
 
+                <md-switch class="top-container" ng-model="data.cb1" aria-label="Switch 1">
+                    <label>Active?</label>
+                    Switch 1: {{ data.cb1 }}
+                    <br>
+                    <br>
+                </md-switch>
+                <p id="active">Profile must be set to active to appear in search results.</p>
 
-
+            </div>
         </div>
     </div>
-</div>
-</div>
+
+    <!-- third column -->
+
+    <div flex="25" class="therapist-column">
+        <div layout="column" class="titles" flex>
+            <div style="height: 20px" flex="60">
+                <!-- specialties chip -->
+                <h3>Treatment Specialties</h3>
+                <p id="active">Please limit to 3 specialties.</p>
+
+                <br>
+                <div class="therapist-input">
+
+                    <md-chips ng-model="uc.specialtiesDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addSpecialty($chip.id)"
+                        md-require-match="uc.autocompleteDemoRequireMatch" md-max-chips="3" md-min-length="0" md-on-remove="uc.deleteSpecialty($chip.id)">
+
+                        <md-autocomplete md-selected-item="uc.selectedSpecialty" md-search-text="searchTextSpecialty" md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
+                            md-item-text="specialty.specialty_name" placeholder="Select specialties">
+
+                            <span md-highlight-text="searchTextSpecialty" class="chippies">{{specialty.specialty_name}}</span>
+
+                        </md-autocomplete>
+
+                        <md-chip-template>
+                            <span>
+                                <div class="chippies">{{uc.findNameById(uc.specialties.list, $chip.id).specialty_name}}</div>
+                            </span>
+                        </md-chip-template>
+                    </md-chips>
+
+
+                    <h3>Struggles</h3>
+                    <p id="active">Please limit to 10 struggles.</p>
+                    <br>
+                    <!-- struggles chips -->
+                    <md-chips ng-model="uc.strugglesDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addUserIssue($chip.id)"
+                        md-require-match="uc.autocompleteDemoRequireMatch" md-max-chips="10" md-min-length="0" md-on-remove="uc.deleteUserIssue($chip.id)">
+
+                        <md-autocomplete md-selected-item="us.selectedItemIssues" md-search-text="searchTextIssue" md-items="theIssue in uc.issues.list | filter : searchTextIssue"
+                            md-item-text="theIssue.issue_name" placeholder="Select struggles">
+
+                            <span md-highlight-text="searchTextIssues" class="chippies">{{theIssue.issue_name}}</span>
+
+                        </md-autocomplete>
+
+                        <md-chip-template>
+                            <span>
+                                <div class="chippies">{{uc.findNameById(uc.issues.list, $chip.id).issue_name}}</div>
+                            </span>
+                        </md-chip-template>
+                    </md-chips>
+                </div>
+                <br>
+
+                <div layout="column" layout-align="center end">
+                    <md-button class="btn-dkgrn close-btn">save changes</md-button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
     <!-- ORIGINAL CODE -->
 
