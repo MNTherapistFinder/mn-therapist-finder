@@ -27,7 +27,7 @@
 
             <md-content id="side-nav-in">
                 <!-- sidebar -->
-                <md-button class="btn-green" ng-click="uc.openLeftMenu()" layout-align="start center">
+                <md-button class="btn-green" ng-click="uc.openLeftMenu()" layout-align="start center" aria-label="open sidenav">
                     <img src="images/openMenu.png" height="20" alt="menuItem">
                     <!-- <md-button ng-click="uc.openLeftMenu()" layout-align="start start" style="background-color:#b3bbbe;padding-right:40px;border-radius:4px;">
                 <img src="images/openMenu.png" alt="menuItem"> -->
@@ -107,13 +107,13 @@
               md-item-text="provider.insurance_name" 
               placeholder="Healthcare providers">
 
-        <span md-highlight-text="searchTextInsurance">{{provider.insurance_name}}</span>
+        <span md-highlight-text="searchTextInsurance" class="chippies">{{provider.insurance_name}}</span>
     
       </md-autocomplete>
 
       <md-chip-template>
         <span>
-          <div>{{uc.findNameById(uc.healthcare.list, $chip.id).insurance_name}}</div>
+          <div class="chippies">{{uc.findNameById(uc.healthcare.list, $chip.id).insurance_name}}</div>
         </span>
       </md-chip-template>
     </md-chips>
@@ -147,13 +147,13 @@
                                 md-item-text="specialty.specialty_name"  
                                 placeholder="Select specialties">
                   
-                          <span md-highlight-text="searchTextSpecialty">{{specialty.specialty_name}}</span>
+                          <span md-highlight-text="searchTextSpecialty" class="chippies">{{specialty.specialty_name}}</span>
                       
                         </md-autocomplete>
                   
                         <md-chip-template>
                           <span>
-                            <div>{{uc.findNameById(uc.specialties.list, $chip.id).specialty_name}}</div>
+                            <div class="chippies">{{uc.findNameById(uc.specialties.list, $chip.id).specialty_name}}</div>
                           </span>
                         </md-chip-template>
                       </md-chips>
@@ -173,6 +173,8 @@
                             <md-chips ng-model="uc.strugglesDropDown" md-autocomplete-snap
                             md-transform-chip="uc.transformChip($chip); uc.addUserIssue($chip.id)"
                             md-require-match="uc.autocompleteDemoRequireMatch"
+                            md-max-chips="10"
+                            md-min-length="0"
                             md-on-remove="uc.deleteUserIssue($chip.id)">
               
                             <md-autocomplete md-selected-item="us.selectedItemIssues" 
@@ -181,13 +183,13 @@
                             md-item-text="theIssue.issue_name" 
                             placeholder="Select struggles">
               
-                      <span md-highlight-text="searchTextIssues">{{theIssue.issue_name}}</span>
+                      <span md-highlight-text="searchTextIssues" class="chippies">{{theIssue.issue_name}}</span>
                   
                     </md-autocomplete>
               
                     <md-chip-template>
                       <span>
-                        <div>{{uc.findNameById(uc.issues.list, $chip.id).issue_name}}</div>
+                        <div class="chippies">{{uc.findNameById(uc.issues.list, $chip.id).issue_name}}</div>
                       </span>
                     </md-chip-template>
                   </md-chips>
