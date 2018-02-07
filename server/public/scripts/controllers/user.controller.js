@@ -75,7 +75,9 @@ myApp.controller('UserController', ['$scope', '$mdSidenav', 'UserService', funct
       vm.therapistObjectsEqual = false;
     }
   }
-
+vm.updateProfile = function(therapist) {
+console.log(therapist)
+}
 
   vm.findNameById = function (arr, theId) {
     for (var i=0;i<arr.length;i++){

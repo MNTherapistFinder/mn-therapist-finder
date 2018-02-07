@@ -31,7 +31,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserSe
             self.appointments = response.data
             console.log('self.appointments in get appointments function: ', self.appointments);
             self.dates = self.allot(self.slots, self.days, self.appointments);
-            console.log(self.dates);
+            console.log(self.dates.days);
         });
     }
     self.getAppointments()
