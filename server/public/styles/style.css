@@ -496,9 +496,17 @@ md-chips md-chip.md-focused {
   font-size: 18px;
 }
 
+#name input {
+  font-weight: bold;
+}
+
 #license {
   width: 40%;
   font-size: 18px;
+}
+
+#license input {
+  font-weight: bold;
 }
 
 #address {
