@@ -74,12 +74,12 @@
             </div>
             <div layout="row">
                 <div>
-                    <h4>{{uc.therapist.list[0].license_type}}</h4>
+                    <h4 class="title">{{uc.therapist.list[0].license_type}}</h4>
                 </div>
             </div>
 
             <!-- biography -->
-            <md-input-container>
+            <md-input-container class="titles">
                 <label>Your Biography</label>
                 <textarea id="bio-box" ng-model="uc.therapist.list[0].biography" ng-change="uc.checkTherapistObjects()" md-maxlength="1500"
                     rows="10" md-select-on-focus></textarea>
@@ -87,7 +87,7 @@
 
             <div layout="row" layout-align="start center" id="healthcareTypeahead" flex>
                     <div class="therapist-input">
-                            <h3>Accepted Insurance</h3>
+                            <h3 class="titles">Accepted Insurance</h3>
                             <br>
             <!-- insurance chips -->                            
             <md-chips ng-model="uc.insuranceDropDown" md-autocomplete-snap
@@ -119,7 +119,7 @@
         <!-- third column -->
 
         <div flex="25" class="therapist-column">
-            <div layout="column" flex>
+            <div layout="column" class="titles" flex>
                 <div style="height: 20px" flex="60">
                     <!-- specialties chip -->
                         <h3>Treatment Specialties</h3>
@@ -158,7 +158,7 @@
 
 
             <div layout="column">
-                <div style="margin-top:300px; height: 20px" flex="60">
+                <div style="margin-top:250px; height: 20px" flex="60">
                     <div class="therapist-input">
                             <h3>Struggles</h3>
                             <p id="active">Please limit to 10 struggles.</p>

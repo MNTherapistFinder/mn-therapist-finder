@@ -471,6 +471,7 @@ md-chips md-chip.md-focused {
 
 #therapistTitle {
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .therapist-column {
@@ -494,6 +495,11 @@ textarea {
 #active {
   font-size: 12px;
   font-style: italic;
+}
+
+.titles {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 #bio-box {
