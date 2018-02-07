@@ -6,9 +6,7 @@
     <!-- sidebar -->
 
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
-        <a href="#home">
-            <img src="/images/mntf-logo-light.png" height="100">
-        </a>
+        <a href="#home"><img src="/images/mntf-logo-light.png" height="100"></a>
         <br>
         <div layout="column" layout-align="center center">
             <a href="#user">Profile</a>
@@ -22,21 +20,18 @@
     </md-sidenav>
 
     <div layout="row">
-        <div id="leftColumn" layout="column" style="width:60px;" id="menuOpen">
 
-            <md-content id="side-nav-in">
-                <!-- sidebar -->
-                <md-button class="btn-green" ng-click="uc.openLeftMenu()" layout-align="start center" aria-label="open sidenav">
-                    <img src="images/openMenu.png" height="20" alt="menuItem">
-                    <!-- <md-button ng-click="uc.openLeftMenu()" layout-align="start start" style="background-color:#b3bbbe;padding-right:40px;border-radius:4px;">
-                <img src="images/openMenu.png" alt="menuItem"> -->
-                </md-button>
+                <md-content id="side-nav-in" layout="row" layout-align="start start">
+                                    <!-- sidebar -->
+
+                    <i id="menu-open" class="material-icons" ng-click="uc.openLeftMenu()">more_vert</i>
+
             </md-content>
         </div>
 
         <!-- first column -->
 
-        <div flex="25" class="therapist-column">
+        <div flex="25" id="first-column" class="therapist-column">
             <div class="therapist-profile-photo-container" flex="100">
                 <img ng-src="{{uc.therapist.list[0].profile_picture}}" ng-click="uc.openPicker()" ng-model="uc.therapist.list[0].profile_picture">
             </div>
@@ -48,12 +43,12 @@
 
             <md-input-container class="therapist-input">
                 <label>Website</label>
-                <textarea rows="1" md-select-on-focus></textarea>
+                <textarea ng-model="uc.therapist.list[0].website" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus></textarea>
             </md-input-container>
 
             <md-input-container class="therapist-input">
                 <label>Address</label>
-                <textarea rows="1" md-select-on-focus></textarea>
+                <textarea ng-model="uc.therapist.list[0].workplace_street_address" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus></textarea>
             </md-input-container>
 
 
@@ -192,13 +187,16 @@
                       </span>
                     </md-chip-template>
                   </md-chips>
-
-
-
-        </div>
-    </div>
+                    </div>
+                    <br>
+                    <div layout="column" layout-align="center end">
+                        <md-button class="btn-dkgrn close-btn">save changes</md-button>
+                    </div>
 </div>
 </div>
+</div>
+</div>
+
 
     <!-- ORIGINAL CODE -->
 

@@ -9,18 +9,26 @@
             <input ng-model="therapistSearch.workplace_street_address" placeholder="filter by city">
             <!-- these need to be built out more once we have issues / fake data -->
         <br>
-        <md-button id="close-btn" class="btn-green" layout="column" layout-align="center center" ng-click="dc.openLeftMenu()">CLOSE</md-button>
+        <md-button class="btn-green close-btn" layout="column" layout-align="center center" ng-click="dc.openLeftMenu()">CLOSE</md-button>
     </md-sidenav>
 
     <!-- ^ IF WE WANT SIDEBAR TO START OPEN: md-is-open="dc.startOpen" ^ -->
 
     <md-content id="side-nav-in" layout="row" layout-align="start center">
         <!-- sidebar -->
-        <md-button class="btn-green" ng-click="dc.openLeftMenu()" layout-align="start center">
+
+        <md-content id="side-nav-in" layout="row" layout-align="start start">
+                <!-- sidebar -->
+<div id="directory-btn-space">
+            <i id="menu-open" class="material-icons" ng-click="dc.openLeftMenu()">more_vert</i>
+</div>
+</md-content>
+</div>
+        <!-- <md-button class="btn-green" ng-click="dc.openLeftMenu()" layout-align="start center">
             filter results
         </md-button>
     </md-content>
-</div>
+</div> -->
 <!-- </div> -->
 
 <!-- <div layout="column" layout-align-"center center"> -->
