@@ -7,6 +7,13 @@ body, html {
   color: #3C3C3C;
 }
 
+button[disabled]{
+  border: 6px solid red;
+  background-color: red;
+  color: red;
+}
+
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
