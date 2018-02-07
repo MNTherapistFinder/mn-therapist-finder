@@ -1,20 +1,34 @@
 <link rel="stylesheet" href="styles/schedule-style.css">
 <h1> Schedule</h1>
+
 <section layout="row">
+        <md-card class="md-whiteframe-24dp" flex="33">
+                <md-card-content>
+                    <h2>Times I Am Avaliable</h2>
+                    <p layout="row" ng-repeat="a in sc.appointments | orderBy:'-available_times':true">
+                        {{a.available_times| date:'MMM-dd @ h:mma' }}
+                        <md-button  ng-click="sc.deleteTime(a)" class="md-icon-button" aria-label="Delete">
+                                <i class="material-icons">delete_forever</i>
+                        </md-button>    
+                    </p>
+                </md-card-content>
+                <md-card-footer></md-card-footer>
+            </md-card>
             
         <div dir-paginate="d in sc.dates | itemsPerPage:7" pagination-id="days" >
     <md-content layout="row" flex="66" >
-        <md-card class="md-whiteframe-z2" flex flex-sm="40" flex-xs="200">
+        
+        <md-card class="md-whiteframe-24dp" flex flex-sm="40" flex-xs="200" ng-class="sc.getColor($index)">
 
-            <md-card-content layout-wrap ng-class="sc.getColor($index)">
-                <h2>{{d.k | date:'MMM-dd-yyyy'}}</h2> 
+            <md-card-content layout-wrap  >
+                
+                <h2>{{d.k | date}}</h2> 
               
-                <p layout="column"> 
-                       
-                              <dir-pagination-controls pagination-id="slots"></dir-pagination-controls>
-                              <!-- <md-switch ng-model="data.cb2" aria-label="Switch 2" ng-true-value="'very active'" ng-false-value="'very not active'" class="md-warn">
+                <p layout="column" >     
+                <!-- <md-switch ng-model="data.cb2" aria-label="Switch 2" ng-true-value="'very active'" ng-false-value="'very not active'" class="md-warn">
                                     Active: {{ data.cb2 }}
                                   </md-switch> -->
+                                  
                     <div dir-paginate="slot in d.v | itemsPerPage:8" pagination-id="slots" >
                     <md-button class="md-warn md-raised" 
                     ng-click="sc.showAdvanced(slot)"
@@ -25,8 +39,10 @@
                     </md-button>
 
                 </div>
-
+            
                 </p>
+                <dir-pagination-controls pagination-id="slots"></dir-pagination-controls>
+
             </div>
 
             
@@ -39,22 +55,15 @@
     </md-content>
     
   </div>
+  
     </section>
     
-    <md-card class="md-whiteframe-z2" flex="33">
-            <md-card-content>
-                <h2>Times I Posted</h2>
-                <p layout="column" ng-repeat="a in sc.appointments track by $index">
-                    Avaliable at {{a.available_times| date:'dd-MMM-yyyy @ h:mma'}}
-                </p>
-            </md-card-content>
-            <md-card-footer></md-card-footer>
-        </md-card>
+  
     
     
     <div layout-margin>
             <div layout="row" layout-align="center center">
-                <dir-pagination-controls pagination-id="days" max-size="5" direction-links="true" boundary-links="false" template-url="/views/partials/dirPagination.tpl.html"
+                <dir-pagination-controls pagination-id="days" max-size="5" direction-links="true" template-url="/views/partials/dirPagination.tpl.html"
                     auto-hide="true">
                     <dir-pagination-controls>
             </div>

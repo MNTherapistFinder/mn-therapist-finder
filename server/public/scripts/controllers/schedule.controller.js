@@ -114,6 +114,17 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserSe
 
     }
 
+    self.deleteTime = function(time){
+        console.log(time.available_time_id)
+      $http({
+          method: 'DELETE',
+          url:'/schedule/'+ time.available_time_id
+      }).then(function(response){
+          self.getAppointments()
+      })
+      
+  }
+
     self.getColor = function ($index) {
         var _d = ($index + 1) % 11;
         var bg = '';
