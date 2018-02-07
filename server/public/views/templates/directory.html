@@ -5,8 +5,31 @@
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
             <a href="#home"><img src="/images/mntf-logo-light.png" height="100"></a>
             <br>
-            <input ng-model="therapistSearch.full_name" placeholder="search by name">
-            <input ng-model="therapistSearch.workplace_street_address" placeholder="filter by city">
+            <md-input-container class="sidebar-filter">
+                    <label>Filter by Name</label>
+                    <input ng-model="therapistSearch.full_name">
+            </md-input-container>
+
+            <md-input-container class="sidebar-filter">
+                    <label>Filter by City</label>
+                    <input ng-model="therapistSearch.workplace_street_address">
+            </md-input-container>
+
+            <md-input-container class="sidebar-filter">
+                    <label>Struggle</label>
+                    <input ng-model="therapistSearch.issues">
+            </md-input-container>
+
+            <md-input-container class="sidebar-filter">
+                    <label>Treatment Specialty</label>
+                    <input ng-model="therapistSearch.specialties">
+            </md-input-container>
+
+            <md-input-container class="sidebar-filter">
+                    <label>Accepted Insurance</label>
+                    <input ng-model="therapistSearch.insurance_plans">
+            </md-input-container>
+
             <!-- these need to be built out more once we have issues / fake data -->
         <br>
         <md-button class="btn-green close-btn" layout="column" layout-align="center center" ng-click="dc.openLeftMenu()">CLOSE</md-button>
