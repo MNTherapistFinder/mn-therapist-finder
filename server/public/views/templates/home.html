@@ -67,7 +67,8 @@
       </div>
   
       <div layout-align="center center">
-        <md-button class="btn-dkgrn md-raised" ng-click="hc.getSearchResults(hc.searchObject);hc.goToSearch()">Search</md-button>
+        <md-button class="btn-dkgrn md-raised" 
+        ng-href="/#search/?issue={{hc.searchObject.issues.issue_name}}&healthcare={{hc.searchObject.insurance.insurance_name.trim()}}&lng={{hc.searchObject.location.lng}}&lat={{hc.searchObject.location.lat}}">Search</md-button>
         <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
       </div>
     </div>

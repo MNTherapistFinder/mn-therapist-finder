@@ -30,9 +30,6 @@ myApp.controller('HomeController', ['$scope','$location', 'HomeService', functio
         }
     }
 
-    vm.goToSearch = function(){
-        $location.path('/search');
-    }
 
 
 }]);

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngAnimate', 'angularUtils.directives.dirPagination']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngAnimate','ui.carousel', 'angularUtils.directives.dirPagination']);
 
 /// Routes ///
 myApp.config(function ($routeProvider, $locationProvider) {
@@ -29,6 +29,10 @@ myApp.config(function ($routeProvider, $locationProvider) {
     .when('/login', {
       templateUrl: '/views/templates/login.html',
       controller: 'LoginController as lc',
+    })
+    .when('/search/:healthcare/:issue/:lng/:lat?', {
+      templateUrl: '/views/templates/search.html',
+      controller: 'SearchController as lc',
     })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
