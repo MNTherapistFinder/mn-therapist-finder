@@ -58,7 +58,11 @@ myApp.controller('UserController', ['$scope', '$mdSidenav', 'UserService', funct
   vm.openPicker = function (userPhoto, userid) {
     console.log('in filestack');
     vm.client.pick({
-      fromSources: ["local_file_system", "imagesearch", "facebook", "instagram", "dropbox"]
+      fromSources: ["local_file_system", "imagesearch", "facebook", "instagram", "dropbox"],
+      transformations:{
+        crop:{      
+        force:true,
+        aspectRatio:1}}
     }).then(function (response) {
       // declare this function to handle response
       console.log(response.filesUploaded[0].url);

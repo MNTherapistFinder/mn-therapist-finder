@@ -326,9 +326,9 @@ md-input-container .md-input {
 /* therapist profile modal */
 
 /* This here is not working */
-.md-dialog-content {
+#registerConfirmModal {
   /* text-align: center; */
-  width: 600px;
+  width: 800px;
 }
 
 .therapist-modal-photo-container {
@@ -606,10 +606,12 @@ textarea {
 /* end therapist public profile view */
 
 /* appointments page */
+
 .therapist-profile-photo-container-appts{
   height: 100px;
   width: 100px;
   overflow: hidden;
+  margin:25px;
 }
 
 .therapist-profile-photo-container-appts img{
@@ -645,7 +647,6 @@ box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32);
 }
 
 #apptButton {
-  /* padding:2px; */
   margin: 0px;
   margin-bottom: -15px;
   padding: 0px !important;
@@ -653,23 +654,24 @@ box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32);
 }
 
 #apptButton:hover {
-  background-color:rgb(255, 196, 0)!important;
+  background-color:#88BF44!important;
 
 }
 
-/* appointment page */
 
 #apptCard {
   width: 12%;
   vertical-align: top;
+ 
 
 }
 
 #apptCard h4{
   margin:0px;
   padding: 6px;
-  background-color: #88BF44;
+  background-color: #3C3C3C;
   overflow: hidden;
+  color: white;
 }
 
 #apptCardContent{
@@ -683,11 +685,69 @@ box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32);
 }
 
 #todayBorder {
-  /* border-style: solid;
-  border-width: 1px;
-  border-color: red !important; */
   background-color: white!important;
-  color: red;
+  color: red !important;
   text-align: center;
   font-size: 18px;
+}
+
+/* end appt page */
+
+/* appt request modal */
+
+#apptRequestDialogBox{
+  width: 700px;
+  background-color:#f8f8f8;
+}
+
+#apptRequestModalCol1 {
+  background-color:#f8f8f8;
+  width:50%;
+  padding: 15px;
+  text-align: center;
+}
+
+#apptRequestModalCol2 {
+  background-color:#f8f8f8;
+  width:50%;
+  padding: 30px;
+  margin-left:40px;
+}
+
+#apptRequestModalCol2 h3{
+margin-bottom:-20px
+}
+
+.therapist-profile-photo-container-appts_modal {
+  height: 175px;
+  width: 175px;
+  overflow: hidden;
+
+}
+
+.therapist-profile-photo-container-appts_modal img {
+  width: 100%;
+  height: auto;
+}
+
+.apptRequestModalInput {
+  margin: 0px;
+}
+
+
+.divider{
+  position:absolute;
+  left:50%;
+  top:10%;
+  bottom:18%;
+  border-left:1px solid black;
+}
+
+/* appt request modal end */
+
+/* appt request confirm modal */
+
+#apptConfirmDialogBox{
+  width: 700px;
+  background-color:#f8f8f8;
 }

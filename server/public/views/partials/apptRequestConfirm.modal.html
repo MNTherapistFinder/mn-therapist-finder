@@ -1,0 +1,23 @@
+<md-dialog id = "apptConfirmDialogBox">
+        <div class="md-dialog-content">
+        <md-dialog-content>
+        <div layout = "column" layout-align="center center">
+                <i class="material-icons" id= "emailIcon">email</i>
+                <br>
+            <h3>THANK YOU!</h3>
+            <p>Your request for {{patient.date}} has been sent to {{patient.therapist.full_name}}.</p>
+            <p>{{patient.therapist.full_name}} will follow up with you shortly using your preferred method of communication.</p>
+        </div>
+        </md-dialog-content>
+     {{therapistData}}
+        
+        <md-dialog-actions layout="row" layout-align="center center">
+                <md-button class="btn-green md-raised" ng-click="patient.close()"> close </md-button>
+        </md-dialog-actions>
+    </div>
+        <br>
+        <br>
+        
+</md-dialog>
+
+        

@@ -40,7 +40,6 @@ myApp.controller('LoginController', function($http, $location, UserService, $mdD
         console.log('LoginController -- registerUser -- sending to server...', vm.user);
         $http.post('/register', vm.user).then(function(response) {
           console.log('LoginController -- registerUser -- success');
-          // swal("Check your email!", "You will receive an email from xx@mntherapistfinder.com asking you to confirm your email address.\n\nYou may begin building your profile, but you will not be listed in search results until your email has been confirmed.");
           vm.showRegisterConfirm(event);
           vm.verifyEmail(vm.user.username);
           // $location.path('/home');
