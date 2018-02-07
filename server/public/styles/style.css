@@ -392,7 +392,7 @@ md-input-container .md-input {
 
 /* sidebar styling */
 
-#close-btn {
+.close-btn {
   width: 50%;
 }
 
