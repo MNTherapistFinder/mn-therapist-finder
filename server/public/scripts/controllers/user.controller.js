@@ -31,6 +31,12 @@ myApp.controller('UserController', ['$scope', '$mdSidenav', 'UserService', funct
   vm.userObject = UserService.userObject;
   vm.client = filestack.init("AfkCNgWSJyFwF5crXkNAVz");
 
+  vm.autocompleteDemoRequireMatch = true;
+  vm.transformChip = UserService.transformChip;
+  vm.insuranceDropDown = UserService.insuranceDropDown;
+  vm.specialtiesDropDown = UserService.specialtiesDropDown;
+  vm.strugglesDropDown = UserService.strugglesDropDown;
+
   vm.getTherapist();
   vm.getIssuesList();
   vm.getHealthcareList();

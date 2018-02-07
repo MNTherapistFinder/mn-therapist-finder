@@ -1,6 +1,6 @@
 <header ng-include="'/views/partials/slimHeader.html'"></header>
 
-<div class="container"  layout-padding layout-margin layout="row">
+<div class="container" layout-padding layout-margin layout="row">
   
   <div flex = "25">
     <div class = "therapist-profile-photo-container" flex = "100">
@@ -28,8 +28,8 @@
 <div flex= "25">
     <md-button href="#directory/therapists/{{pc.therapistProfileInfo.list[0].id}}/appointment" class="btn-appt md-raised">Request an appointment</md-button>
     <h3>Specialties:</h3>
-      <ul id="specialtiesBulletIcon" ng-repeat = "specialties in pc.therapistProfileInfo.list[0].specialties">
-            <li>{{specialties}}</li>
+      <ul ng-repeat = "specialties in pc.therapistProfileInfo.list[0].specialties">
+            <li><i class="material-icons">stars</i>{{specialties}}</li>
       </ul>
 
     <h3>Issues treated:</h3>

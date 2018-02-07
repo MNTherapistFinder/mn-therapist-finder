@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var express = require('express');
 var nodemailer = require("nodemailer");
 
@@ -7,7 +9,7 @@ var smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
         user: "mntherapistfinder@gmail.com",
-        pass: ""
+        pass: process.env.EMAIL_PASS
     }
 });
 var rand,mailOptions,host,link;

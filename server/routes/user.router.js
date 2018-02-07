@@ -40,7 +40,7 @@ router.get('/therapist', function (req, res) {
     } else {
       client.query(`SELECT therapists.full_name, therapists.email, therapists.profile_picture, 
       therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
-      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type,
+      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website,
       array_agg(DISTINCT insurance_plans.id) AS insurance_id, array_agg(DISTINCT issues.id) AS issueid, 
       array_agg(DISTINCT specialties.id) AS specialty_id FROM therapists LEFT JOIN therapists_insurance_plans 
       ON therapists.id = therapists_insurance_plans.therapists_id LEFT JOIN insurance_plans 
@@ -50,7 +50,7 @@ router.get('/therapist', function (req, res) {
       ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 GROUP BY
       therapists.full_name, therapists.email, therapists.profile_picture, 
       therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
-      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
+      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
             console.log('error', errorMakingDatabaseQuery);

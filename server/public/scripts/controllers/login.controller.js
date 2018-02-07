@@ -41,6 +41,7 @@ myApp.controller('LoginController', function($http, $location, UserService, $mdD
         $http.post('/register', vm.user).then(function(response) {
           console.log('LoginController -- registerUser -- success');
           vm.showRegisterConfirm(event);
+          vm.verifyEmail(vm.user.username);
           // $location.path('/home');
         }).catch(function(response) {
           console.log('LoginController -- registerUser -- error');
@@ -50,6 +51,8 @@ myApp.controller('LoginController', function($http, $location, UserService, $mdD
     }
 
     vm.verifyEmail = function (aParam) {
+      console.log(aParam);
+      
       vm.truthValue = true
 
       $http({

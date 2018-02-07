@@ -2,6 +2,8 @@ myApp.service('HomeService', ['$http', '$log', function ($http, $location, $log)
   console.log('HomeService Loaded');
   var self = this;
   self.searchResults = { list: [] }
+  self.slides = [];
+
 
 
   //GET request for all issues for home page search. 
@@ -48,15 +50,19 @@ myApp.service('HomeService', ['$http', '$log', function ($http, $location, $log)
       method: 'GET',
       url: '/home/search',
       params: {
-        lng: searchObject.location.lng,
-        lat: searchObject.location.lat,
-        issue: searchObject.issues.issue_name,
-        insurance: searchObject.insurance.insurance_name
+        lng: searchObject.lng,
+        lat: searchObject.lat,
+        issue: searchObject.issue,
+        healthcare: searchObject.healthcare
       }
     }).then(function (response) {
       self.searchResults.list = response.data;
       console.log(response.data);
 
+    }).then(function(){
+      for (var i =0; (i < 5) && (i<self.searchResults.list.length) ; i++){
+        self.slides.push(self.searchResults.list[i]);
+      }
     })
   }
 
