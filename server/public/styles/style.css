@@ -35,6 +35,11 @@ body, html {
   font-feature-settings: 'liga';
 }
 
+.home-footer {
+  background-color: #266B26;
+  height: 100%;
+}
+
 /* header styling */
 
 .header h1 {
@@ -45,7 +50,7 @@ body, html {
 .header {
   background-color: #f8f8f8;
   color: #3C3C3C;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -59,22 +64,23 @@ body, html {
 }
 
 .slim-header {
-  height: 60px;
+  height: 80px;
   background-color: #88BF44;
 }
 
 .slim-header-text {
   margin-left: 5%;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .slim-header a {
   color: #f8f8f8;
+  font-size: 22px;
 }
 
 .green-background {
   background-color: #88BF44 !important;
-  height: 100vh;
+  height: 440px;
 }
 
 /* end header styling */
@@ -169,6 +175,11 @@ ul {
   color: #f8f8f8 !important;
 }
 
+.btn-grey {
+  background-color: #3C3C3C !important;
+  color: #f8f8f8 !important;
+}
+
 input {
   color: #3C3C3C !important;
   font-family: 'Karla', sans-serif;
@@ -184,13 +195,22 @@ input {
   padding-top: 30px;
 }
 
-.info-box {
+#mission-statement {
+  width: 600px;
+  padding: 20px;
+  /* background-color: #266B26; */
+  color: #f8f8f8;
+  text-align: center;
+  font-style: italic;
+}
+
+/* .info-box {
   width: 20%;
   height: 100px;
   margin: 10px;
   margin-bottom: 50px;
   background-color: #f8f8f8;
-}
+} */
 
 
 md-input-container .md-input {
@@ -208,7 +228,10 @@ md-input-container .md-input {
 #start-search {
   font-size: 22px;
   color: #f8f8f8;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .search-bars {
@@ -219,9 +242,10 @@ md-input-container .md-input {
 .md-whiteframe {
   /* transition:all ease-in 1s; */
   background-color: #f8f8f8;
-  height: 70px;
-  width: 700px;
+  height: 80px;
+  width: 600px;
   margin-top: 10px;
+  margin-bottom: 20px;
   padding:10px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -296,10 +320,13 @@ md-input-container .md-input {
 .page {
   background-color: #88BF44;
   border: .5px solid #f8f8f8;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   padding: 10px;
   color: #f8f8f8;
   text-decoration: none;
+  text-align: center;
+  width: 20px;
 }
 
 .no-under {
@@ -427,6 +454,11 @@ md-input-container .md-input {
 
 .sidebar-filter {
   margin: 5px;
+}
+
+.profile-links {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* end sidebar styling */
