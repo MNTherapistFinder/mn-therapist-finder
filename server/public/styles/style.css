@@ -469,6 +469,12 @@ md-chips md-chip.md-focused {
   margin-left: 0px !important;
 }
 
+#photo-upload img:hover {
+  opacity: 0.4;
+  transition: 0.15s;
+  /* background-color: red; */
+}
+
 #therapistTitle {
   margin-bottom: 0px;
   margin-top: 0px;
@@ -482,6 +488,25 @@ md-chips md-chip.md-focused {
 .therapist-input {
   width: 100%;
   margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+#name {
+  width: 60%;
+  font-size: 18px;
+}
+
+#license {
+  width: 40%;
+  font-size: 18px;
+}
+
+#address {
+  width: 70%;
+}
+
+#zip {
+  width: 30%;
 }
 
 textarea {
