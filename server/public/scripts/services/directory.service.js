@@ -5,6 +5,8 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
   self.therapistInfo = { list: [] }
   self.therapistProfileInfo = { list: [] }
   self.therapistAppointments = { list: [] }
+  
+
   self.patient = {}
 
   // GET request for therapist information on main directory page
@@ -68,22 +70,54 @@ self.getTherapistAppointments = function (therapistId) {
         console.log('this is self.therapistAppointments before for loop', self.therapistAppointments.list)
           for (var i = 0; i < self.therapistAppointments.list.length;i++){
             console.log('inside for loop')
-            self.therapistAppointments.list[i].available_times = moment(self.therapistAppointments.list[i].available_times).format('LLL');
+            self.therapistAppointments.list[i].available_times = moment(self.therapistAppointments.list[i].available_times).format('LLLL');
           }
-          console.log('response is ', self.therapistAppointments.list) 
+          console.log('get TherapistAppts response is ', self.therapistAppointments.list) 
+
+      }).then(function (){
+        self.dateCompare();
 
       });
     } 
 
 
+
+self.dateCompare = function(){
+  
+  for (var j = 0; j < self.therapistAppointments.list.length; j++){
+    var therapistApptDate = moment(self.therapistAppointments.list[j].available_times).format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), '')
+
+    for (var i = 0; i < self.days.length; i++) {
+      var dayDate = self.days[i].date
+      var firstDay = self.days[0].date
+      console.log('firstDay',self.days[0].date);
+      
+
+      if (therapistApptDate === dayDate) {
+        console.log('therapistApptDate', therapistApptDate);
+              self.days[i].apptArray.push(moment((self.therapistAppointments.list[j].available_times)).format('LT'))
+              self.days[i].apptArray.reverse()
+              console.log('in push dayOneAppts', self.days[i].apptArray);         
+
+            } 
+    }
+
+  } 
+
+}
+
+
+
 self.appointmentForm = function (date, therapist_email) {
-      console.log(date.available_times)
+     var date = moment(date,'LT').format('LLL')
+      console.log(date)  
+
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && self.customFullscreen;
       $mdDialog.show({
           controller: function ($scope, $mdDialog, date, $http) {
               $scope.patient = {};
               $scope.patient.therapist_email = therapist_email
-              $scope.patient.date = date.available_times;
+              $scope.patient.date = date;
               $scope.answer = function (answer) {
                   $mdDialog.hide(answer);
                 
@@ -118,10 +152,7 @@ self.appointmentForm = function (date, therapist_email) {
           });
   
   }
-
-
-
-  
+ 
   self.close = function() {
     $mdDialog.cancel();
   };
@@ -138,6 +169,127 @@ self.appointmentForm = function (date, therapist_email) {
   };
 
 
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth(); //January is 0!
+  var yyyy = today.getFullYear();
+
+  var dayOne = { dd: dd, mm: mm, yyyy: yyyy };
+
+
+  self.days = [ {
+                  date: moment(dayOne).format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                }, 
+                {
+                  date: moment(dayOne).add(1, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                }, 
+                {
+                  date: moment(dayOne).add(2, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray:[]
+                },
+                {
+                  date: moment(dayOne).add(3, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(4, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(5, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(6, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(7, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(8, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(9, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(10, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(11, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(12, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+                {
+                  date: moment(dayOne).add(13, 'days').format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), ''),
+                  apptArray: []
+                },
+              ]
+
+
+  self.dayOneAppts = [];
+
+  // for (var i = 0; i < self.days.length; i++) {
+  //   console.log('self.days[i]', self.days[i]);
+
+  // }
+
+  console.log('self.therapist.list',self.therapistAppointments);
+
+  
+  // for (var j = 0; j < self.therapistAppointments.list.length; j++){
+  //   console.log('self.therapistAppointments.list[j].available_times',[j]);
+    
+  // }
+
+
+  // self.getApptDays = function(){
+  //   console.log('inGetApptDays');
+  //   console.log('self.days', self.days);
+  //   console.log('self.therapistAppointments.list', self.therapistAppointments);
+  //   // console.log('dayOneAppts', self.dayOneAppts);
+    
+    
+  //   var dayOneAppts = []
+  //   for (var i = 0; i < self.days.length; i++) {
+  //     var dayOneAppts = []
+  //     var dayMomentified = moment(self.days[i]).format('MMM Do YY');
+  //     console.log('momentified self.days', dayMomentified);
+  
+       
+  //     for (var j = 0; j < self.therapistAppointments.list.length; j++) {
+  //       var apptMomentified = moment(self.therapistAppointments.list[j].available_times).format('MMM Do YY');
+  //       console.log('momentified self.therapistappts', apptMomentified);
+        
+  //       if (dayMomentified == apptMomentified ) {
+          
+  //       dayOneAppts.push(apptMomentified)
+  //       console.log('in push', dayOneAppts);
+        
+  //       }
+  //       }
+  //   } return self.dayOneAppts;
+
+  // }
+  
+  
+
+  
+
+  // self.days = 
+  // [{ dd: dd, mm: mm, yyyy: yyyy }, 
+  // {dd: dd + 1, mm: mm, yyyy: yyyy }, 
+  // {dd: dd + 2, mm: mm, yyyy: yyyy }, 
+  // {dd: dd + 3, mm: mm, yyyy: yyyy }];
 
 
 
