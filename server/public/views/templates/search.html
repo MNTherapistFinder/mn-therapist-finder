@@ -82,8 +82,12 @@
                     </div>
               
                 </div>
+
                 <div id="therapist-modal-buttons-carousel" layout="row" layout-align="center center">
-                        <button class="btn-dkgrn md-raised" href="#directory/therapists/{{item.id}}"> See full profile </button>
+                        <a  href="#directory/therapists/{{item.id}}"> 
+                            <button id = "carouselButton"class="btn-dkgrn md-raised">SEE FULL PROFILE </button>
+                        </a>
+
                 </div>  
             </div>
         </carousel-item>
@@ -105,7 +109,7 @@
 </div>
         <button ng-click="sc.isCarouselView =!sc.isCarouselView">Show All Results</button>
         <p style="text-align:center;">Not finding what you're looking for? Click
-            <a href="/#directory">here</a> for a list of all therapists</p>
+            <a href="#directory">here</a> for a list of all therapists</p>
 
 
         <div layout-margin>

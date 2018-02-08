@@ -674,6 +674,17 @@ textarea {
   height:375px;
 }
 
+#carouselButton {
+  padding: 8px;
+  padding-top: 9px;
+  padding-bottom:9px;
+  border-radius:3px;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+
+  
+}
+
 #therapist-modal-buttons-carousel {
   margin-bottom: 30px !important;
   margin-top: 5px;
