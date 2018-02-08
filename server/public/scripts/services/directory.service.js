@@ -150,7 +150,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
 
 
               $scope.greeting = 'Email reqest has been sent'
-              console.log(self.greeting);
+              console.log($scope.greeting);
             }
           })
         }
