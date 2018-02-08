@@ -24,6 +24,9 @@ myApp.service('UserService', function($http, $location){
 
 
   self.getuser = function(){
+    self.insuranceDropDown = [];
+    self.specialtiesDropDown = [];
+    self.strugglesDropDown = [];
     console.log('UserService -- getuser');
     $http.get('/user').then(function(response) {
         if(response.data.email) {
