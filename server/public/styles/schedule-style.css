@@ -1,11 +1,13 @@
 
-.navbar-text { margin-left: 15px; }
+/* .navbar-text { margin-left: 15px; } */
 
-.gray { background: #f5f5f5; }
+/* .gray { background: #f5f5f5; } */
 
-.green { background: #b9f6ca; }
+.green { background: #88BF44; }
 
-.yellow { background: #ffff8d; }
+.yellow { background: rgb(255, 196, 0); }
+
+/* .yellow { background: #ffff8d; }
 
 .blue { background: #84ffff; }
 
@@ -19,7 +21,7 @@
 
 .red { background: #ff8a80; }
 
-.pink { background: #ff80ab; }
+.pink { background: #ff80ab; } */
 
 .footer .footer-content {
   text-align: center;
@@ -40,6 +42,14 @@
   margin-top: 5px;
 }
 
-#container {
-  /* margin-top: 10px; */
+/* #container {
+  margin-top: 10px;
+} */
+
+#slots a {
+  color: blue;
+}
+
+#pagination-div {
+  color:yellow;
 }

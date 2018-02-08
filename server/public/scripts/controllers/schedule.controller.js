@@ -134,17 +134,17 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
         var bg = '';
 
         switch (_d) {
-            case 1: bg = 'green'; break;
-            case 2: bg = 'darkBlue'; break;
-            case 3: bg = 'blue'; break;
-            case 4: bg = 'yellow'; break;
-            case 5: bg = 'pink'; break;
-            case 6: bg = 'darkBlue'; break;
-            case 7: bg = 'purple'; break;
-            case 8: bg = 'deepBlue'; break;
-            case 9: bg = 'lightPurple'; break;
-            case 10: bg = 'red'; break;
-            default: bg = 'yellow'; break;
+            case 1: bg = 'yellow'; break;
+            case 2: bg = 'green'; break;
+            // case 3: bg = 'blue'; break;
+            // case 4: bg = 'yellow'; break;
+            // case 5: bg = 'pink'; break;
+            // case 6: bg = 'darkBlue'; break;
+            // case 7: bg = 'purple'; break;
+            // case 8: bg = 'deepBlue'; break;
+            // case 9: bg = 'lightPurple'; break;
+            // case 10: bg = 'red'; break;
+            default: bg = 'green'; break;
         }
 
         return bg;
