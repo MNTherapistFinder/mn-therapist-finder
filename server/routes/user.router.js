@@ -40,7 +40,7 @@ router.get('/therapist', function (req, res) {
     } else {
       client.query(`SELECT therapists.full_name, therapists.email, therapists.profile_picture, 
       therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
-      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website,
+      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website,therapists.is_active, therapists.lng, therapists.lat, therapists.phone,
       array_agg(DISTINCT insurance_plans.id) AS insurance_id, array_agg(DISTINCT issues.id) AS issueid, 
       array_agg(DISTINCT specialties.id) AS specialty_id FROM therapists LEFT JOIN therapists_insurance_plans 
       ON therapists.id = therapists_insurance_plans.therapists_id LEFT JOIN insurance_plans 
@@ -50,7 +50,7 @@ router.get('/therapist', function (req, res) {
       ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 GROUP BY
       therapists.full_name, therapists.email, therapists.profile_picture, 
       therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
-      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
+      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website, therapists.is_active,therapists.lng, therapists.lat, therapists.phone;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
             console.log('error', errorMakingDatabaseQuery);
@@ -71,10 +71,10 @@ router.put('/therapist', function (req, res) {
     } else {
       client.query(`UPDATE therapists SET full_name = $1, email = $2, biography = $3, 
       workplace_street_address = $4, workplace_zipcode = $5, years_in_practice = $6, school = $7,
-       year_graduated=$8, license_number = $9, license_type=$10, website=$11, workplace= (CAST(ST_SetSRID(ST_Point($12, $13),4326) As geography)) WHERE id = $14`,
+       year_graduated=$8, license_number = $9, license_type=$10, website=$11, lng=$12, lat=$13, workplace= (CAST(ST_SetSRID(ST_Point($12, $13),4326) As geography)), profile_picture= $14, phone=$15 WHERE id = $16`,
         [req.body.full_name, req.body.email, req.body.biography, req.body.workplace_street_address,
         req.body.workplace_zipcode, req.body.years_in_practice, req.body.school, req.body.year_graduated,
-        req.body.licesne_number, req.body.license_type, req.body.website, req.body.lng, req.body.lat, req.user.id], function (errorMakingDatabaseQuery, result) {
+        req.body.licesne_number, req.body.license_type, req.body.website, req.body.lng, req.body.lat, req.body.profile_picture, req.body.phone, req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
             console.log('error', errorMakingDatabaseQuery);
