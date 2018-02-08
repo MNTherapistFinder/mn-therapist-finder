@@ -10,9 +10,7 @@
               <md-input-container class = "apptRequestModalInput">
                   <label>First and last name</label>
                   <input ng-model="patient.name" name = "name" required >
-                  <div ng-messages="requestForm.name.$error">
-                      <div ng-message="required">HELLO</div>
-                    </div>
+                  <div ng-messages="requestForm.name.$error"></div>
               </md-input-container>
 
               <md-input-container class = "apptRequestModalInput">
