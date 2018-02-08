@@ -429,6 +429,7 @@ md-input-container .md-input {
 #menu-open {
   font-size: 36px !important;
   color: #266B26;
+  background-color: #f8f8f8;
 }
 
 .close-btn {
@@ -447,7 +448,7 @@ md-input-container .md-input {
 }
 
 #side-nav-in {
-  /* background-color: #1CCE28; */
+  background-color: #f8f8f8;
   /* height:  */
   /* width: 40px; */
   /* margin-left: 10.5%; */
