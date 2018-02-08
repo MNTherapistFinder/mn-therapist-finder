@@ -3,9 +3,9 @@
 
 /* .gray { background: #f5f5f5; } */
 
-.green { background: #88BF44; }
+.darkGreen { background: #266B26; }
 
-.yellow { background: rgb(255, 196, 0); }
+.darkGrey { background: #3C3C3C; }
 
 /* .yellow { background: #ffff8d; }
 
@@ -46,51 +46,27 @@
   margin-top: 10px;
 } */
 
-/* #slots {
-  color: blue;
-} */
-
-/* .page {
-  background-color: #88BF44;
-  border: .5px solid #f8f8f8;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px;
+.every-date {
+  font-size: 22px;
   color: #f8f8f8;
-  text-decoration: none;
-  text-align: center;
-  width: 20px;
+  /* font-weight: bold; */
 }
 
-.no-under {
-  text-decoration: none;
+#avail-text {
+  font-size: 22px;
+  font-style: italic;
 }
 
-.page a:visited {
+.avail-times {
   background-color: #88BF44;
-  color: #f8f8f8;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  border-radius: 2px;
 }
 
-.page:active {
-  background-color: #f8f8f8;
-  color: #88BF44;
+.box-scroll {
+  height: 400px;
+  overflow-y: scroll;
 }
-
-.page:hover {
-  background-color: #f8f8f8;
-  color: #88BF44;
-} */
-
-#sched-page {
-  background-color: yellow;
-  color: pink;
-}
-
-#sched-page:hover {
-  background-color: pink;
-  color: yellow;
-}
-
-/* #sched-page:active {
-  color: blue;
-} */

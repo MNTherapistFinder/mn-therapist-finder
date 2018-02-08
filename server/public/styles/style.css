@@ -8,9 +8,9 @@ body, html {
 }
 
 button[disabled]{
-  border: 6px solid red;
-  background-color: red;
-  color: red;
+  /* border: 6px solid red; */
+  background-color: #88BF44 !important;
+  /* color: red; */
 }
 
 
@@ -185,6 +185,11 @@ ul {
 .btn-grey {
   background-color: #3C3C3C !important;
   color: #f8f8f8 !important;
+}
+
+.btn-white {
+  background-color: #f3f3f3 !important;
+  color: #3C3C3C !important;
 }
 
 input {
