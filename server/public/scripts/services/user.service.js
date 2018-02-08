@@ -193,9 +193,6 @@ myApp.service('UserService', function ($http, $location) {
 
   self.saveProfile = function (therapistObject) {
     console.log(therapistObject);
-    therapistObject.lng = therapistObject.workplace_street_address.lng;
-    therapistObject.lat = therapistObject.workplace_street_address.lat;
-    therapistObject.workplace_street_address = therapistObject.workplace_street_address.addressString;
     $http({
       url: 'user/therapist',
       method: 'PUT',

@@ -560,8 +560,13 @@ md-chips md-chip.md-focused {
   font-weight: bold;
 }
 
-#address {
-  width: 70%;
+
+.activeStatus {
+  color: green;
+}
+
+.notActiveStatus {
+  color: red;
 }
 
 #zip {

@@ -35,6 +35,9 @@
             <img ng-src="{{uc.therapist.list[0].profile_picture}}" ng-click="uc.openPicker()" ng-model="uc.therapist.list[0].profile_picture">
         </div>
         <form>
+            <b>Account Status:</b>
+            <p ng-show="uc.therapist.list[0].is_active" class="activeStatus">Active!</p>
+            <p ng-hide="uc.therapist.list[0].is_active" class="notActiveStatus">Not Active</p>
             <md-input-container class="therapist-input top-container">
                 <label>Email Address</label>
                 <input ng-model="uc.therapist.list[0].email" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
@@ -53,14 +56,14 @@
             <div layout="row">
                 <md-input-container id="address" class="therapist-input">
                     <!-- <label>Street Address</label> -->
-                    <input ng-model="uc.therapist.list[0].workplace_street_address" googleplace aria-label="google place">
+                    <input ng-model="uc.therapist.list[0].workplace_street_address" ng-change="uc.checkTherapistObjects()" lat="uc.therapist.list[0].lat" lng="uc.therapist.list[0].lng"  googleplace aria-label="google place">
 
                 </md-input-container>
-
+<!-- 
                 <md-input-container id="zip" class="therapist-input">
                     <label>Zip Code</label>
                     <input ng-model="uc.therapist.list[0].workplace_zipcode" ng-change="uc.checkTherapistObjects()">
-                </md-input-container>
+                </md-input-container> -->
             </div>
 
             <div layout="row">
@@ -97,8 +100,8 @@
         </div>
         <!-- <div layout="row">
             <div> -->
-                <!-- <h4 class="title">{{uc.therapist.list[0].license_type}}</h4> -->
-            <!-- </div> -->
+        <!-- <h4 class="title">{{uc.therapist.list[0].license_type}}</h4> -->
+        <!-- </div> -->
         <!-- </div> -->
 
         <!-- biography -->
@@ -129,15 +132,6 @@
                         </span>
                     </md-chip-template>
                 </md-chips>
-
-                <md-switch class="top-container" ng-model="data.cb1" aria-label="Switch 1">
-                    <label>Active?</label>
-                    Switch 1: {{ data.cb1 }}
-                    <br>
-                    <br>
-                </md-switch>
-                <p id="active">Profile must be set to active to appear in search results.</p>
-
             </div>
         </div>
     </div>
@@ -196,206 +190,22 @@
                 <br>
 
                 <div layout="column" layout-align="center end">
-                    <md-button ng-disabled="uc.therapistObjectsEqual" class="btn-dkgrn close-btn" ng-click="uc.saveProfile(uc.therapist.list[0]);">save changes</md-button>
+                    <md-button ng-disabled="uc.therapistObjectsEqual" class="btn-dkgrn close-btn" ng-click="uc.saveProfile(uc.therapist.list[0]);vm.therapistObjectsEqual=true">save changes</md-button>
+                    <p ng-hide="uc.therapistObjectsEqual">Changes Have Been Made! Please click the save changes button</p>
                 </div>
+                <br>
+                <div layout="column" layout-align="center end">
+                    <md-switch class="top-container" ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].is_active" aria-label="Switch 1">
+                        <label>Active?</label>
+                        {{ uc.therapist.list[0].is_active }}
+                        <br>
+                        <br>
+                    </md-switch>
+                    <p id="active">Profile must be set to active to appear in search results.</p>
                 {{uc.therapist}}
+                </div>
+
+                
             </div>
         </div>
     </div>
-
-
-    <!-- ORIGINAL CODE -->
-
-    <!-- FIRST COLUMN -->
-    <!-- <div id="leftColumn" layout="column" style="width:600px;">
-        <div layout="row">
-            <img style="height:300px; margin:20px;" ng-src="{{uc.therapist.list[0].profile_picture}}" ng-click="uc.openPicker()" ng-model="uc.therapist.list[0].profile_picture"
-                flex="60">
-        </div>
-        <div layout="row">
-            <md-input-container flex="60">
-                <label>Enter your email here</label>
-                <textarea style="border-style: solid;border-width:2px" ng-model="uc.therapist.list[0].email" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus></textarea>
-            </md-input-container> -->
-    <!-- <button ng-click="editEmailIcon = !editEmailIcon"><img src="images/edit.png" alt=""></button> -->
-    <!-- </div>
-        <div layout="row">
-            <md-input-container flex="60">
-                <label>Website Address</label>
-                <textarea style="border-style: solid;border-width:2px" rows="1" md-select-on-focus></textarea>
-            </md-input-container>
-        </div>
-        <div layout="row">
-            <md-input-container flex="60">
-                <label>Business Hours</label>
-                <textarea style="border-style: solid;border-width:2px" rows="1" md-select-on-focus></textarea>
-            </md-input-container>
-        </div>
-        <label for="">Active?</label>
-        <div layout="row">
-            <md-switch ng-model="data.cb1" aria-label="Switch 1">
-                Switch 1: {{ data.cb1 }}
-            </md-switch>
-        </div>
-    </div> -->
-
-    <!-- SECOND COLUMN -->
-
-    <!-- <div layout="column" style="width:800px;">
-        <div layout="row">
-            <div style="height: 100px;margin:20px" flex="60">
-                <h1 id="therapistTitle">{{uc.therapist.list[0].full_name}}</h1>
-            </div>
-        </div>
-        <div layout="row" flex>
-            <div style="height: 20px;margin:20px" flex="60">
-                <h3>Title, Qualifications</h3>
-            </div>
-        </div> -->
-    <!-- <br>
-        <br>
-        <br>
-        <br>
-        <div layout="row" id="biographyTextArea">
-            <md-input-container style="height:400px;margin:20px;" flex="60">
-                <label>Enter your Biography here</label>
-                <textarea style="border-style: solid;border-width:2px" ng-model="uc.therapist.list[0].biography" ng-change="uc.checkTherapistObjects()"
-                    md-maxlength="1500" rows="10" md-select-on-focus></textarea>
-            </md-input-container>
-        </div>
-        <div layout="row" id="healthcareTypeahead" flex>
-            <div style="height: 20px" flex="60">
-                <h3>Add or edit a Healthcare Provider</h3>
-                <br>
-                <md-autocomplete md-selected-item="uc.selectedInsurance" md-search-text="searchTextInsurance" md-items="provider in uc.healthcare.list | filter : searchTextInsurance "
-                    md-item-text="provider.insurance_name" md-min-length="0" placeholder="Add Healthcare Provider">
-
-                    <md-item-template>
-                        <span md-highlight-text="searchTextInsurance" md-highlight-flags="^i">{{provider.insurance_name}}</span>
-                    </md-item-template>
-
-
-
-                    <md-not-found>
-                        No issues matching "{{searchTextInsurance}}" were found.
-                        <a ng-click="newIssueHi(searchTextInsurance)">Please pick an issue from the list.</a>
-                    </md-not-found>
-                </md-autocomplete>
-                <button ng-click="uc.addHealthcareProvider(uc.selectedInsurance.id)">+</button>
-            </div>
-        </div>
-        {{uc.selectedInsurance}}
-        <div layout="row" id="userHealthcareListContainer" style="margin-top:150px;">
-
-            <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px" flex="60">
-                <ul style="text-align: center;padding-top:10px;" ng-repeat="healthcare in uc.therapist.list[0].insurance_plans" ng-change="uc.checkTherapistObjects()"
-                    ng-model="uc.therapist.list[0].insurance_plans">
-
-                    <li>
-                        {{healthcare.name}}
-                        <button ng-click="uc.deleteHealthcare(healthcare.id)">
-                            <img src="images/delete.png" alt="deleteIcon">
-                        </button>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
-
-    </div> -->
-
-    <!-- THIRD COLUMN -->
-
-    <!-- <div layout="column" style="width:800px;margin-top:50px;margin-bottom:60px;">
-        <div layout="row">
-            <div style="height:100px;" flex="60">
-                <button ng-disabled="uc.therapistObjectsEqual">Save your profile Changes</button>
-            </div>
-        </div>
-
-        <div layout="row" flex>
-            <div style="height: 20px" flex="60">
-                <h3>Add or edit a Specialty</h3>
-                <br>
-                <md-autocomplete md-selected-item="uc.selectedSpecialty" md-search-text="searchTextSpecialty" md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
-                    md-item-text="specialty.specialty_name" md-min-length="0" placeholder="What are you looking for help with?">
-
-                    <md-item-template>
-                        <span md-highlight-text="searchTextSpecialty" md-highlight-flags="^i">{{specialty.specialty_name}}</span>
-                    </md-item-template>
-
-
-
-                    <md-not-found>
-                        No issues matching "{{searchTextSpecialty}}" were found.
-                        <a ng-click="newSpecialty(searchTextSpecialty)">Please pick an issue from the list.</a>
-                    </md-not-found>
-                </md-autocomplete>
-                <button ng-click="uc.addSpecialty(uc.selectedSpecialty.id)">+</button>
-
-            </div>
-        </div>
-
-        <div layout="row" id="userTherapistListContainer">
-
-            <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px;margin-top:150px;" flex="60">
-                <ul style="text-align: center;padding-top:10px;" ng-repeat="specialty in uc.therapist.list[0].specialties" ng-model="uc.therapist.list[0].specialties"
-                    ng-change="uc.checkTherapistObjects()">
-
-                    <li>
-                        {{specialty.name}}
-                        <button ng-click="uc.deleteSpecialty(specialty.id)">
-                            <img src="images/delete.png" alt="deleteIcon">
-                        </button>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
-        <div layout="row" flex>
-            <div style="height: 20px" flex="60">
-                <h3>Add or edit an Issue</h3>
-                <br>
-                <md-autocomplete md-selected-item="uc.selectedItemIssuesHi" md-search-text="searchTextIssue" md-items="theIssue in uc.issues.list | filter : searchTextIssue "
-                    md-item-text="theIssue.issue_name" md-min-length="0" placeholder="What are you looking for help with?">
-
-                    <md-item-template>
-                        <span md-highlight-text="searchTextIssue" md-highlight-flags="^i">{{theIssue.issue_name}}</span>
-                    </md-item-template>
-
-
-
-                    <md-not-found>
-                        No issues matching "{{searchTextIssue}}" were found.
-                        <a ng-click="newIssueHi(searchTextIssue)">Please pick an issue from the list.</a>
-                    </md-not-found>
-                </md-autocomplete>
-                <button ng-click="uc.addUserIssue(uc.selectedItemIssuesHi.id)">+</button>
-
-            </div>
-        </div>
-
-        <div layout="row" id="userIssuesListContainer">
-
-            <div style="border-style: solid;border-width:2px;height:250px;margin-bottom:20px;margin-top:150px;" flex="60">
-                <ul style="text-align: center;padding-top:10px;" ng-repeat="thing in uc.therapist.list[0].issues" ng-model="uc.therapist.list[0].issues"
-                    ng-change="uc.checkTherapistObjects()">
-
-                    <li>
-                        {{thing.name}}
-                        <button ng-click="uc.deleteUserIssue(thing.id)">
-                            <img src="images/delete.png" alt="deleteIcon">
-                        </button>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
-    </div>
-
-
-
-</div> -->
