@@ -46,10 +46,51 @@
   margin-top: 10px;
 } */
 
-#slots a {
+/* #slots {
   color: blue;
+} */
+
+/* .page {
+  background-color: #88BF44;
+  border: .5px solid #f8f8f8;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  color: #f8f8f8;
+  text-decoration: none;
+  text-align: center;
+  width: 20px;
 }
 
-#pagination-div {
-  color:yellow;
+.no-under {
+  text-decoration: none;
 }
+
+.page a:visited {
+  background-color: #88BF44;
+  color: #f8f8f8;
+}
+
+.page:active {
+  background-color: #f8f8f8;
+  color: #88BF44;
+}
+
+.page:hover {
+  background-color: #f8f8f8;
+  color: #88BF44;
+} */
+
+#sched-page {
+  background-color: yellow;
+  color: pink;
+}
+
+#sched-page:hover {
+  background-color: pink;
+  color: yellow;
+}
+
+/* #sched-page:active {
+  color: blue;
+} */

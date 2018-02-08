@@ -4,7 +4,7 @@
 <!-- <h3 style="text-align:center;">Select a Button To Add an Available Time Slot</h3> -->
 <!-- <div class="container" layout-padding layout="row"> -->
 
-    <!-- sidebar -->
+<!-- sidebar -->
 <div class="container" layout-padding>
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
             <a href="#home">
@@ -31,6 +31,8 @@
             </md-content>
         </div>
 
+<!-- end sidebar -->
+
 <div layout="column" layout-align="">
 
     <div>
@@ -49,7 +51,7 @@
   
 
     <section layout="row">
-        <md-card class="md-whiteframe-2dp" flex="33">
+        <md-card class="md-whiteframe-2dp" flex>
             <md-card-content>
                 <h2>Available Times</h2>
                 <p layout="row" ng-repeat="a in sc.appointments | orderBy:'-available_times':true">
@@ -63,7 +65,7 @@
         </md-card>
 
         <div dir-paginate="d in sc.dates | itemsPerPage:7" pagination-id="days">
-            <md-content layout="row" flex="66">
+            <md-content layout="row" flex>
 
                 <md-card class="md-whiteframe-2dp" flex flex-sm="40" flex-xs="200" ng-class="sc.getColor($index)">
 
@@ -107,8 +109,7 @@
 
 <div layout-margin>
     <div layout="row" layout-align="center center">
-        <dir-pagination-controls pagination-id="days" max-size="5" direction-links="true" template-url="/views/partials/dirSchedulePagination.tpl.html"
-            auto-hide="true">
+        <dir-pagination-controls pagination-id="days" max-size="5" direction-links="true" template-url="/views/partials/dirPagination.tpl.html" auto-hide="false">
             <dir-pagination-controls>
     </div>
 </div>
