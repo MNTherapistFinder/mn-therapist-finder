@@ -20,7 +20,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdDialog','UserSe
 
     // Create date and slots array
     self.days = [{ dd: dd, mm: mm, yyyy: yyyy }, { dd: dd + 1, mm: mm, yyyy: yyyy }, { dd: dd + 2, mm: mm, yyyy: yyyy }, { dd: dd + 3, mm: mm, yyyy: yyyy }, { dd: dd + 4, mm: mm, yyyy: yyyy }, { dd: dd + 5, mm: mm, yyyy: yyyy }, { dd: dd + 6, mm: mm, yyyy: yyyy }, { dd: dd + 7, mm: mm, yyyy: yyyy }, { dd: dd + 8, mm: mm, yyyy: yyyy }, { dd: dd + 9, mm: mm, yyyy: yyyy }, { dd: dd + 10, mm: mm, yyyy: yyyy }, { dd: dd + 11, mm: mm, yyyy: yyyy }, { dd: dd + 12, mm: mm, yyyy: yyyy }, { dd: dd + 13, mm: mm, yyyy: yyyy }];
-    self.slots = [{ h: '9', m: '0' },{ h: '9', m: '30' }, { h: '10', m: '30' }, { h: '11', m: '0' }, { h: '11', m: '30' }, { h: '12', m: '00' }, { h: '12', m: '30' }, { h: '13', m: '0' }, { h: '13', m: '30' }, { h: '14', m: '0' }, { h: '14', m: '30' }, { h: '15', m: '0' }, { h: '15', m: '30' }, { h: '16', m: '0' }, { h: '16', m: '30' }, { h: '17', m: '0' }, { h: '17', m: '30' }, { h: '18', m: '0' }, { h: '18', m: '30' }, { h: '19', m: '0' }, { h: '19', m: '30' }, { h: '20', m: '0' }, { h: '20', m: '30' }, { h: '21', m: '0' } ];
+    self.slots = [{ h: '9', m: '0' }, { h: '10', m: '00' }, { h: '11', m: '0' }, { h: '12', m: '00' }, { h: '13', m: '0' }, { h: '14', m: '0' }, { h: '15', m: '0' }, { h: '16', m: '0' }, { h: '17', m: '0' }, { h: '18', m: '0' }, { h: '19', m: '0' }, { h: '20', m: '0' }, { h: '21', m: '0' } ];
     self.timeFrames = ["Morning", "Afternoon", "Evening"];
 
     self.getAppointments = function () {
