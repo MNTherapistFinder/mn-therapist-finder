@@ -1,38 +1,58 @@
 <header ng-include="'/views/partials/slimHeader.html'"></header>
 <link rel="stylesheet" href="styles/schedule-style.css">
-<h1 style="text-align:center;padding-top:15px;font-size:56px;"> Schedule for {{sc.userObject.list.name}}</h1>
-<h3 style="text-align:center;">Select a Button To Add an Available Time Slot</h3>
-<div class="container" layout-padding layout="row">
+<!-- <h1 style="text-align:center;padding-top:15px;font-size:56px;"> Schedule for {{sc.userObject.list.name}}</h1> -->
+<!-- <h3 style="text-align:center;">Select a Button To Add an Available Time Slot</h3> -->
+<!-- <div class="container" layout-padding layout="row"> -->
 
     <!-- sidebar -->
-
+<div class="container" layout-padding>
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
-        <a href="#home">
-            <img src="/images/mntf-logo-light.png" height="100">
-        </a>
-        <br>
-        <div layout="column" layout-align="center center">
-            <a href="#user">Profile</a>
+            <a href="#home">
+                <img src="/images/mntf-logo-light.png" height="100">
+            </a>
+            <br>
+            <div layout="column" layout-align="center center">
+                <a href="#user" class="profile-links">Profile</a>
+            </div>
+            <div layout="column" layout-align="center center">
+                <a href="#schedule" class="profile-links">Schedule</a>
+            </div>
+            <br>
+            <md-button class="btn-green close-btn" layout="column" layout-align="center center" ng-click="sc.openLeftMenu()">CLOSE</md-button>
+            <md-button class="btn-dkgrn close-btn" ng-click="sc.userService.logout()">Log Out</button>
+        </md-sidenav>
+    
+        <div layout="row">
+    
+            <md-content id="side-nav-in" layout="row" layout-align="start start">
+    
+                <i id="menu-open" class="material-icons" ng-click="sc.openLeftMenu()">menu</i>
+    
+            </md-content>
         </div>
-        <div layout="column" layout-align="center center">
-            <a href="#schedule">Schedule</a>
-        </div>
-        <br>
-        <md-button class="btn-green close-btn" layout="column" layout-align="center center" ng-click="sc.openLeftMenu()">CLOSE</md-button>
-        <md-button class="btn-dkgrn close-btn" ng-click="uc.userService.logout()">Log Out</button>
-    </md-sidenav>
 
-    <div layout="row">
+<div layout="column" layout-align="">
 
-        <md-content id="side-nav-in" layout="row" layout-align="start start">
-
-            <i id="menu-open" class="material-icons" ng-click="sc.openLeftMenu()">more_vert</i>
-
-        </md-content>
+    <div>
+<p id="schedule-name"> Schedule for {{sc.userObject.list.name}}</p>
+<p id="schedule-details">Select a Button To Add an Available Time Slot</p>
     </div>
 
+    <div layout="row">
+<!-- where dates and stuff go -->
+    </div>
 
+</div>
+
+<!-- main container div -->
+</div>
   
+    <md-input-container>
+        <label>Select a timeframe</label>
+        <md-select ng-model="sc.selectedItem" ng-change="sc.getAppointments(sc.selectedItem)"> 
+          <md-option ng-repeat="day in ['morning', 'afternoon', 'evening']" ng-value='day' >{{day}}</md-option>
+        </md-select>
+      </md-input-container>
 
     <section layout="row">
         <md-card class="md-whiteframe-24dp" flex="33">

@@ -52,11 +52,11 @@
 
 <div class="box-container" ng-show="sc.isCarouselView">
     <h1>Your Top Results:</h1>
-    <ui-carousel slides="sc.slides" slides-to-show="1" slides-to-scroll="1" initial-slide="0" autoplay="false" autoplay-speed="2000"
+    <ui-carousel id = "mainCarouselSlide" slides="sc.slides" slides-to-show="1" slides-to-scroll="1" initial-slide="0" autoplay="false" autoplay-speed="2000"
         dots="true">
 
         <carousel-item class="ui-carousel">
-            <div class="md-dialog-content">
+            <div class="md-dialog-content" id = "carouselModalContents">
                 <div layout="row">
                     <div id="therapistModalCol1">
                         <div class="therapist-modal-photo-container">
@@ -74,14 +74,21 @@
                         <p>{{item.biography | limitTo:300}}...</p>
                         <h3>Specialties:</h3>
                         <ul id="specialtiesBulletIcon">
-                            <li ng-show="item.specialties[0]">{{item.specialties[0]}}</li>
-                            <li ng-show="item.specialties[1]">{{item.specialties[1]}}</li>
-                            <li ng-show="item.specialties[2]">{{item.specialties[2]}}</li>
+                            <li ng-show="item.specialties[0]"><i class="material-icons">stars</i>{{item.specialties[0]}}</li>
+                            <li ng-show="item.specialties[1]"><i class="material-icons">stars</i>{{item.specialties[1]}}</li>
+                            <li ng-show="item.specialties[2]"><i class="material-icons">stars</i>{{item.specialties[2]}}</li>
                         </ul>
 
                     </div>
-                    <!-- <md-button> See full profile </md-button> -->
+              
                 </div>
+
+                <div id="therapist-modal-buttons-carousel" layout="row" layout-align="center center">
+                        <a  href="#directory/therapists/{{item.id}}"> 
+                            <button id = "carouselButton"class="btn-dkgrn md-raised">SEE FULL PROFILE </button>
+                        </a>
+
+                </div>  
             </div>
         </carousel-item>
 
@@ -102,7 +109,7 @@
 </div>
         <button ng-click="sc.isCarouselView =!sc.isCarouselView">Show All Results</button>
         <p style="text-align:center;">Not finding what you're looking for? Click
-            <a href="/#directory">here</a> for a list of all therapists</p>
+            <a href="#directory">here</a> for a list of all therapists</p>
 
 
         <div layout-margin>

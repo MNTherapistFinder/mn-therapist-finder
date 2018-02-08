@@ -1,10 +1,11 @@
-myApp.controller('UserController', ['$scope', '$mdSidenav', 'UserService', function ($scope, $mdSidenav, UserService) {
+myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', function ($scope, $mdSidenav, UserService) {
   console.log('UserController created');
   var vm = this;
   vm.therapist = UserService.therapist;
   $scope.therapist = UserService.therapist;
   vm.therapistOld = UserService.therapistOld;
   vm.therapistObjectsEqual = true;
+
 
 
 
@@ -50,6 +51,10 @@ myApp.controller('UserController', ['$scope', '$mdSidenav', 'UserService', funct
   $scope.issueIdToPass = 'hey'
   $scope.editEmailIcon = false;
 
+
+
+
+
   vm.hello = function () {
     console.log('please work');
   }
@@ -59,32 +64,37 @@ myApp.controller('UserController', ['$scope', '$mdSidenav', 'UserService', funct
     console.log('in filestack');
     vm.client.pick({
       fromSources: ["local_file_system", "imagesearch", "facebook", "instagram", "dropbox"],
-      transformations:{
-        crop:{      
-        force:true,
-        aspectRatio:1}}
+      transformations: {
+        crop: {
+          force: true,
+          aspectRatio: 1
+        }
+      }
     }).then(function (response) {
       // declare this function to handle response
       console.log(response.filesUploaded[0].url);
+      vm.therapist.list[0].profile_picture = response.filesUploaded[0].url;
+
+      vm.checkTherapistObjects();
+      $scope.$apply();
+      console.log(vm.therapist.list[0].profile_picture)
     });
   }
 
   vm.checkTherapistObjects = function () {
     console.log('in function')
     if (vm.therapist == vm.therapistOld) {
-      console.log('true hit')
       vm.therapistObjectsEqual = true
     } else {
-      console.log('false hit');
       vm.therapistObjectsEqual = false;
     }
   }
-vm.updateProfile = function(therapist) {
-console.log(therapist)
-}
+  vm.updateProfile = function (therapist) {
+    console.log(therapist)
+  }
 
   vm.findNameById = function (arr, theId) {
-    for (var i=0;i<arr.length;i++){
+    for (var i = 0; i < arr.length; i++) {
       if (arr[i].id == theId) {
         return arr[i]
       }
@@ -100,36 +110,40 @@ console.log(therapist)
 
 myApp.directive('googleplace', function () {
   var minnesotaBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(43.306193, -96.547852),
-      new google.maps.LatLng(48.673733, -89.692383))
+    new google.maps.LatLng(43.306193, -96.547852),
+    new google.maps.LatLng(48.673733, -89.692383))
 
   return {
-      require: 'ngModel',
-      link: function (scope, element, attrs, model) {
-          var options = {
-              bounds: minnesotaBounds,
-          };
+    require: 'ngModel', 
+    scope: {
+      'lat': '=',
+      'lng': '='
+    },
+    link: function (scope, element, attrs, model) {
+      var options = {
+        bounds: minnesotaBounds,
+      };
 
-          scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
-          var geocoder = new google.maps.Geocoder();
+      scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+      var geocoder = new google.maps.Geocoder();
 
-          google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
-              geocoder.geocode({ 'address': element.val() }, function (results, status) {
+      google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
+        geocoder.geocode({ 'address': element.val() }, function (results, status) {
 
-                  if (status === 'OK') {
-                      var lat = results[0].geometry.location.lat();
-                      var lng = results[0].geometry.location.lng();
-                      scope.$apply(function () {
-                          model.$setViewValue({ lng: lng,lat:lat, addressString: element.val() });
-                      });
-                  }
-              });
+          if (status === 'OK') {
+             scope.lat = results[0].geometry.location.lat();
+             scope.lng = results[0].geometry.location.lng();
+            scope.$apply(function () {
+              model.$setViewValue(element.val());
+            });
+          }
+        });
 
-              // console.log(element.val())
-              // scope.$apply(function () {
-              //     model.$setViewValue({});
-              // });
-          });
-      }
+        // console.log(element.val())
+        // scope.$apply(function () {
+        //     model.$setViewValue({});
+        // });
+      });
+    }
   };
 });

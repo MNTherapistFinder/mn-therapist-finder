@@ -109,9 +109,6 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
   }
 
 
-
-
-
   self.appointmentForm = function (date, therapist_email, therapist) {
     var date = moment(date, 'LT').format('LLL')
     console.log(date)
@@ -134,6 +131,12 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
           console.log('in showApptConfirmModal')
           $mdDialog.show({
             templateUrl: '/views/partials/apptRequestConfirm.modal.html',
+            controller: "ModalController as mc",
+            locals: {
+              modalData: {
+                event: event
+              }
+            }
           })
         };
 
@@ -147,8 +150,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
           }).then(function (response) {
             console.log(response.data);
             if (response.data == 'sent') {
-
-
+              $scope.showApptConfirmModal();
               $scope.greeting = 'Email reqest has been sent'
               console.log(self.greeting);
             }

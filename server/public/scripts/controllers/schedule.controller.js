@@ -10,7 +10,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
     self.$mdDialog = $mdDialog;
     self.appointments = [];
     self.dates = [];
-    console.log(self.userObject, 'hasidopfhjasokjd');
+    console.log(self.userObject);
 
     // Configure dates
     var today = new Date();
@@ -20,12 +20,22 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
 
 
     // Create date and slots array
-    self.morningSlots = [{ h: '8', m: '0' }, { h: '8', m: '30' }, { h: '9', m: '0' }, { h: '9', m: '30' }, { h: '10', m: '30' }, { h: '11', m: '0' }, { h: '11', m: '30' }];
+    self.morningSlots = [{ h: '7', m: '0' },{ h: '8', m: '0' }, { h: '9', m: '0' }, { h: '10', m: '0' }, { h: '11', m: '0' }, { h: '12', m: '0' }];
+    self.afternoonSlots =[{ h: '13', m: '0' }, { h: '14', m: '0' }, { h: '15', m: '0' }, { h: '16', m: '0' }, { h: '17', m: '0' }, { h: '18', m: '0' }];
+    self.eveningSlots = [{ h: '19', m: '0' }, { h: '20', m: '0' }, { h: '21', m: '0' }, { h: '22', m: '0' }, { h: '23', m: '0' }];
     self.days = [{ dd: dd, mm: mm, yyyy: yyyy }, { dd: dd + 1, mm: mm, yyyy: yyyy }, { dd: dd + 2, mm: mm, yyyy: yyyy }, { dd: dd + 3, mm: mm, yyyy: yyyy }, { dd: dd + 4, mm: mm, yyyy: yyyy }, { dd: dd + 5, mm: mm, yyyy: yyyy }, { dd: dd + 6, mm: mm, yyyy: yyyy }, { dd: dd + 7, mm: mm, yyyy: yyyy }, { dd: dd + 8, mm: mm, yyyy: yyyy }, { dd: dd + 9, mm: mm, yyyy: yyyy }, { dd: dd + 10, mm: mm, yyyy: yyyy }, { dd: dd + 11, mm: mm, yyyy: yyyy }, { dd: dd + 12, mm: mm, yyyy: yyyy }, { dd: dd + 13, mm: mm, yyyy: yyyy }];
-    self.slots = [{ h: '9', m: '0' }, { h: '9', m: '30' }, { h: '10', m: '30' }, { h: '11', m: '0' }, { h: '11', m: '30' }, { h: '12', m: '00' }, { h: '12', m: '30' }, { h: '13', m: '0' }, { h: '13', m: '30' }, { h: '14', m: '0' }, { h: '14', m: '30' }, { h: '15', m: '0' }, { h: '15', m: '30' }, { h: '16', m: '0' }, { h: '16', m: '30' }, { h: '17', m: '0' }, { h: '17', m: '30' }, { h: '18', m: '0' }, { h: '18', m: '30' }, { h: '19', m: '0' }, { h: '19', m: '30' }, { h: '20', m: '0' }, { h: '20', m: '30' }, { h: '21', m: '0' }];
+    self.slots = []
     self.timeFrames = ["Morning", "Afternoon", "Evening"];
 
-    self.getAppointments = function (fgjsfd) {
+    self.getAppointments = function (timeOfDay) {
+        console.log(timeOfDay)
+       if (timeOfDay == "afternoon"){
+           timeOfDay = self.afternoonSlots
+       } else if (timeOfDay == 'morning'){
+           timeOfDay = self.morningSlots
+       } else if (timeOfDay == 'evening') {
+            timeOfDay = self.eveningSlots
+       }
         console.log('get Hit');
         $http.get('/schedule').then(response => {
             console.log('response is in getAppointments, ', response.data)
@@ -33,12 +43,14 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
             self.appointments = response.data
             console.log('self.appointments in get appointments function: ', self.appointments);
 
-            self.dates = self.allot(self.slots, self.days, self.appointments);
-            console.log(self.dates.days);
+            self.dates = self.allot(timeOfDay, self.days, self.appointments);
+            console.log('time of day after function', timeOfDay)
+            console.log(self.dates);
 
         });
     }
-    self.getAppointments()
+    
+    self.getAppointments(self.morningSlots)
 
 
 
@@ -49,7 +61,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
         console.log(appointmentToSave.date)
         self.$http.post('/schedule', { available_from: appointmentToSave.date }).then(res => {
             self.dates = self.allot(self.slots, self.days, self.appointments);
-            self.getAppointments();
+            self.getAppointments(self.morningSlots);
             // self.$http.get('/schedule').then(response => {
             //     console.log('GET REQUEST AFTER SAVE', response.data);
             //     self.appointments = response.data[0].available_times;
@@ -124,7 +136,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
             method: 'DELETE',
             url: '/schedule/' + time.available_time_id
         }).then(function (response) {
-            self.getAppointments()
+            self.getAppointments(self.morningSlots)
         })
 
     }
