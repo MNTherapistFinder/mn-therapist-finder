@@ -1,0 +1,65 @@
+{
+  "_args": [
+    [
+      "angular-messages@1.6.8",
+      "/Users/stephanieratanas/Documents/elnath/mn-therapist-finder"
+    ]
+  ],
+  "_from": "angular-messages@1.6.8",
+  "_id": "angular-messages@1.6.8",
+  "_inBundle": false,
+  "_integrity": "sha512-t8t3RA26KLScraeeE0FF9wflYO3txs+ND1A1L3nXT73bI99WjRgesNoh6eXc6206lksP+zEvGQTG1q1VU3rafQ==",
+  "_location": "/angular-messages",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "angular-messages@1.6.8",
+    "name": "angular-messages",
+    "escapedName": "angular-messages",
+    "rawSpec": "1.6.8",
+    "saveSpec": null,
+    "fetchSpec": "1.6.8"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.6.8.tgz",
+  "_spec": "1.6.8",
+  "_where": "/Users/stephanieratanas/Documents/elnath/mn-therapist-finder",
+  "author": {
+    "name": "Angular Core Team",
+    "email": "angular-core+npm@google.com"
+  },
+  "bugs": {
+    "url": "https://github.com/angular/angular.js/issues"
+  },
+  "description": "AngularJS module that provides enhanced support for displaying messages within templates",
+  "homepage": "http://angularjs.org",
+  "jspm": {
+    "shim": {
+      "angular-messages": {
+        "deps": [
+          "angular"
+        ]
+      }
+    }
+  },
+  "keywords": [
+    "angular",
+    "framework",
+    "browser",
+    "client-side"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "angular-messages",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.6.8"
+}

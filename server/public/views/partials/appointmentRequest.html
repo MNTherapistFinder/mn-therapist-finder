@@ -1,5 +1,5 @@
 <md-dialog aria-label="" ng-cloak  flex-sm="100" id = "apptRequestDialogBox" >
-  <form ng-submit="emailRequest(patient)"> 
+  <form ng-submit="emailRequest(patient)" name = "requestForm"> 
 
         <div layout="row">
         <div id = "apptRequestModalCol1">       
@@ -9,22 +9,23 @@
               <h4>{{patient.date}}</h4>
               <md-input-container class = "apptRequestModalInput">
                   <label>First and last name</label>
-                  <input ng-model="patient.name" >
-                  <div ng-messages="patient.name.$error">
-                      <div ng-message="required">This is required!</div>
-                      <div ng-message="md-maxlength">That's too long!</div>
-                      <div ng-message="minlength">That's too short!</div>
+                  <input ng-model="patient.name" name = "name" required >
+                  <div ng-messages="requestForm.name.$error">
+                      <div ng-message="required">HELLO</div>
                     </div>
               </md-input-container>
 
               <md-input-container class = "apptRequestModalInput">
                 <label for="email">Email</label>
-                <input type="email" ng-model="patient.email">
+                <input type="email" ng-model="patient.email" name = "email" required>
+                <div ng-messages="requestForm.email.$error"></div>
               </md-input-container>
 
               <md-input-container class = "apptRequestModalInput">
                     <label>Phone Number</label>
-                   <input type="number" ng-model="patient.number">
+                   <input type="number" ng-model="patient.number" name = "phone" required>
+                   <div ng-messages="requestForm.phone.$error"></div>
+
                 </md-input-container>
 
               <md-input-container layout-align="center center">
