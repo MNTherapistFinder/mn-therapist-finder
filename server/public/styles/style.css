@@ -787,6 +787,10 @@ margin-bottom:-20px
   border-left:1px solid black;
 }
 
+#apptRequestModalContentLeft{
+  background-color:#f8f8f8;
+}
+
 /* appt request modal end */
 
 /* appt request confirm modal */
@@ -794,4 +798,8 @@ margin-bottom:-20px
 #apptConfirmDialogBox{
   width: 700px;
   background-color:#f8f8f8;
+  align-content: center;
+}
+#checkIcon {
+  size: 70px !important;
 }
