@@ -57,7 +57,9 @@ myApp.directive('googleplace', function () {
                         var lat = results[0].geometry.location.lat();
                         var lng = results[0].geometry.location.lng();
                         console.log('longitude and lat', lng, lat);
-                        
+                
+                        console.log('hey')
+
                         scope.$apply(function () {
                             model.$setViewValue({ lng: lng,lat:lat, addressString: element.val() });
                         });
