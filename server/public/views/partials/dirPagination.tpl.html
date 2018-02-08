@@ -4,9 +4,9 @@
         <a class="no-under" href="" ng-click="setCurrent(1)">&laquo;</a>
     </li>
     <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }">
-        <a class="no-under" href="" ng-click="setCurrent(pagination.current - 1)"><div class="page">&lsaquo;</div></a>
+        <a class="no-under" href="" ng-click="setCurrent(pagination.current - 1)"><div id="" class="page">&lsaquo;</div></a>
     </li>
-    <li ng-repeat="pageNumber in pages track by tracker(pageNumber, $index)" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
+    <li ng-repeat="pageNumber in pages track by tracker(pageNumber, $index)" id="sched-page" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
         <a class="no-under" href="" ng-click="setCurrent(pageNumber)"><div class="page">{{ pageNumber }}</div></a>
     </li>
     <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }">
