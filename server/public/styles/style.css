@@ -413,7 +413,8 @@ md-input-container .md-input {
 } */
 
 #therapist-modal-buttons {
-  margin-bottom: 15px;
+  margin-bottom: 30px !important;
+  margin-top: 5px;
 }
 
 .modal-name {
@@ -480,7 +481,7 @@ md-input-container .md-input {
 }
 
 #emailIcon{
-  font-size: 70px;
+  font-size: 70px !important;
   padding-bottom: -10px;
 }
 
@@ -668,6 +669,16 @@ textarea {
 #carousel{
   width: 25%;
 }
+
+#mainCarouselSlide {
+  height:375px;
+}
+
+#therapist-modal-buttons-carousel {
+  margin-bottom: 30px !important;
+  margin-top: 5px;
+}
+
 .box-container {
   width: 800px;
   height: 800px;
@@ -688,6 +699,11 @@ textarea {
 .slider {
   -webkit-box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32); 
 box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32);
+}
+
+#carouselModalContents {
+  padding:25px;
+ 
 }
 
 #apptButton {

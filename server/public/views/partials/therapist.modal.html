@@ -16,7 +16,7 @@
                                         <strong>
                                                 <p class="modal-name">{{mc.modalData.event.license_type}}</p>
                                         </strong>
-                                        <p>{{mc.modalData.event.bio_preview}}</p>
+                                        <p>{{mc.modalData.event.biography | limitTo : 300}}...</p>
                                         <h3>Specialties:</h3>
                                         <ul ng-repeat="specialties in mc.modalData.event.specialties">
                                                 <li><i class="material-icons">stars</i>{{specialties}}</li>
@@ -31,5 +31,5 @@
                 <md-button class="btn-green md-raised" ng-click="mc.close()"> Close </md-button>
                 <md-button class="btn-dkgrn md-raised" ng-click="mc.close()" href="#directory/therapists/{{mc.modalData.event.id}}"> See full profile </md-button>
         </md-dialog-actions>
-
+<br>
 </md-dialog>
