@@ -17,7 +17,7 @@ myApp.controller('UserController', ['$scope', '$mdSidenav', 'UserService', funct
   vm.getIssuesList = UserService.getIssuesList;
   vm.getHealthcareList = UserService.getHealthcareList;
   vm.getSpecialtiesList = UserService.getSpecialtiesList;
-
+  vm.saveProfile = UserService.saveProfile;
 
   vm.deleteUserIssue = UserService.deleteUserIssue;
   vm.deleteHealthcare = UserService.deleteHealthcare;
@@ -95,3 +95,41 @@ console.log(therapist)
 
 
 }]);
+
+
+
+myApp.directive('googleplace', function () {
+  var minnesotaBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(43.306193, -96.547852),
+      new google.maps.LatLng(48.673733, -89.692383))
+
+  return {
+      require: 'ngModel',
+      link: function (scope, element, attrs, model) {
+          var options = {
+              bounds: minnesotaBounds,
+          };
+
+          scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+          var geocoder = new google.maps.Geocoder();
+
+          google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
+              geocoder.geocode({ 'address': element.val() }, function (results, status) {
+
+                  if (status === 'OK') {
+                      var lat = results[0].geometry.location.lat();
+                      var lng = results[0].geometry.location.lng();
+                      scope.$apply(function () {
+                          model.$setViewValue({ lng: lng,lat:lat, addressString: element.val() });
+                      });
+                  }
+              });
+
+              // console.log(element.val())
+              // scope.$apply(function () {
+              //     model.$setViewValue({});
+              // });
+          });
+      }
+  };
+});

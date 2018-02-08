@@ -52,8 +52,9 @@
 
             <div layout="row">
                 <md-input-container id="address" class="therapist-input">
-                    <label>Street Address</label>
-                    <input ng-model="uc.therapist.list[0].workplace_street_address" ng-change="uc.checkTherapistObjects()">
+                    <!-- <label>Street Address</label> -->
+                    <input ng-model="uc.therapist.list[0].workplace_street_address" googleplace aria-label="google place">
+
                 </md-input-container>
 
                 <md-input-container id="zip" class="therapist-input">
@@ -65,7 +66,7 @@
             <div layout="row">
                 <md-input-container id="address" class="therapist-input">
                     <label>Education</label>
-                    <input ng-model="uc.therapist.list[0].schoool" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
+                    <input ng-model="uc.therapist.list[0].school" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
                 </md-input-container>
 
                 <md-input-container id="zip" class="therapist-input">
@@ -195,9 +196,9 @@
                 <br>
 
                 <div layout="column" layout-align="center end">
-                    <md-button ng-click="uc.updateProfile(uc.therapist.list[0])"  ng-disabled="uc.therapistObjectsEqual" class="btn-dkgrn close-btn">save changes</md-button>
+                    <md-button ng-disabled="uc.therapistObjectsEqual" class="btn-dkgrn close-btn" ng-click="uc.saveProfile(uc.therapist.list[0]);">save changes</md-button>
                 </div>
-
+                {{uc.therapist}}
             </div>
         </div>
     </div>
