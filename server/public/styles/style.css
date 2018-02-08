@@ -364,10 +364,10 @@ md-input-container .md-input {
 /* therapist profile modal */
 
 /* This here is not working */
-#registerConfirmModal {
+/* #registerConfirmModal { */
   /* text-align: center; */
-  width: 800px;
-}
+  /* width: 800px;
+} */
 
 .therapist-modal-photo-container {
   height: 200px;
@@ -394,19 +394,13 @@ md-input-container .md-input {
   margin-left: 25px;
 }
 
-#therapistModalCol3{
+/* #therapistModalCol3{
   width: 25%;
   padding: 5px;
   margin-left:5px;
-}
+} */
 
-/* #specialtiesBulletIcon {
-  list-style-image: url('/images/ic_stars_black_18dp_1x.png') !important;
-  /* list-style-type: circle !important; */
-  overflow: visible !important;
-  vertical-align: bottom;
-  margin-left: 25px;
-}
+
 
 #issuesBulletIcon {
   list-style: disc !important;
