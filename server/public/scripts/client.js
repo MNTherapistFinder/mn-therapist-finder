@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngAnimate','ui.carousel', 'angularUtils.directives.dirPagination']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngAnimate','ui.carousel', 'angularUtils.directives.dirPagination', 'ngMessages']);
 
 /// Routes ///
 myApp.config(function ($routeProvider, $locationProvider) {

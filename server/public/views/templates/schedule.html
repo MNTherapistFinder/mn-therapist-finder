@@ -47,6 +47,12 @@
 <!-- main container div -->
 </div>
   
+    <md-input-container>
+        <label>Select a timeframe</label>
+        <md-select ng-model="sc.selectedItem" ng-change="sc.getAppointments(sc.selectedItem)"> 
+          <md-option ng-repeat="day in ['morning', 'afternoon', 'evening']" ng-value='day' >{{day}}</md-option>
+        </md-select>
+      </md-input-container>
 
     <section layout="row">
         <md-card class="md-whiteframe-2dp" flex="33">
