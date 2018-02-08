@@ -64,6 +64,7 @@ router.get('/therapist', function (req, res) {
 });
 
 router.put('/therapist', function (req, res) {
+  console.log('HEYYYYY', req.body.is_active);
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
       console.log('error', errorConnectingToDatabase);
@@ -71,10 +72,10 @@ router.put('/therapist', function (req, res) {
     } else {
       client.query(`UPDATE therapists SET full_name = $1, email = $2, biography = $3, 
       workplace_street_address = $4, workplace_zipcode = $5, years_in_practice = $6, school = $7,
-       year_graduated=$8, license_number = $9, license_type=$10, website=$11, lng=$12, lat=$13, workplace= (CAST(ST_SetSRID(ST_Point($12, $13),4326) As geography)), profile_picture= $14, phone=$15 WHERE id = $16`,
+       year_graduated=$8, license_number = $9, license_type=$10, website=$11, lng=$12, lat=$13, workplace= (CAST(ST_SetSRID(ST_Point($12, $13),4326) As geography)), profile_picture= $14, phone=$15, is_active=$16 WHERE id = $17`,
         [req.body.full_name, req.body.email, req.body.biography, req.body.workplace_street_address,
         req.body.workplace_zipcode, req.body.years_in_practice, req.body.school, req.body.year_graduated,
-        req.body.licesne_number, req.body.license_type, req.body.website, req.body.lng, req.body.lat, req.body.profile_picture, req.body.phone, req.user.id], function (errorMakingDatabaseQuery, result) {
+        req.body.licesne_number, req.body.license_type, req.body.website, req.body.lng, req.body.lat, req.body.profile_picture, req.body.phone,req.body.is_active, req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
             console.log('error', errorMakingDatabaseQuery);
