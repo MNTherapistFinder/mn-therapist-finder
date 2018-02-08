@@ -201,7 +201,7 @@ myApp.service('UserService', function ($http, $location) {
       method: 'PUT',
       data: therapistObject
     }).then(function (response) {
-      console.log(response);
+      console.log(response)
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];
