@@ -152,7 +152,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
             if (response.data == 'sent') {
               $scope.showApptConfirmModal();
               $scope.greeting = 'Email reqest has been sent'
-              console.log(self.greeting);
+              console.log($scope.greeting);
             }
           })
         }
