@@ -1,71 +1,114 @@
+<header ng-include="'/views/partials/slimHeader.html'"></header>
 <link rel="stylesheet" href="styles/schedule-style.css">
-<h1> Schedule</h1>
+<!-- <h1 style="text-align:center;padding-top:15px;font-size:56px;"> Schedule for {{sc.userObject.list.name}}</h1> -->
+<!-- <h3 style="text-align:center;">Select a Button To Add an Available Time Slot</h3> -->
+<!-- <div class="container" layout-padding layout="row"> -->
 
-<section layout="row">
+    <!-- sidebar -->
+<div class="container" layout-padding>
+    <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
+            <a href="#home">
+                <img src="/images/mntf-logo-light.png" height="100">
+            </a>
+            <br>
+            <div layout="column" layout-align="center center">
+                <a href="#user" class="profile-links">Profile</a>
+            </div>
+            <div layout="column" layout-align="center center">
+                <a href="#schedule" class="profile-links">Schedule</a>
+            </div>
+            <br>
+            <md-button class="btn-green close-btn" layout="column" layout-align="center center" ng-click="sc.openLeftMenu()">CLOSE</md-button>
+            <md-button class="btn-dkgrn close-btn" ng-click="sc.userService.logout()">Log Out</button>
+        </md-sidenav>
+    
+        <div layout="row">
+    
+            <md-content id="side-nav-in" layout="row" layout-align="start start">
+    
+                <i id="menu-open" class="material-icons" ng-click="sc.openLeftMenu()">menu</i>
+    
+            </md-content>
+        </div>
+
+<div layout="column" layout-align="">
+
+    <div>
+<p id="schedule-name"> Schedule for {{sc.userObject.list.name}}</p>
+<p id="schedule-details">Select a Button To Add an Available Time Slot</p>
+    </div>
+
+    <div layout="row">
+<!-- where dates and stuff go -->
+    </div>
+
+</div>
+
+<!-- main container div -->
+</div>
+  
+
+    <section layout="row">
         <md-card class="md-whiteframe-24dp" flex="33">
-                <md-card-content>
-                    <h2>Times I Am Avaliable</h2>
-                    <p layout="row" ng-repeat="a in sc.appointments | orderBy:'-available_times':true">
-                        {{a.available_times| date:'MMM-dd @ h:mma' }}
-                        <md-button  ng-click="sc.deleteTime(a)" class="md-icon-button" aria-label="Delete">
-                                <i class="material-icons">delete_forever</i>
-                        </md-button>    
-                    </p>
-                </md-card-content>
-                <md-card-footer></md-card-footer>
-            </md-card>
-            
-        <div dir-paginate="d in sc.dates | itemsPerPage:7" pagination-id="days" >
-    <md-content layout="row" flex="66" >
-        
-        <md-card class="md-whiteframe-24dp" flex flex-sm="40" flex-xs="200" ng-class="sc.getColor($index)">
+            <md-card-content>
+                <h2>Times I Am Avaliable</h2>
+                <p layout="row" ng-repeat="a in sc.appointments | orderBy:'-available_times':true">
+                    {{a.available_times| date:'MMM-dd @ h:mma' }}
+                    <md-button ng-click="sc.deleteTime(a)" class="md-icon-button" aria-label="Delete">
+                        <i class="material-icons">delete_forever</i>
+                    </md-button>
+                </p>
+            </md-card-content>
+            <md-card-footer></md-card-footer>
+        </md-card>
 
-            <md-card-content layout-wrap  >
-                
-                <h2>{{d.k | date}}</h2> 
-              
-                <p layout="column" >     
-                <!-- <md-switch ng-model="data.cb2" aria-label="Switch 2" ng-true-value="'very active'" ng-false-value="'very not active'" class="md-warn">
+        <div dir-paginate="d in sc.dates | itemsPerPage:7" pagination-id="days">
+            <md-content layout="row" flex="66">
+
+                <md-card class="md-whiteframe-24dp" flex flex-sm="40" flex-xs="200" ng-class="sc.getColor($index)">
+
+                    <md-card-content layout-wrap>
+
+                        <h2>{{d.k | date}}</h2>
+
+                        <p layout="column">
+                            <!-- <md-switch ng-model="data.cb2" aria-label="Switch 2" ng-true-value="'very active'" ng-false-value="'very not active'" class="md-warn">
                                     Active: {{ data.cb2 }}
                                   </md-switch> -->
-                                  
-                    <div dir-paginate="slot in d.v | itemsPerPage:8" pagination-id="slots" >
-                    <md-button class="md-warn md-raised" 
-                    ng-click="sc.showAdvanced(slot)"
-                    ng-disabled="!slot.active"
-                    flex>
-                        {{slot.date | date:'h:mma'}}
-                        
-                    </md-button>
 
-                </div>
-            
-                </p>
-                <dir-pagination-controls pagination-id="slots"></dir-pagination-controls>
+                            <div dir-paginate="slot in d.v | itemsPerPage:8" pagination-id="slots">
+                                <md-button class="md-warn md-raised" ng-click="sc.showAdvanced(slot)" ng-disabled="!slot.active" flex>
+                                    {{slot.date | date:'h:mma'}}
 
-            </div>
+                                </md-button>
 
-            
-            </md-card-content>
-            <md-card-footer>            
+                            </div>
 
-            </md-card-footer>
-        </md-card>
-        
-    </md-content>
-    
-  </div>
-  
-    </section>
-    
-  
-    
-    
-    <div layout-margin>
-            <div layout="row" layout-align="center center">
-                <dir-pagination-controls pagination-id="days" max-size="5" direction-links="true" template-url="/views/partials/dirPagination.tpl.html"
-                    auto-hide="true">
-                    <dir-pagination-controls>
-            </div>
+                        </p>
+                        <dir-pagination-controls pagination-id="slots"></dir-pagination-controls>
+
         </div>
-    
+
+
+        </md-card-content>
+        <md-card-footer>
+
+        </md-card-footer>
+        </md-card>
+
+        </md-content>
+
+</div>
+
+</section>
+
+
+
+
+<div layout-margin>
+    <div layout="row" layout-align="center center">
+        <dir-pagination-controls pagination-id="days" max-size="5" direction-links="true" template-url="/views/partials/dirPagination.tpl.html"
+            auto-hide="true">
+            <dir-pagination-controls>
+    </div>
+</div>

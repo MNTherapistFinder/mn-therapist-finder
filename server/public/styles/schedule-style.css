@@ -27,3 +27,19 @@
   margin-top: 70px;
   border-top: 1px solid #E5E5E5;
 }
+
+#schedule-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+#schedule-details {
+  font-size: 16px;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+#container {
+  /* margin-top: 10px; */
+}

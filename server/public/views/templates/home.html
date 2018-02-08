@@ -9,21 +9,21 @@
 
       <!-- Zip code search box -->
       <div layout="row">
-      <div class="md-whiteframe" id="top-search" layout="row" layout-align="space-around center">
+      <div class="md-whiteframe" md-whiteframe="2" id="top-search" layout="row" layout-align="space-around center">
         <md-input-container class="search-input search-bars">
           <!-- <label>Enter your location</label> -->
           <input ng-model="hc.searchObject.location" googleplace aria-label="google place" ng-keyup="hc.runOnEnter()">
         </md-input-container>
 
         <div layout="row" layout-align="center center">
-        <md-button class="btn-dkgrn md-raised" ng-click="showme=true;hc.searchZipCodes();hideHsButtons=true">Next</md-button>
-        <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
+        <md-button class="btn-dkgrn" ng-click="showme=true;hc.searchZipCodes();hideHsButtons=true">Next</md-button>
+        <!-- <md-button class="btn-dkgrn" ng-click="">Skip</md-button> -->
       </div>
       </div>
     </div>
 
       <!-- Issues search box -->
-      <div class="md-whiteframe" layout="row" layout-align="space-around center" ng-show="showme">
+      <div class="md-whiteframe" md-whiteframe="2" layout="row" layout-align="space-around center" ng-show="showme">
         <!-- <h4>Struggles:</h4> -->
         <div class="search-input">
         <md-autocomplete class="search-bars" md-selected-item="hc.searchObject.issues" md-search-text="hc.searchText" md-items="item in hc.issuesTwo.list | filter : hc.searchText "
@@ -41,13 +41,14 @@
       </div>
 
       <div layout-align="center center">
-        <md-button class="btn-dkgrn md-raised" ng-click="showme2=true">Next</md-button>
-        <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
+        <md-button class="btn-dkgrn" ng-click="showme2=true">Next</md-button>
+        <!-- <md-button class="btn-dkgrn" ng-click="">Skip</md-button> -->
       </div>
       </div>
 
       <!-- Insurance Search box -->
-      <div class="md-whiteframe" layout="row" layout-align="space-around center" ng-show="showme2">
+      <div class="md-whiteframe" md-whiteframe="2" layout="row" layout-align="space-around center" ng-show="showme2">
+        
         <!-- <h4>Insurance:</h4> -->
         <div class="search-input">
         <md-autocomplete class="search-bars" md-selected-item="hc.searchObject.insurance" md-search-text="searchText" md-items="insurance in hc.insurance.list  "
@@ -67,25 +68,32 @@
       </div>
   
       <div layout-align="center center">
-        <md-button class="btn-dkgrn md-raised" 
+        <md-button class="btn-green" 
         ng-href="/#search/?issue={{hc.searchObject.issues.issue_name}}&healthcare={{hc.searchObject.insurance.insurance_name.trim()}}&lng={{hc.searchObject.location.lng}}&lat={{hc.searchObject.location.lat}}">Search</md-button>
-        <md-button class="btn-dkgrn md-raised" ng-click="">Skip</md-button>
+        <!-- <md-button class="btn-dkgrn" ng-click="">Skip</md-button> -->
       </div>
+    </md-whiteframe>
     </div>
     </div>
   <br>
   <br>
   <br>
-  <div layout="row" layout-align="center center">
-    <div class="info-box" layout="column" layout-align="center center">
-      mission statement
-    </div>
 
-    <div class="info-box" layout="column" layout-align="center center">
-      register as a therapist
-    </div>
-  </div>
+
   <!-- {{hc.searchObject}} -->
 </div>
 </div>
+</div>
+<div class="home-footer">
+
+    <div layout="row" layout-align="center center">
+        <div id="mission-statement">
+            MN Therapist Finder is a place where the voice of the individual seeking therapy will be heard.  The goal is to improve the quality of life of individuals, couples and families by compassionately serving their mental health, substance abuse, and relationship support needs.
+        </div>
+
+        <!-- <div id="register-as" layout="row" layout-align="end center">
+            register as a therapist
+          </div> -->
+
+      </div>
 </div>
