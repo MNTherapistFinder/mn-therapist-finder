@@ -4,8 +4,10 @@
 <!-- <h3 style="text-align:center;">Select a Button To Add an Available Time Slot</h3> -->
 <!-- <div class="container" layout-padding layout="row"> -->
 
-<!-- sidebar -->
+
 <div class="container" layout-padding>
+
+    <!-- sidebar -->
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
         <a href="#home">
             <img src="/images/mntf-logo-light.png" height="100">
@@ -32,34 +34,36 @@
     </div>
 
     <!-- end sidebar -->
+    <!-- start "header" div -->
 
-    <div layout="column" layout-align="space-between none">
+    <div layout="column" layout-align="center center">
 
         <div layout="row">
-            <div>
+            <div layout="column" layout="start start">
             <p id="schedule-name"> Schedule for {{sc.userObject.list.name}}</p>
             <p id="schedule-details">Select a Button To Add an Available Time Slot</p>
             </div>
 
             <div>
-            <md-input-container>
+            <md-input-container id="time-select">
                 <label>Select a timeframe</label>
-                <md-select ng-model="sc.selectedItem" ng-change="sc.getAppointments(sc.selectedItem)">
-                    <md-option ng-repeat="day in ['morning', 'afternoon', 'evening']" ng-value='day'>{{day}}</md-option>
+                <md-select class="wide"ng-model="sc.selectedItem" ng-change="sc.getAppointments(sc.selectedItem)">
+                    <md-option class="wide" ng-repeat="day in ['morning', 'afternoon', 'evening']" ng-value='day'>{{day}}</md-option>
                 </md-select>
             </md-input-container>
             </div>
 
         </div>
         <!-- end "header" div -->
-        <!-- start schedule slots div -->
-        <div layout="row">
 
-            <md-card class="md-whiteframe-2dp box-scroll" flex="15">
+        <!-- start schedule slots div -->
+        <div layout="row" layout-align="center center">
+
+            <md-card class="md-whiteframe-2dp box-scroll" flex="18">
                 <md-card-content>
                     <div id="avail-text">Available Times</div>
                     <p class="avail-times" layout="row" layout-align="space-between center" ng-repeat="a in sc.appointments | orderBy:'-available_times':true">
-                        {{a.available_times| date:'EEEE MMM d @ h:mma' }}
+                        {{a.available_times| date:'EEE M/d @ h:mma' }}
                         <md-button ng-click="sc.deleteTime(a)" class="md-icon-button" aria-label="Delete">
                             <i class="material-icons">delete_forever</i>
                         </md-button>
@@ -72,7 +76,7 @@
             <div dir-paginate="d in sc.dates | itemsPerPage:7" pagination-id="days">
                 <md-content layout="row" flex>
 
-                    <md-card class="md-whiteframe-2dp" flex flex-sm="40" flex-xs="200" ng-class="sc.getColor($index)">
+                    <md-card class="md-whiteframe-2dp time-slots" flex flex-sm="40" flex-xs="200" ng-class="sc.getColor($index)">
 
                         <md-card-content layout-wrap>
 

@@ -34,17 +34,26 @@
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 0px;
+  position: relative;
+  /* margin-left: -200px; */
 }
 
 #schedule-details {
   font-size: 16px;
   font-style: italic;
-  margin-top: 5px;
+  margin-top: 10px;
+  position: relative;
+  /* margin-left: -200px; */
 }
 
-/* #container {
-  margin-top: 10px;
-} */
+#time-select {
+  margin-left: 750px;
+  position: relative;
+}
+
+.wide {
+  width: 200px;
+}
 
 .every-date {
   font-size: 22px;
@@ -69,4 +78,27 @@
 .box-scroll {
   height: 400px;
   overflow-y: scroll;
+}
+
+.time-slots {
+  height: 400px;
+}
+
+md-input-container .md-input-focused {
+  color: pink !important;
+  border-color: pink !important;
+
+}
+
+md-select:not([disabled]):focus .md-select-value {
+  border-bottom-color: #88BF44;
+  color: #3C3C3C;
+}
+
+.md-select-placeholder {
+  color: #88BF44 !important;
+}
+
+md-select-menu md-content md-option[selected] {
+  color: #88BF44 !important;
 }
