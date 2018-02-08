@@ -61,7 +61,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
         console.log(appointmentToSave.date)
         self.$http.post('/schedule', { available_from: appointmentToSave.date }).then(res => {
             self.dates = self.allot(self.slots, self.days, self.appointments);
-            self.getAppointments();
+            self.getAppointments(self.morningSlots);
             // self.$http.get('/schedule').then(response => {
             //     console.log('GET REQUEST AFTER SAVE', response.data);
             //     self.appointments = response.data[0].available_times;
@@ -136,7 +136,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
             method: 'DELETE',
             url: '/schedule/' + time.available_time_id
         }).then(function (response) {
-            self.getAppointments()
+            self.getAppointments(self.morningSlots)
         })
 
     }
