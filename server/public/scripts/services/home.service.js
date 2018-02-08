@@ -60,6 +60,9 @@ myApp.service('HomeService', ['$http', '$log', function ($http, $location, $log)
       console.log(response.data);
 
     }).then(function(){
+      while (self.slides.length > 0){
+        self.slides.pop();
+      }
       for (var i =0; (i < 5) && (i<self.searchResults.list.length) ; i++){
         self.slides.push(self.searchResults.list[i]);
       }
