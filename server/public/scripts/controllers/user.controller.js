@@ -108,7 +108,7 @@ myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', functi
 
 
 
-myApp.directive('googleplace', function () {
+myApp.directive('googleplace2', function () {
   var minnesotaBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(43.306193, -96.547852),
     new google.maps.LatLng(48.673733, -89.692383))
