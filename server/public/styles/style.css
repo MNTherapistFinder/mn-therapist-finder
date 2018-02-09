@@ -654,11 +654,8 @@ textarea {
 }
 
 .therapist-profile-photo-container img {
-  width: 450px;
+  width: 100%;
   height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .btn-appt {
