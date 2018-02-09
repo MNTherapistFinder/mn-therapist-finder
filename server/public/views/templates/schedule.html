@@ -88,7 +88,7 @@
                                       </md-switch> -->
 
                                 <div dir-paginate="slot in d.v | itemsPerPage:8" pagination-id="slots">
-                                    <md-button class="btn-white" ng-click="sc.showAdvanced(slot)" ng-disabled="!slot.active" flex>
+                                    <md-button class="btn-white" ng-click="sc.save(slot)" ng-disabled="!slot.active" flex>
                                         {{slot.date | date:'h:mma'}}
 
                                     </md-button>
