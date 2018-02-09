@@ -14,8 +14,8 @@
 <md-card id = "apptCard" ng-repeat = "day in pc.days track by $index">
         <h4>{{day.date}}</h4>
         <h4 id = "todayBorder" ng-if = "day === pc.days[0]">TODAY</h4>
-    <md-card-content id = "apptCardContent" ng-repeat = "date in day.apptArray track by $index">
-        <md-button id = "apptButton"  ng-click = "pc.appointmentForm(date,pc.therapistProfileInfo.list[0].email,pc.therapistProfileInfo.list[0])" >{{date}}</md-button> 
+    <md-card-content id = "apptCardContent" ng-repeat = "date in day.apptArray | orderBy:'dateTimeThing'">
+        <md-button id = "apptButton"  ng-click = "pc.appointmentForm(date.dateTimeThing.format('LT'),pc.therapistProfileInfo.list[0].email,pc.therapistProfileInfo.list[0])" >{{date.dateTimeThing.format('LT')}}</md-button> 
 
 </md-card-content>
     </md-card>
