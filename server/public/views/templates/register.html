@@ -5,32 +5,35 @@
   <h4 role="alert" ng-if="lc.message != ''">{{lc.message}}</h4>
     <form name="registerForm" ng-submit="lc.registerUser()">
       <div>
-        <div class="container" layout="row">
+        <div class="container">
+          <div layout="row">
           <div>
-            <md-input-container>
+            <md-input-container class="login">
               <label>Full Name</label>
               <input ng-model="lc.user.name" required>
             </md-input-container>
           </div>
           <div>
-            <md-input-container>
+            <md-input-container class="login">
               <label>Email</label>
               <input ng-model="lc.user.username" type="email" required>
             </md-input-container>
           </div>
-
+        </div>
+<div layout="ro">
           <div>
-            <md-input-container>
+            <md-input-container class="login">
               <label>Password</label>
               <input ng-model="lc.user.password" type="password" id="pw1" name="pw1" pw-check="confirmPassword" required>
             </md-input-container>
           </div>
           <div>
-            <md-input-container>
+            <md-input-container class="login">
               <label>Confirm Password</label>
               <input type="password" name="confirmPassword" ng-model="confirmPassword" required/> 
             </md-input-container>
           </div>
+</div>
           </div>
         </div>
         <div layout="row" layout-align="center center">

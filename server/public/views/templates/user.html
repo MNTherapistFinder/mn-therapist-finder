@@ -35,9 +35,7 @@
             <img ng-src="{{uc.therapist.list[0].profile_picture}}" ng-click="uc.openPicker()" ng-model="uc.therapist.list[0].profile_picture">
         </div>
         <form>
-            <b>Account Status:</b>
-            <p ng-show="uc.therapist.list[0].is_active" class="activeStatus">Active!</p>
-            <p ng-hide="uc.therapist.list[0].is_active" class="notActiveStatus">Not Active</p>
+        
             <md-input-container class="therapist-input top-container">
                 <label>Email Address</label>
                 <input ng-model="uc.therapist.list[0].email" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
@@ -188,21 +186,23 @@
                     </md-chips>
                 </div>
                 <br>
+                <h3>Account Status</h3>
+        <div class="no-margin" layout="row" layout-align="space-between center">
+            <p ng-show="uc.therapist.list[0].is_active" class="activeStatus">Active!</p>
+            <p ng-hide="uc.therapist.list[0].is_active" class="notActiveStatus">Not Active</p>
 
-                <div layout="column" layout-align="center end">
-                    <md-button ng-disabled="uc.therapistObjectsEqual" class="btn-dkgrn close-btn" ng-click="uc.saveProfile(uc.therapist.list[0]);vm.therapistObjectsEqual=true">save changes</md-button>
-                    <p ng-hide="uc.therapistObjectsEqual">Changes Have Been Made! Please click the save changes button</p>
+                <md-switch ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].is_active" aria-label="Switch 1"></md-switch>
+        </div>
+                    <p id="active">Profile must be set to active to appear in search results.</p>
+
+                <div layout="column" layout-align="center center">
+                    <md-button ng-disabled="uc.therapistObjectsEqual" class="btn-lemon btn-wide" ng-click="uc.saveProfile(uc.therapist.list[0]);vm.therapistObjectsEqual=true">save changes</md-button>
                 </div>
+                    <p id="active" ng-hide="uc.therapistObjectsEqual">Changes Have Been Made! Please click the save changes button ☺</p>
+
                 <br>
                 <div layout="column" layout-align="center end">
-                    <md-switch class="top-container" ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].is_active" aria-label="Switch 1">
-                        <label>Active?</label>
-                        {{ uc.therapist.list[0].is_active }}
-                        <br>
-                        <br>
-                    </md-switch>
-                    <p id="active">Profile must be set to active to appear in search results.</p>
-                {{uc.therapist}}
+                <!-- {{uc.therapist}} -->
                 </div>
 
                 

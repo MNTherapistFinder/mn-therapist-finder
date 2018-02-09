@@ -92,13 +92,12 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
 
       for (var j = 0; j < self.therapistAppointments.list.length; j++) {
         therapistApptDate = moment(self.therapistAppointments.list[j].available_times).format('dddd L').replace(new RegExp('[^\.]?' + moment().format('YYYY') + '.?'), '')
-        console.log('therapistApptDate', therapistApptDate);
 
 
         if (therapistApptDate === dayDate) {
           console.log('therapistAppt if statement', therapistApptDate);
-          self.days[i].apptArray.push(moment((self.therapistAppointments.list[j].available_times)).format('LT'))
-          self.days[i].apptArray.reverse()
+          self.days[i].apptArray.push({dateTimeThing: moment((self.therapistAppointments.list[j].available_times))})
+          // self.days[i].apptArray.reverse()
           console.log('in push dayOneAppts', self.days[i].apptArray);
 
         }
