@@ -102,3 +102,9 @@ md-select:not([disabled]):focus .md-select-value {
 md-select-menu md-content md-option[selected] {
   color: #88BF44 !important;
 }
+
+button[disabled]{
+  /* border: 6px solid red; */
+  background-color: #88BF44 !important;
+  /* color: red; */
+}

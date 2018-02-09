@@ -5,7 +5,7 @@
 <!-- <div class="container" layout-padding layout="row"> -->
 
 
-<div class="container" layout-padding>
+<div ng-controller="UserController as uc" class="container" layout-padding>
 
     <!-- sidebar -->
     <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
@@ -21,7 +21,7 @@
         </div>
         <br>
         <md-button class="btn-green close-btn" layout="column" layout-align="center center" ng-click="sc.openLeftMenu()">CLOSE</md-button>
-        <md-button class="btn-dkgrn close-btn" ng-click="sc.userService.logout()">Log Out</button>
+        <md-button class="btn-dkgrn close-btn" ng-click="uc.userService.logout()">Log Out</button>
     </md-sidenav>
 
     <div layout="row">
