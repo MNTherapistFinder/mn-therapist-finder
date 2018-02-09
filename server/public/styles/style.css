@@ -9,8 +9,8 @@ body, html {
 
 button[disabled]{
   /* border: 6px solid red; */
-  background-color: #88BF44 !important;
-  /* color: red; */
+  background-color: #3C3C3C !important;
+  color: #f8f8f8 !important;
 }
 
 .material-icons {
@@ -171,6 +171,13 @@ ul {
   margin-top: -25px;
 }
 
+.login {
+  width: 200px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
 .btn-green {
   background-color: #88BF44 !important;
   color: #f8f8f8 !important;
@@ -189,6 +196,19 @@ ul {
 .btn-white {
   background-color: #f3f3f3 !important;
   color: #3C3C3C !important;
+}
+
+.btn-lemon {
+  background-color: #E6E600 !important;
+  color: #3C3C3C !important;
+}
+
+.btn-bold {
+  font-weight: bold !important;
+}
+
+.btn-wide {
+  width: 80%;
 }
 
 input {
@@ -516,6 +536,23 @@ md-chips md-chip.md-focused {
   background: #88BF44;
 }
 
+md-switch.md-checked .md-thumb {
+  background-color: #266B26;
+}
+
+md-switch.md-checked .md-ink-ripple {
+  background-color: #266B26;
+}
+
+md-switch.md-checked .md-bar {
+  background-color: #88BF44;
+}
+
+.no-margin {
+  margin-top: -20px !important;
+  margin-bottom: -10px !important;
+}
+
 #leftColumn {
   height: 100%;
 }
@@ -570,10 +607,12 @@ md-chips md-chip.md-focused {
 
 
 .activeStatus {
+  /* font-size: 16px; */
   color: green;
 }
 
 .notActiveStatus {
+  font-size: 16px;
   color: red;
 }
 
@@ -586,7 +625,7 @@ textarea {
 }
 
 .top-container {
-  margin-top: 25px;
+  margin-top: 40px;
 }
 
 #active {
