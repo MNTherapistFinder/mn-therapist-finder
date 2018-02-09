@@ -7,9 +7,9 @@
       <img ng-src = "{{pc.therapistProfileInfo.list[0].profile_picture}}">
     </div>
       <p>{{pc.therapistProfileInfo.list[0].workplace_street_address}}&nbsp{{pc.therapistProfileInfo.list[0].workplace_zipcode}}</p>
-      <md-button href="{{pc.therapistProfileInfo.list[0].website}}" class="btn-green md-raised">Therapist's website</md-button>
+      <md-button ng-href="{{pc.therapistProfileInfo.list[0].website}}" target="_blank" class="btn-green md-raised">Therapist's website</md-button>
       <p><strong>Phone:</strong> {{pc.therapistProfileInfo.list[0].phone}}</p>
-      <p><strong>License #:</strong> {{pc.therapistProfileInfo.list[0].license_number}}</p>
+      <!-- <p><strong>License #:</strong> {{pc.therapistProfileInfo.list[0].license_number}}</p> -->
       <p><strong>Education: </strong>{{pc.therapistProfileInfo.list[0].school}}</p>
       <p><strong>Years in practice: </strong>{{pc.therapistProfileInfo.list[0].years_in_practice}}</p>
   </div>
