@@ -22,6 +22,9 @@
           
   <br>
           <p>{{pc.therapistProfileInfo.list[0].biography}}</p>
+
+          <br>
+
   </div>
 
 
@@ -33,8 +36,13 @@
       </ul>
 
     <h3>Issues treated:</h3>
-      <ul id="issuesBulletIcon" ng-repeat = "issue in pc.therapistProfileInfo.list[0].issues">
+      <ul class="issuesBulletIcon" ng-repeat = "issue in pc.therapistProfileInfo.list[0].issues">
             <li>{{issue}}</li>
+    </ul>
+
+    <h3>Insurance accepted:</h3>
+    <ul class = "issuesBulletIcon" ng-repeat = "insurance in pc.therapistProfileInfo.list[0].insurance_plans">
+      <li>{{insurance}}</li>
     </ul>
   </div>
 </div>

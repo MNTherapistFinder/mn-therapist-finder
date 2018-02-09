@@ -407,7 +407,7 @@ md-input-container .md-input {
 
 
 
-#issuesBulletIcon {
+.issuesBulletIcon {
   list-style: disc !important;
   /* list-style-type: circle !important; */
   overflow: visible !important;
