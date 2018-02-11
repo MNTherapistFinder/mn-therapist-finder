@@ -1,51 +1,109 @@
-myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', function ($scope, $mdSidenav, UserService) {
+myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserService', function ($scope, $mdToast, $mdSidenav, UserService) {
   console.log('UserController created');
   var vm = this;
   vm.therapist = UserService.therapist;
-  $scope.therapist = UserService.therapist;
-  vm.therapistOld = UserService.therapistOld;
-  vm.therapistObjectsEqual = true;
+  
 
 
 
 
-
+  //list of autocomplete dropdowns for "struggles", "insurance", and "specialties"
   vm.issues = UserService.issues;
   vm.healthcare = UserService.healthcare;
   vm.specialties = UserService.specialties;
 
+  //ajax get requests
   vm.getTherapist = UserService.getTherapist;
   vm.getIssuesList = UserService.getIssuesList;
   vm.getHealthcareList = UserService.getHealthcareList;
   vm.getSpecialtiesList = UserService.getSpecialtiesList;
+
+  //ajax put request to save profile changes
   vm.saveProfile = UserService.saveProfile;
 
+  //ajax delete requests to delete "chips"
   vm.deleteUserIssue = UserService.deleteUserIssue;
   vm.deleteHealthcare = UserService.deleteHealthcare;
   vm.deleteSpecialty = UserService.deleteSpecialty;
 
+  //ajax post requests to add "chips"
   vm.addUserIssue = UserService.addUserIssue;
   vm.addHealthcareProvider = UserService.addHealthcareProvider;
   vm.addSpecialty = UserService.addSpecialty;
 
-  vm.userService = UserService;
-  vm.userObject = UserService.userObject;
+
   vm.client = filestack.init("AfkCNgWSJyFwF5crXkNAVz");
 
-  vm.autocompleteDemoRequireMatch = true;
+ //functions for "chip" functionality
   vm.transformChip = UserService.transformChip;
   vm.insuranceDropDown = UserService.insuranceDropDown;
   vm.specialtiesDropDown = UserService.specialtiesDropDown;
   vm.strugglesDropDown = UserService.strugglesDropDown;
 
+  //function to check if there has been user changes
+  vm.checkTherapistObjects= UserService.checkTherapistObjects;
+
+  //function calls to get therapist info, and lists of issues, insurance, and specialties
   vm.getTherapist();
   vm.getIssuesList();
   vm.getHealthcareList();
   vm.getSpecialtiesList();
 
+
+  //opens sidenav
   vm.openLeftMenu = function () {
     $mdSidenav('left').toggle();
   };
+
+  //when a chip is added, the chip id gets pushed into an array of the therapist's id's for issues
+  vm.addIssueArray = function (id) {
+    vm.therapist.list[0].issueid.push(id);
+    vm.checkTherapistObjects();
+  }
+
+   //when a chip is deleted, the chip id gets removed from the array of the therapist's id's for issues
+  vm.deleteIssueArray = function (id) {
+    var index = vm.therapist.list[0].issueid.indexOf(id);
+    if (index > -1) {
+      vm.therapist.list[0].issueid.splice(index, 1);
+      vm.checkTherapistObjects();
+
+    }
+  }
+
+
+//when a chip is added, the chip id gets pushed into an array of the therapist's id's for specialties
+  vm.addSpecialtyArray = function (id) {
+    vm.therapist.list[0].specialty_id.push(id);
+    vm.checkTherapistObjects();
+  }
+
+  //when a chip is added, the chip id gets removed from the array of the therapist's id's for specialties
+  vm.deleteSpecialtyArray = function (id) {
+    var index = vm.therapist.list[0].specialty_id.indexOf(id);
+    if (index > -1) {
+      vm.therapist.list[0].specialty_id.splice(index, 1);
+      vm.checkTherapistObjects();
+
+    }
+  }
+
+  //
+  vm.addInsuranceArray = function (id) {
+    vm.therapist.list[0].insurance_id.push(id);
+    vm.checkTherapistObjects();
+
+  }
+
+  vm.deleteInsuranceArray = function (id) {
+    var index = vm.therapist.list[0].insurance_id.indexOf(id);
+    if (index > -1) {
+      vm.therapist.list[0].insurance_id.splice(index, 1);
+      vm.checkTherapistObjects();
+
+    }
+  }
+
 
 
   $scope.issueIdToPass = 'hey'
@@ -81,14 +139,14 @@ myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', functi
     });
   }
 
-  vm.checkTherapistObjects = function () {
-    console.log('in function')
-    if (vm.therapist == vm.therapistOld) {
-      vm.therapistObjectsEqual = true
-    } else {
-      vm.therapistObjectsEqual = false;
-    }
-  }
+  // vm.checkTherapistObjects = function () {
+  //   console.log('in function')
+  //   if (vm.therapist == vm.therapistOld) {
+  //     vm.therapistObjectsEqual = true
+  //   } else {
+  //     vm.therapistObjectsEqual = false;
+  //   }
+  // }
   vm.updateProfile = function (therapist) {
     console.log(therapist)
   }
@@ -101,7 +159,15 @@ myApp.controller('UserController', ['$scope','$mdSidenav', 'UserService', functi
     }
   }
 
-  console.log(vm.findNameById([{ id: 1 }, { id: 2 }], 1));
+  $scope.showToast = function() {
+    $mdToast.show (
+       $mdToast.simple()
+       .textContent('Your Profile Changes Have Been Made!')                       
+       .hideDelay(3000)
+       .position('bottom right')
+       .theme('success-toast')
+    );
+ };
 
 
 }]);
@@ -114,7 +180,7 @@ myApp.directive('googleplace2', function () {
     new google.maps.LatLng(48.673733, -89.692383))
 
   return {
-    require: 'ngModel', 
+    require: 'ngModel',
     scope: {
       'lat': '=',
       'lng': '='
@@ -131,19 +197,16 @@ myApp.directive('googleplace2', function () {
         geocoder.geocode({ 'address': element.val() }, function (results, status) {
 
           if (status === 'OK') {
-             scope.lat = results[0].geometry.location.lat();
-             scope.lng = results[0].geometry.location.lng();
+            scope.lat = results[0].geometry.location.lat();
+            scope.lng = results[0].geometry.location.lng();
             scope.$apply(function () {
               model.$setViewValue(element.val());
             });
           }
         });
 
-        // console.log(element.val())
-        // scope.$apply(function () {
-        //     model.$setViewValue({});
-        // });
       });
     }
   };
 });
+

@@ -50,7 +50,8 @@ router.get('/therapist', function (req, res) {
       ON therapists_specialties.specialties_id = specialties.id WHERE therapists.id =$1 GROUP BY
       therapists.full_name, therapists.email, therapists.profile_picture, 
       therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, 
-      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website, therapists.is_active,therapists.lng, therapists.lat, therapists.phone;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
+      therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, 
+      therapists.license_type, therapists.website, therapists.is_active,therapists.lng, therapists.lat, therapists.phone;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
             console.log('error', errorMakingDatabaseQuery);
@@ -64,27 +65,45 @@ router.get('/therapist', function (req, res) {
 });
 
 router.put('/therapist', function (req, res) {
-  console.log('HEYYYYY', req.body.is_active);
+
+  var issues =  '{' + req.query.issueid.toString() + '}';
+  var specialties = '{' + req.query.specialty_id.toString() + '}';
+  var insurance = '{' + req.query.insurance_id.toString() + '}';
+
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
       console.log('error', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
-      client.query(`UPDATE therapists SET full_name = $1, email = $2, biography = $3, 
+      var promise1 = client.query(`UPDATE therapists SET full_name = $1, email = $2, biography = $3, 
       workplace_street_address = $4, workplace_zipcode = $5, years_in_practice = $6, school = $7,
        year_graduated=$8, license_number = $9, license_type=$10, website=$11, lng=$12, lat=$13, workplace= (CAST(ST_SetSRID(ST_Point($12, $13),4326) As geography)), profile_picture= $14, phone=$15, is_active=$16 WHERE id = $17`,
-        [req.body.full_name, req.body.email, req.body.biography, req.body.workplace_street_address,
-        req.body.workplace_zipcode, req.body.years_in_practice, req.body.school, req.body.year_graduated,
-        req.body.licesne_number, req.body.license_type, req.body.website, req.body.lng, req.body.lat, req.body.profile_picture, req.body.phone,req.body.is_active, req.user.id], function (errorMakingDatabaseQuery, result) {
-          done();
-          if (errorMakingDatabaseQuery) {
-            console.log('error', errorMakingDatabaseQuery);
-            res.sendStatus(500);
-          } else {
-            res.sendStatus(201);
-          }
-        });
+        [req.query.full_name, req.query.email, req.query.biography, req.query.workplace_street_address,
+        req.query.workplace_zipcode, req.query.years_in_practice, req.query.school, req.query.year_graduated,
+        req.query.licesne_number, req.query.license_type, req.query.website, req.query.lng, req.query.lat, req.query.profile_picture, req.query.phone, req.query.is_active, req.user.id]);
+
+      var promise1 = client.query(`DELETE FROM therapists_issues WHERE therapists_id =$1`, [req.user.id]);
+
+      var promise2 = client.query(`DELETE FROM therapists_specialties WHERE therapists_id =$1`, [req.user.id]);
+
+      var promise3 = client.query(`DELETE FROM therapists_insurance_plans WHERE therapists_id =$1`, [req.user.id]);
+
+      var promise4 = client.query(`INSERT INTO therapists_issues("therapists_id", "issues_id") SELECT $1, unnest($2::int[])`, [req.user.id, issues]);
+
+      var promise5 = client.query(`INSERT INTO therapists_specialties("therapists_id", "specialties_id") SELECT $1, unnest($2::int[])`, [req.user.id, specialties]);
+
+      var promise6 = client.query(`INSERT INTO therapists_insurance_plans("therapists_id", "insurance_plans_id") SELECT $1, unnest($2::int[])`, [req.user.id, insurance]);
+
     }
+    Promise.all([promise1, promise2, promise3, promise4, promise5, promise6]).then(function (allPromises) {
+      done();
+      console.log('result of promises', allPromises)
+      res.sendStatus(201);
+    }).catch(function (err) {
+      console.log('Promise.all did not work!', err);
+      res.sendStatus(500);
+
+    });
   });
 });
 
@@ -117,7 +136,7 @@ router.post('/issues', function (req, res) {
       res.sendStatus(500);
     } else {
       client.query(`INSERT INTO therapists_issues ("therapists_id","issues_id")
-      VALUES ($1,$2)`, [req.user.id, req.body.id], function (errorMakingDatabaseQuery, result) {
+      VALUES ($1,$2)`, [req.user.id, req.query.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
             console.log('error', errorMakingDatabaseQuery);
@@ -273,3 +292,18 @@ router.delete('/specialty', function (req, res) {
 
 
 module.exports = router;
+
+
+
+
+
+// Promise.all([regimentPromise0, regimentPromise1, regimentPromise2, regimentPromise3, regimentPromise4,
+//   regimentPromise5]).then(function (resultOfAllPromises) {
+//     done();
+//     console.log('result', resultOfAllPromises);
+
+//     res.send(resultOfAllPromises);
+//   }).catch(function (err) {
+//     console.log('Promise.all did not work!', err);
+//     res.sendStatus(500);
+//   })

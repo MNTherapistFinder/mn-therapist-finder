@@ -528,6 +528,12 @@ md-input-container .md-input {
   font-size: 14px;
 }
 
+/* md-toast.md-success-toast-theme {
+  background-color: green;
+}
+.md-toast-content {
+  background-color: green;
+} */
 md-chips .md-chips.md-focused {
   box-shadow: 0 2px #88BF44;
 }
