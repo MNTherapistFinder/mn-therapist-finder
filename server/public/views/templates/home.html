@@ -51,7 +51,7 @@
         
         <!-- <h4>Insurance:</h4> -->
         <div class="search-input">
-        <md-autocomplete class="search-bars" md-selected-item="hc.searchObject.insurance" md-search-text="searchText" md-items="insurance in hc.insurance.list  "
+        <md-autocomplete class="search-bars" md-selected-item="hc.searchObject.insurance" md-search-text="searchText" md-items="insurance in hc.insurance.list | filter: searchText  "
           md-item-text="insurance.insurance_name" md-min-length="0"  md-floating-label="Type of insurance, if any.">
 
           <md-item-template>
