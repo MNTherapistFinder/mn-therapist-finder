@@ -2,7 +2,7 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
   console.log('UserController created');
   var vm = this;
   vm.therapist = UserService.therapist;
-  
+
 
 
 
@@ -34,14 +34,14 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
 
   vm.client = filestack.init("AfkCNgWSJyFwF5crXkNAVz");
 
- //functions for "chip" functionality
+  //functions for "chip" functionality
   vm.transformChip = UserService.transformChip;
   vm.insuranceDropDown = UserService.insuranceDropDown;
   vm.specialtiesDropDown = UserService.specialtiesDropDown;
   vm.strugglesDropDown = UserService.strugglesDropDown;
 
   //function to check if there has been user changes
-  vm.checkTherapistObjects= UserService.checkTherapistObjects;
+  vm.checkTherapistObjects = UserService.checkTherapistObjects;
 
   //function calls to get therapist info, and lists of issues, insurance, and specialties
   vm.getTherapist();
@@ -61,7 +61,7 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
     vm.checkTherapistObjects();
   }
 
-   //when a chip is deleted, the chip id gets removed from the array of the therapist's id's for issues
+  //when a chip is deleted, the chip id gets removed from the array of the therapist's id's for issues
   vm.deleteIssueArray = function (id) {
     var index = vm.therapist.list[0].issueid.indexOf(id);
     if (index > -1) {
@@ -72,7 +72,7 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
   }
 
 
-//when a chip is added, the chip id gets pushed into an array of the therapist's id's for specialties
+  //when a chip is added, the chip id gets pushed into an array of the therapist's id's for specialties
   vm.addSpecialtyArray = function (id) {
     vm.therapist.list[0].specialty_id.push(id);
     vm.checkTherapistObjects();
@@ -88,13 +88,14 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
     }
   }
 
-  //
+  //when a chip is added, the chip id gets pushed into an array of the therapist's id's for insurance
   vm.addInsuranceArray = function (id) {
     vm.therapist.list[0].insurance_id.push(id);
     vm.checkTherapistObjects();
 
   }
 
+  //when a chip is added, the chip id gets removed from the array of the therapist's id's for insurance
   vm.deleteInsuranceArray = function (id) {
     var index = vm.therapist.list[0].insurance_id.indexOf(id);
     if (index > -1) {
@@ -104,20 +105,7 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
     }
   }
 
-
-
-  $scope.issueIdToPass = 'hey'
-  $scope.editEmailIcon = false;
-
-
-
-
-
-  vm.hello = function () {
-    console.log('please work');
-  }
-
-  console.log(vm.therapist.list);
+  //opens filestack api, and changes website url in the therapist object with the selected image
   vm.openPicker = function (userPhoto, userid) {
     console.log('in filestack');
     vm.client.pick({
@@ -135,22 +123,13 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
 
       vm.checkTherapistObjects();
       $scope.$apply();
-      console.log(vm.therapist.list[0].profile_picture)
+
     });
   }
 
-  // vm.checkTherapistObjects = function () {
-  //   console.log('in function')
-  //   if (vm.therapist == vm.therapistOld) {
-  //     vm.therapistObjectsEqual = true
-  //   } else {
-  //     vm.therapistObjectsEqual = false;
-  //   }
-  // }
-  vm.updateProfile = function (therapist) {
-    console.log(therapist)
-  }
 
+
+  //given an array of objects and an id, the function will return the object with the given id
   vm.findNameById = function (arr, theId) {
     for (var i = 0; i < arr.length; i++) {
       if (arr[i].id == theId) {
@@ -159,21 +138,23 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
     }
   }
 
-  $scope.showToast = function() {
-    $mdToast.show (
-       $mdToast.simple()
-       .textContent('Your Profile Changes Have Been Made!')                       
-       .hideDelay(3000)
-       .position('bottom right')
-       .theme('success-toast')
+  //show alert message that profile changes have been made
+  $scope.showToast = function () {
+    $mdToast.show(
+      $mdToast.simple()
+        .textContent('Your Profile Changes Have Been Made!')
+        .hideDelay(3000)
+        .position('bottom right')
+        .theme('success-toast')
     );
- };
+  };
 
 
 }]);
 
 
 
+//directive for adding google autocomplete to profile view
 myApp.directive('googleplace2', function () {
   var minnesotaBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(43.306193, -96.547852),
@@ -187,7 +168,7 @@ myApp.directive('googleplace2', function () {
     },
     link: function (scope, element, attrs, model) {
       var options = {
-        bounds: minnesotaBounds,
+        bounds: minnesotaBounds
       };
 
       scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
@@ -199,14 +180,16 @@ myApp.directive('googleplace2', function () {
           if (status === 'OK') {
             scope.lat = results[0].geometry.location.lat();
             scope.lng = results[0].geometry.location.lng();
+          
+
             scope.$apply(function () {
               model.$setViewValue(element.val());
             });
           }
         });
 
+      
       });
     }
   };
 });
-
