@@ -131,6 +131,7 @@ myApp.service('DirectoryService', function ($http, $location, $mdDialog, $mdSide
           $mdDialog.show({
             templateUrl: '/views/partials/apptRequestConfirm.modal.html',
             controller: "ModalController as mc",
+            clickOutsideToClose: true,
             locals: {
               modalData: {
                 event: event

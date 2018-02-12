@@ -390,7 +390,7 @@ md-input-container .md-input {
 } */
 #therapistModal {
   width: 700px;
-  height: 375px;
+  height: 265px;
 }
 
 
@@ -886,8 +886,9 @@ margin-bottom:-20px
 #apptConfirmDialogBox{
   width: 700px;
   background-color:#f8f8f8;
-  align-content: center;
+  text-align: center;
+
 }
 #checkIcon {
-  size: 70px !important;
+  font-size: 70px !important;
 }
