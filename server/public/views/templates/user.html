@@ -35,44 +35,40 @@
             <img ng-src="{{uc.therapist.list[0].profile_picture}}" ng-click="uc.openPicker()" ng-model="uc.therapist.list[0].profile_picture">
         </div>
         <form>
-        
+
             <md-input-container class="therapist-input top-container">
                 <label>Email Address</label>
-                <input ng-model="uc.therapist.list[0].email" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
+                <input ng-model="uc.therapist.list[0].email" rows="1" md-select-on-focus>
             </md-input-container>
 
             <md-input-container class="therapist-input">
                 <label>Phone Number</label>
-                <input ng-model="uc.therapist.list[0].phone" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
+                <input ng-model="uc.therapist.list[0].phone" rows="1" md-select-on-focus>
             </md-input-container>
 
             <md-input-container class="therapist-input">
                 <label>Website</label>
-                <input ng-model="uc.therapist.list[0].website" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
+                <input ng-model="uc.therapist.list[0].website" rows="1" md-select-on-focus>
             </md-input-container>
 
             <div layout="row">
                 <md-input-container id="address" class="therapist-input">
                     <!-- <label>Street Address</label> -->
-                    <input ng-model="uc.therapist.list[0].workplace_street_address" ng-change="uc.checkTherapistObjects()" lat="uc.therapist.list[0].lat" lng="uc.therapist.list[0].lng"  googleplace2 aria-label="google place">
+                    <input ng-model="uc.therapist.list[0].workplace_street_address"  lat="uc.therapist.list[0].lat"
+                        lng="uc.therapist.list[0].lng" googleplace2 aria-label="google place">
 
                 </md-input-container>
-<!-- 
-                <md-input-container id="zip" class="therapist-input">
-                    <label>Zip Code</label>
-                    <input ng-model="uc.therapist.list[0].workplace_zipcode" ng-change="uc.checkTherapistObjects()">
-                </md-input-container> -->
             </div>
 
             <div layout="row">
                 <md-input-container id="address" class="therapist-input">
                     <label>Education</label>
-                    <input ng-model="uc.therapist.list[0].school" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
+                    <input ng-model="uc.therapist.list[0].school" md-select-on-focus>
                 </md-input-container>
 
                 <md-input-container id="zip" class="therapist-input">
                     <label>Years Practicing</label>
-                    <input ng-model="uc.therapist.list[0].years_in_practice" ng-change="uc.checkTherapistObjects()" rows="1" md-select-on-focus>
+                    <input ng-model="uc.therapist.list[0].years_in_practice"  rows="1" md-select-on-focus>
                 </md-input-container>
             </div>
         </form>
@@ -87,13 +83,13 @@
 
             <md-input-container id="name">
                 <label>Name</label>
-                <input ng-model="uc.therapist.list[0].full_name" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
+                <input ng-model="uc.therapist.list[0].full_name"  md-select-on-focus>
             </md-input-container>
             <!-- <h1 id="therapistTitle">{{uc.therapist.list[0].full_name}}</h1> -->
 
             <md-input-container id="license">
                 <label>License Type</label>
-                <input ng-model="uc.therapist.list[0].license_type" ng-change="uc.checkTherapistObjects()" md-select-on-focus>
+                <input ng-model="uc.therapist.list[0].license_type" md-select-on-focus>
             </md-input-container>
         </div>
         <!-- <div layout="row">
@@ -105,7 +101,7 @@
         <!-- biography -->
         <md-input-container md-no-float class="titles">
             <!-- <label>Your Biography</label> -->
-            <textarea id="bio-box" ng-model="uc.therapist.list[0].biography" ng-change="uc.checkTherapistObjects()" md-maxlength="1500"
+            <textarea id="bio-box" ng-model="uc.therapist.list[0].biography"  md-maxlength="1500"
                 rows="10" md-select-on-focus placeholder="Enter your bio here! The first 300 characters will be displayed as a preview to potential patients."></textarea>
         </md-input-container>
 
@@ -114,8 +110,8 @@
                 <h3 class="titles">Accepted Insurance</h3>
                 <br>
                 <!-- insurance chips -->
-                <md-chips ng-model="uc.insuranceDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addHealthcareProvider($chip.id)"
-                    md-require-match="uc.autocompleteDemoRequireMatch" md-on-remove="uc.deleteHealthcare($chip.id)">
+                <md-chips ng-model="uc.insuranceDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addInsuranceArray($chip.id)"
+                    md-require-match="uc.autocompleteDemoRequireMatch" md-on-remove="uc.deleteInsuranceArray($chip.id)">
 
                     <md-autocomplete md-selected-item="uc.selectedInsurance" md-search-text="searchTextInsurance" md-items="provider in uc.healthcare.list | filter : searchTextInsurance "
                         md-item-text="provider.insurance_name" placeholder="Healthcare providers">
@@ -146,8 +142,8 @@
                 <br>
                 <div class="therapist-input">
 
-                    <md-chips ng-model="uc.specialtiesDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addSpecialty($chip.id)"
-                        md-require-match="uc.autocompleteDemoRequireMatch" md-max-chips="3" md-min-length="0" md-on-remove="uc.deleteSpecialty($chip.id)">
+                    <md-chips ng-model="uc.specialtiesDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addSpecialtyArray($chip.id)"
+                        md-require-match="uc.autocompleteDemoRequireMatch" md-max-chips="3" md-min-length="0" md-on-remove="uc.deleteSpecialtyArray($chip.id)">
 
                         <md-autocomplete md-selected-item="uc.selectedSpecialty" md-search-text="searchTextSpecialty" md-items="specialty in uc.specialties.list | filter : searchTextSpecialty "
                             md-item-text="specialty.specialty_name" placeholder="Select specialties">
@@ -168,8 +164,8 @@
                     <p id="active">Please limit to 10 struggles.</p>
                     <br>
                     <!-- struggles chips -->
-                    <md-chips ng-model="uc.strugglesDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addUserIssue($chip.id)"
-                        md-require-match="uc.autocompleteDemoRequireMatch" md-max-chips="10" md-min-length="0" md-on-remove="uc.deleteUserIssue($chip.id)">
+                    <md-chips ng-model="uc.strugglesDropDown" md-autocomplete-snap md-transform-chip="uc.transformChip($chip); uc.addIssueArray($chip.id)"
+                        md-require-match="uc.autocompleteDemoRequireMatch" md-max-chips="10" md-min-length="0" md-on-remove="uc.deleteIssueArray($chip.id)">
 
                         <md-autocomplete md-selected-item="us.selectedItemIssues" md-search-text="searchTextIssue" md-items="theIssue in uc.issues.list | filter : searchTextIssue"
                             md-item-text="theIssue.issue_name" placeholder="Select struggles">
@@ -187,25 +183,26 @@
                 </div>
                 <br>
                 <h3>Account Status</h3>
-        <div class="no-margin" layout="row" layout-align="space-between center">
-            <p ng-show="uc.therapist.list[0].is_active" class="activeStatus">Active!</p>
-            <p ng-hide="uc.therapist.list[0].is_active" class="notActiveStatus">Not Active</p>
+                <div class="no-margin" layout="row" layout-align="space-between center">
+                    <p ng-show="uc.therapist.list[0].is_active" class="activeStatus">Active!</p>
+                    <p ng-hide="uc.therapist.list[0].is_active" class="notActiveStatus">Not Active</p>
 
-                <md-switch ng-change="uc.checkTherapistObjects()" ng-model="uc.therapist.list[0].is_active" aria-label="Switch 1"></md-switch>
-        </div>
-                    <p id="active">Profile must be set to active to appear in search results.</p>
+                    <md-switch ng-model="uc.therapist.list[0].is_active" aria-label="Switch 1"></md-switch>
+                </div>
+                <p id="active">Profile must be set to active to appear in search results.</p>
 
                 <div layout="column" layout-align="center center">
-                    <md-button ng-disabled="uc.therapistObjectsEqual" class="btn-lemon btn-wide" ng-click="uc.saveProfile(uc.therapist.list[0]);vm.therapistObjectsEqual=true">save changes</md-button>
+                    <md-button ng-disabled="uc.checkTherapistObjects()" class="btn-lemon btn-wide" ng-click="uc.saveProfile(uc.therapist.list[0]);showToast();">save changes</md-button>
                 </div>
-                    <p id="active" ng-hide="uc.therapistObjectsEqual">Changes Have Been Made! Please click the save changes button ☺</p>
-
-                <br>
-                <div layout="column" layout-align="center end">
-                <!-- {{uc.therapist}} -->
-                </div>
-
-                
+                <p id="active" ng-hide="uc.checkTherapistObjects()">Changes Have Been Made! Please click the save changes button ☺</p>
             </div>
+            {{uc.therapistObjectsEqual}}
+
+            <br>
+            <div layout="column" layout-align="center end">
+                <!-- {{uc.therapist}} -->
+            </div>
+
         </div>
     </div>
+</div>

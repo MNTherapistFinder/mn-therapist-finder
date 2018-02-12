@@ -8,9 +8,21 @@ myApp.service('UserService', function ($http, $location) {
   self.specialties = { list: [] }
   self.therapistOld = { list: [] }
 
+  self.therapistObjectsEqual;
+
   self.insuranceDropDown = [];
   self.specialtiesDropDown = [];
   self.strugglesDropDown = [];
+
+  self.checkTherapistObjects = function () {
+    if (angular.equals(self.therapist, self.therapistOld)) {
+      // self.therapistObjectsEqual = true;
+      return true
+    } else {
+      // self.therapistObjectsEqual = false;
+      return false;
+    }
+  }
 
 
   self.transformChip = function (chip) {
@@ -57,6 +69,7 @@ myApp.service('UserService', function ($http, $location) {
     }
 
   self.getTherapist = function () {
+
     console.log('hit');
     $http.get('/user/therapist').then(function (response) {
       self.therapist.list = response.data;
@@ -75,10 +88,15 @@ myApp.service('UserService', function ($http, $location) {
 
     })
       .then(function (response) {
-        if (!self.someVar) {
-          self.therapistOld.list = angular.copy(self.therapist.list);
-          self.someVar = true
-        }
+        // if (!self.someVar) {
+        console.log('hit promise in get therapist;')
+        self.therapistOld.list = angular.copy(self.therapist.list);
+        console.log(self.therapist.list);
+        console.log(self.therapistOld.list);
+        console.log(angular.equals(self.therapist.list, self.therapistOld.list));
+        self.checkTherapistObjects();
+        // self.someVar = true
+
       })
   }
 
@@ -196,7 +214,7 @@ myApp.service('UserService', function ($http, $location) {
     $http({
       url: 'user/therapist',
       method: 'PUT',
-      data: therapistObject
+      params: therapistObject
     }).then(function (response) {
       console.log(response)
       self.insuranceDropDown = [];
