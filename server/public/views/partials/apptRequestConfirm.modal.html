@@ -1,9 +1,9 @@
-<md-dialog id="apptConfirmDialogBox">
+<md-dialog id="apptConfirmDialogBox" >
         <div class="md-dialog-content">
-                <md-dialog-content layout-align="center center">
-                        <div layout="column" layout-align="center center">
+                <md-dialog-content >
+                        <div layout="column" layout-align = "center center">
                                  <i class="material-icons" id = "checkIcon">check_circle</i>                                
-                                 <br>
+                                <div layout = "column" layout-align = "center center">
                                 <h3>THANK YOU!</h3>
                                 <p>Your appointment request has been sent.
                                         <br><br>
@@ -11,12 +11,11 @@
                                 the therapist will follow up with you shortly 
                                 using your preferred method of communication.</p>
                         </div>
+                        </div>
                 </md-dialog-content>
                 <md-dialog-actions layout="row" layout-align="center center">
                         <md-button class="btn-green md-raised" href = "#directory/therapists/30"ng-click="mc.close()"> close </md-button>
                 </md-dialog-actions>
         </div>
-        <br>
-        <br>
 
 </md-dialog>

@@ -10,7 +10,10 @@ MN Therapist Finder is a full-stack web application with the purpose of helping 
 * Express
 * PostgreSQL
 * PostGIS
-* Angular Material
+* AngularJS Material
+* Google Maps API
+* Filestack
+* Moment.js
 
 <!-- ## Getting Started
 
