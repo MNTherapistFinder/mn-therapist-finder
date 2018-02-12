@@ -62,7 +62,11 @@ router.post('/appointment', function (req, res) {
     mailOptions = {
         to: req.body.therapist_email,
         subject: "Appointment Request",
-        html: "Hello you have a new appointment request with  " + req.body.name + " At "+ req.body.date +  "<br>"+ "They can be reached by email at " + req.body.email + " or by phone number at " + req.body.number
+        html: "<h3>Message from MN Therapist Finder</h3>" +
+        "Hello you have a new appointment request with  " 
+        + req.body.name + " for "+ req.body.date +  
+        "<br>"+ "They can be reached by email at " + req.body.email + 
+        " or by phone number at " + req.body.number
     }
     console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function (error, response) {
