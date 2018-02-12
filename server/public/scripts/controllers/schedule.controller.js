@@ -61,7 +61,13 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
         console.log(appointmentToSave.date)
         self.$http.post('/schedule', { available_from: appointmentToSave.date }).then(res => {
             self.dates = self.allot(self.slots, self.days, self.appointments);
-            self.getAppointments(self.morningSlots);
+            if(self.selectedItem == 'morning') {
+                self.getAppointments(self.morningSlots);
+            } else if ( self.selectedItem == 'afternoon'){
+                self.getAppointments(self.afternoonSlots)
+            } else if( self.selectedItem == 'evening'){
+                self.getAppointments(self.eveningSlots)
+            } else self.getAppointments(self.morningSlots)
             // self.$http.get('/schedule').then(response => {
             //     console.log('GET REQUEST AFTER SAVE', response.data);
             //     self.appointments = response.data[0].available_times;
