@@ -2,9 +2,8 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
   console.log('UserController created');
   var vm = this;
   vm.therapist = UserService.therapist;
-
-
-
+  vm.userObject = UserService.userObject;
+  vm.userService = UserService;
 
 
   //list of autocomplete dropdowns for "struggles", "insurance", and "specialties"
