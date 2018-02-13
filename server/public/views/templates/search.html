@@ -2,27 +2,27 @@
 
 <div layout="column" layout-align="start start">
 
-    <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
+    <!-- <md-sidenav layout="column" layout-align="start center" md-component-id="left" class="md-sidenav-left" id="side-nav-out">
         <a href="#home">
             <img src="/images/mntf-logo-light.png" height="100">
         </a>
         <br>
         <input ng-model="therapistSearch.full_name" placeholder="search by name">
-        <input ng-model="therapistSearch.workplace_street_address" placeholder="filter by city">
+        <input ng-model="therapistSearch.workplace_street_address" placeholder="filter by city"> -->
         <!-- these need to be built out more once we have issues / fake data -->
-        <br>
+        <!-- <br>
         <md-button id="close-btn" class="btn-green" layout="column" layout-align="center center" ng-click="sc.openLeftMenu()">CLOSE</md-button>
-    </md-sidenav>
+    </md-sidenav> -->
 
     <!-- ^ IF WE WANT SIDEBAR TO START OPEN: md-is-open="dc.startOpen" ^ -->
 
-    <md-content id="side-nav-in" layout="row" layout-align="start center">
+    <!-- <md-content id="side-nav-in" layout="row" layout-align="start center"> -->
         <!-- sidebar -->
-        <md-button class="btn-green" ng-click="sc.openLeftMenu()" layout-align="start center">
+        <!-- <md-button class="btn-green" ng-click="sc.openLeftMenu()" layout-align="start center">
             filter results
         </md-button>
     </md-content>
-</div>
+</div> -->
 <!-- </div> -->
 
 <!-- <div layout="column" layout-align-"center center">  -->
@@ -51,9 +51,9 @@
 
 
 <div class="box-container" ng-show="sc.isCarouselView">
-    <h1>Your Top Results:</h1>
+    <h1 id="top-match">Your Top Results</h1>
     <ui-carousel id = "mainCarouselSlide" slides="sc.slides" slides-to-show="1" slides-to-scroll="1" initial-slide="0" autoplay="false" autoplay-speed="2000"
-        dots="true">
+        dots="false">
 
         <carousel-item class="ui-carousel">
             <div class="md-dialog-content" id = "carouselModalContents">
@@ -74,9 +74,9 @@
                         <p>{{item.biography | limitTo:300}}...</p>
                         <h3>Specialties:</h3>
                         <ul id="specialtiesBulletIcon">
-                            <li ng-show="item.specialties[0]"><i class="material-icons">stars</i>{{item.specialties[0]}}</li>
-                            <li ng-show="item.specialties[1]"><i class="material-icons">stars</i>{{item.specialties[1]}}</li>
-                            <li ng-show="item.specialties[2]"><i class="material-icons">stars</i>{{item.specialties[2]}}</li>
+                            <li ng-show="item.specialties[0]"><i class="material-icons">stars</i> {{item.specialties[0]}}</li>
+                            <li ng-show="item.specialties[1]"><i class="material-icons">stars</i> {{item.specialties[1]}}</li>
+                            <li ng-show="item.specialties[2]"><i class="material-icons">stars</i> {{item.specialties[2]}}</li>
                         </ul>
 
                     </div>
@@ -85,7 +85,7 @@
 
                 <div id="therapist-modal-buttons-carousel" layout="row" layout-align="center center">
                         <a  href="#directory/therapists/{{item.id}}"> 
-                            <button id = "carouselButton"class="btn-dkgrn md-raised">SEE FULL PROFILE </button>
+                            <button id = "carouselButton"class="btn-dkgrn">SEE FULL PROFILE</button>
                         </a>
 
                 </div>  
@@ -94,23 +94,26 @@
 
         <carousel-prev>
 
-            <button>
+            <button id="carouselButton" class="btn-green">
                 <i class="material-icons">keyboard_arrow_left</i>
             </button>
         </carousel-prev>
 
         <carousel-next>
 
-            <button>
+            <button id="carouselButton" class="btn-green">
                 <i class="material-icons">keyboard_arrow_right</i>
             </button>
         </carousel-next>
     </ui-carousel>
-</div>
-        <button ng-click="sc.isCarouselView =!sc.isCarouselView">Show All Results</button>
+<br>
+<br>
+        <div layout="column" layout-align="center center">
+        <!-- <button id="carouselButton" class="btn-green" ng-click="sc.isCarouselView =!sc.isCarouselView">Show All Results</button> -->
         <p style="text-align:center;">Not finding what you're looking for? Click
             <a href="#directory">here</a> for a list of all therapists</p>
-
+        </div>
+    </div>
 
         <!-- <div layout-margin>
             <div layout="row" layout-align="center center">
