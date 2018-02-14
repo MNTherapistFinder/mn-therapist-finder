@@ -775,7 +775,11 @@ box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.32);
 
 #carouselModalContents {
   padding:25px;
+}
  
+#top-match {
+  font-weight: bold;
+  font-style: italic;
 }
 
 #apptButton {

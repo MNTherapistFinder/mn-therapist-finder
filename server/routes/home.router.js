@@ -42,7 +42,7 @@ router.get('/insurance', function (req, res) {
 });
 
 router.get('/search', function (req, res) {
-
+    console.log('THIS IS THE SEARCH QUERY', req.query)
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('errorConnect', errorConnectingToDatabase);
@@ -62,7 +62,7 @@ router.get('/search', function (req, res) {
                 LEFT JOIN availability ON therapists.id = availability.therapists_id 
                 GROUP BY therapists.id, therapists.full_name, therapists.email, therapists.profile_picture, therapists.biography,
                 therapists.workplace_street_address, therapists.workplace_zipcode, therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number) s 
-                WHERE s.query_in_insurance = true OR ST_DWithin(s.workplace, ST_SetSRID(ST_MakePoint($3, $4), 4326), 5 * 1609);`,[req.query.insurance, req.query.issue, req.query.lng, req.query.lat] ,function (errorMakingDatabaseQuery, result) {
+                WHERE s.query_in_insurance = true and s.query_in_issues = true and ST_DWithin(s.workplace, ST_SetSRID(ST_MakePoint($3,  $4), 4326), 5 * 1609);`,[req.query.healthcare, req.query.issue, req.query.lng, req.query.lat] ,function (errorMakingDatabaseQuery, result) {
                     done();
                     if (errorMakingDatabaseQuery) {
                         console.log('errorQuery', errorMakingDatabaseQuery);
