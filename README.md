@@ -17,7 +17,9 @@ MN Therapist Finder is a full-stack web application with the purpose of helping 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+<!-- See deployment for notes on how to deploy the project on a live system. -->
 
 ### Prerequisites
 
@@ -27,8 +29,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-How to install, etc.
+Install Postgres by running the following command:
+ > `brew install postgres`
 
+Start your Postgres server by running the following command:
+> `brew services start postgresql`
+
+Install PostGIS by running the following command:
+> `brew install postgis --build-from-source`
+
+Execute `database.sql` file for basic database structure and mock data.
 
 ## Screen Shots
 
@@ -59,9 +69,9 @@ Features that you would like to add at some point in the future.
 
 - [ ] Feature c
 
-## Deployment
+<!-- ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Add additional notes about how to deploy this on a live system -->
 
 ## Authors
 
