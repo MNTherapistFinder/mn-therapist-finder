@@ -2,6 +2,7 @@
 
 MN Therapist Finder is a full-stack web application with the purpose of helping users find therapists in Minnesota who match their needs and connect with those therapists. The application includes a searchable directory of therapists generated through profile creation, as well as a schedule for users and therapists to connect for their first appointment.
 
+- [LIVE DEMO](http://team-mn-therapist-finder.herokuapp.com/)
 
 ## Built With
 
