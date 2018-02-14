@@ -30,13 +30,19 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installing
 
 Install Postgres by running the following command:
- > `brew install postgres`
+```
+brew install postgres
+```
 
 Start your Postgres server by running the following command:
-> `brew services start postgresql`
+```
+brew services start postgresql
+```
 
 Install PostGIS by running the following command:
-> `brew install postgis --build-from-source`
+```
+brew install postgis --build-from-source
+```
 
 Execute `database.sql` file for basic database structure and mock data.
 
