@@ -17,7 +17,9 @@ MN Therapist Finder is a full-stack web application with the purpose of helping 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+<!-- See deployment for notes on how to deploy the project on a live system. -->
 
 ### Prerequisites
 
@@ -27,8 +29,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-How to install, etc.
+Install Postgres by running the following command:
+ > `brew install postgres`
 
+Start your Postgres server by running the following command:
+> `brew services start postgresql`
+
+Install PostGIS by running the following command:
+> `brew install postgis --build-from-source`
+
+Execute `database.sql` file for basic database structure and mock data.
 
 ## Screen Shots
 
@@ -60,15 +70,17 @@ How to install, etc.
 - [x] **Therapist profile dashboard:** Logged in therapists have access to an editable profile page where they can update a photo, add a biography, contact information, specialties, issues treated and accepted insurance.
 - [x] **Therapist schedule view:** A custom scheduler where therapist can set available times which will populate the appointment options on the patient side.
 
-<!-- ### Next Steps
+### Next Steps
 
 Features that you would like to add at some point in the future.
 
-- [ ] Feature c
+- [ ] Admin login to deactivate and delete users, as well as confirm new user accounts.
+- [ ] Map view of therapist locations.
+- [ ] Social media sharing links for therapist profiles.
 
-## Deployment
+<!-- ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Add additional notes about how to deploy this on a live system -->
 
 ## Authors
 
