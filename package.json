@@ -7,7 +7,7 @@
     "test": "nodemon server/server.js",
     "start": "node server/server.js"
   },
-  "author": "Scott Bromander, Kris Szafranski",
+  "author": "Liz Elton, Stephanie Ratanas, Nasir Hussien, Joe Gagliano",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.6",
