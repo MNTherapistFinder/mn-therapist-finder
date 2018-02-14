@@ -4,6 +4,7 @@
 --------------------------DATABASE SET UP FROM SCRATCH ----------------------------
 
 -----------------------------------------------------------------------------------
+CREATE DATABASE "mn_therapist_finder"
 
 CREATE EXTENSION postgis;
 
