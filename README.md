@@ -15,9 +15,9 @@ MN Therapist Finder is a full-stack web application with the purpose of helping 
 * Filestack
 * Moment.js
 
-<!-- ## Getting Started
+## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system. -->
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -25,18 +25,28 @@ These instructions will get you a copy of the project up and running on your loc
 - [PostGIS](https://postgis.net/)
 
 
-<!-- ### Installing
+### Installing
+
+How to install, etc.
 
 
-## Screen Shot
+## Screen Shots
 
-Include one or two screen shots of your project here (optional). Remove if unused. -->
+![Home Page](/server/public/images/documentation/homepage-1.png)
+
+![Profile Dashboard](/server/public/images/documentation/profiledash-1.png)
+
+![Therapist Schedule](/server/public/images/documentation/schedule-1.png)
 
 ## Documentation
 
 - [MN Therapist Finder scope](https://goo.gl/H1cLaz)
 
-<!-- ### Completed Features
+![Early Wireframes](/server/public/images/documentation/IMG_6517.JPG)
+
+![In-Process Features List](/server/public/images/documentation/IMG_6559.JPG)
+
+### Completed Features
 
 High level list of items completed.
 
@@ -51,7 +61,7 @@ Features that you would like to add at some point in the future.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system -->
+Add additional notes about how to deploy this on a live system
 
 ## Authors
 
