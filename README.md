@@ -70,11 +70,13 @@ Execute `database.sql` file for basic database structure and mock data.
 - [x] **Therapist profile dashboard:** Logged in therapists have access to an editable profile page where they can update a photo, add a biography, contact information, specialties, issues treated and accepted insurance.
 - [x] **Therapist schedule view:** A custom scheduler where therapist can set available times which will populate the appointment options on the patient side.
 
-<!-- ### Next Steps
+### Next Steps
 
 Features that you would like to add at some point in the future.
 
-- [ ] Feature c
+- [ ] Admin login to deactivate and delete users, as well as confirm new user accounts.
+- [ ] Map view of therapist locations.
+- [ ] Social media sharing links for therapist profiles.
 
 <!-- ## Deployment
 
