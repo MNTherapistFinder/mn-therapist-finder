@@ -48,12 +48,19 @@ How to install, etc.
 
 ### Completed Features
 
-High level list of items completed.
+**Patient user features:**
+- [x] **Home Page Search:** Allows users to search based on a few parameters to produce focused results.
+- [x] **Directory/Search Results:** Initial home page search displays a carousel of the user's top five therapist matches. The full directory view provides unfiltered results and features a pop out sidebar for filtering.
+- [x] **Therpist profile preview (modal):** Provides a brief summary of therapist's information.
+- [x] **Therapist full profile view:** Shows full details of therapist profile and a link to schedule appointments.
+- [x] **Appointment scheduler:** Displays a two week period of chosen therapist's availability. Prospective patient may click to request an appointment, add information, and an email will be sent to the therapist with the requested date, time and contact information.
 
-- [x] Feature a
-- [x] Feature b
+**Therapist user features**
+- [x] **Therapist register and login**
+- [x] **Therapist profile dashboard:** Logged in therapists have access to an editable profile page where they can update a photo, add a biography, contact information, specialties, issues treated and accepted insurance.
+- [x] **Therapist schedule view:** A custom scheduler where therapist can set available times which will populate the appointment options on the patient side.
 
-### Next Steps
+<!-- ### Next Steps
 
 Features that you would like to add at some point in the future.
 
