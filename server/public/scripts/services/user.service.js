@@ -1,5 +1,4 @@
 myApp.service('UserService', function ($http, $location) {
-  console.log('UserService Loaded');
   var self = this;
   self.userObject = { list: [] };
   self.therapist = { list: [] }
@@ -26,8 +25,6 @@ myApp.service('UserService', function ($http, $location) {
 
 
   self.transformChip = function (chip) {
-    console.log('transform chip', chip);
-
     // If it is an object, it's already a known chip
     if (angular.isObject(chip)) {
       return chip;
@@ -39,28 +36,22 @@ myApp.service('UserService', function ($http, $location) {
     self.insuranceDropDown = [];
     self.specialtiesDropDown = [];
     self.strugglesDropDown = [];
-    console.log('UserService -- getuser');
     $http.get('/user').then(function (response) {
       if (response.data.email) {
         self.userObject.list = response.data;
         // user has a curret session on the server
         // self.userObject.email = response.data.email;
-        console.log('UserService -- getuser -- User Data: ', self.userObject.list);
       } else {
-        console.log('UserService -- getuser -- failure');
         // user has no session, bounce them back to the login page
         $location.path("/home");
       }
     }, function (response) {
-      console.log('UserService -- getuser -- failure: ', response);
       $location.path("/home");
     });
   },
 
     self.logout = function () {
-      console.log('UserService -- logout');
       $http.get('/user/logout').then(function (response) {
-        console.log('UserService -- logout -- logged out');
         self.insuranceDropDown = [];
         self.specialtiesDropDown = [];
         self.strugglesDropDown = [];
@@ -69,13 +60,8 @@ myApp.service('UserService', function ($http, $location) {
     }
 
   self.getTherapist = function () {
-
-    console.log('hit');
     $http.get('/user/therapist').then(function (response) {
       self.therapist.list = response.data;
-      console.log('insurance ids', self.therapist.list[0].insurance_id);
-      console.log('specialty ids', self.therapist.list[0].specialty_id);
-      console.log('struggle ids', self.therapist.list[0].issueid);
       for (var i = 0; i < self.therapist.list[0].insurance_id.length; i++) {
         self.insuranceDropDown.push({ id: self.therapist.list[0].insurance_id[i] })
       };
@@ -89,11 +75,7 @@ myApp.service('UserService', function ($http, $location) {
     })
       .then(function (response) {
         // if (!self.someVar) {
-        console.log('hit promise in get therapist;')
         self.therapistOld.list = angular.copy(self.therapist.list);
-        console.log(self.therapist.list);
-        console.log(self.therapistOld.list);
-        console.log(angular.equals(self.therapist.list, self.therapistOld.list));
         self.checkTherapistObjects();
         // self.someVar = true
 
@@ -103,7 +85,6 @@ myApp.service('UserService', function ($http, $location) {
   self.getIssuesList = function () {
     $http.get('user/issues').then(function (response) {
       self.issues.list = response.data;
-      console.log(self.issues.list);
     })
   }
 
@@ -113,7 +94,6 @@ myApp.service('UserService', function ($http, $location) {
       method: 'POST',
       data: { id: issueId }
     }).then(function (response) {
-      console.log(response);
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];
@@ -126,7 +106,6 @@ myApp.service('UserService', function ($http, $location) {
       method: 'DELETE',
       params: { issues_id: issueId }
     }).then(function (response) {
-      console.log(response);
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];
@@ -137,19 +116,15 @@ myApp.service('UserService', function ($http, $location) {
   self.getHealthcareList = function () {
     $http.get('user/healthcare').then(function (response) {
       self.healthcare.list = response.data
-      console.log(response.data);
     })
   }
 
   self.addHealthcareProvider = function (insuranceId) {
-    console.log('hit add healthcare');
-
     $http({
       url: 'user/healthcare',
       method: 'POST',
       data: { id: insuranceId }
     }).then(function (response) {
-      console.log(response);
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];
@@ -163,7 +138,6 @@ myApp.service('UserService', function ($http, $location) {
       method: 'DELETE',
       params: { id: healthcareId }
     }).then(function (response) {
-      console.log(response);
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];
@@ -174,19 +148,16 @@ myApp.service('UserService', function ($http, $location) {
 
   self.getSpecialtiesList = function () {
     $http.get('user/specialty').then(function (response) {
-      self.specialties.list = response.data
-      console.log(response.data);
+      self.specialties.list = response.data;
     })
   }
 
   self.addSpecialty = function (specialtyId) {
-    console.log(specialtyId);
     $http({
       url: 'user/specialty',
       method: 'POST',
       data: { id: specialtyId }
     }).then(function (response) {
-      console.log(response);
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];
@@ -201,7 +172,6 @@ myApp.service('UserService', function ($http, $location) {
       method: 'DELETE',
       params: { id: specialtyId }
     }).then(function (response) {
-      console.log(response);
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];
@@ -210,13 +180,11 @@ myApp.service('UserService', function ($http, $location) {
   }
 
   self.saveProfile = function (therapistObject) {
-    console.log(therapistObject);
     $http({
       url: 'user/therapist',
       method: 'PUT',
       params: therapistObject
     }).then(function (response) {
-      console.log(response)
       self.insuranceDropDown = [];
       self.specialtiesDropDown = [];
       self.strugglesDropDown = [];

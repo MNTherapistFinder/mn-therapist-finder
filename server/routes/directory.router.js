@@ -7,7 +7,6 @@ var pool = require('../modules/pool.js');
 router.get('/therapistinfo', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
-            console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
             client.query(`SELECT therapists.id,therapists.full_name, therapists.email, therapists.profile_picture, therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number, therapists.license_type, therapists.website, therapists.phone, 
@@ -21,7 +20,7 @@ router.get('/therapistinfo', function (req, res) {
             ;`, function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
-                    console.log('error', errorMakingDatabaseQuery);
+
                     res.sendStatus(500);
                 } else {
                     res.send(result.rows);
@@ -34,11 +33,9 @@ router.get('/therapistinfo', function (req, res) {
 
 // query for getting therapist info on main directory page
 router.get('/therapistprofileinfo', function (req, res) {
-    console.log('req.query.id for therapist prof inf', req.query.id);
     
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
-            console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
             client.query(`SELECT therapists.id,therapists.full_name, therapists.email, therapists.profile_picture, therapists.biography, therapists.workplace_street_address, therapists.workplace_zipcode, therapists.years_in_practice, therapists.school, therapists.year_graduated, therapists.license_number,therapists.license_type, therapists.website, therapists.phone, 
@@ -53,7 +50,6 @@ router.get('/therapistprofileinfo', function (req, res) {
             `,[req.query.id], function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
-                    console.log('error', errorMakingDatabaseQuery);
                     res.sendStatus(500);
                 } else {
                     res.send(result.rows);
@@ -64,10 +60,8 @@ router.get('/therapistprofileinfo', function (req, res) {
 }); // end query for getting therapist info on main directory page
 
 router.get('/appointments', function (req, res) {
-    console.log('appointment router req.query.id', req.query.id);
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
-            console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
             client.query(`SELECT availability.id AS available_time_id, availability.available_from 
@@ -75,7 +69,6 @@ router.get('/appointments', function (req, res) {
             ON therapists.id = availability.therapists_id where therapists.id = $1;`,[req.query.id], function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
-                    console.log('error', errorMakingDatabaseQuery);
                     res.sendStatus(500);
                 } else {
                     res.send(result.rows);

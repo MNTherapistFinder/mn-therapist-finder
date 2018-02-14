@@ -1,5 +1,4 @@
 myApp.service('HomeService', ['$http', '$log', function ($http, $location, $log) {
-  console.log('HomeService Loaded');
   var self = this;
   self.searchResults = { list: [] }
   self.slides = [];
@@ -12,13 +11,10 @@ myApp.service('HomeService', ['$http', '$log', function ($http, $location, $log)
   self.issuesTwo = { list: [] };
 
   self.getIssues = function () {
-    console.log('searchIssues run');
-
     $http({
       method: 'GET',
       url: '/home/issues'
     }).then(function (response) {
-      console.log('response from searchIssues', response.data);
       self.issuesTwo.list = response.data;
 
     });
@@ -33,13 +29,10 @@ myApp.service('HomeService', ['$http', '$log', function ($http, $location, $log)
   self.insurance = { list: [] };
 
   self.getInsurance = function () {
-    console.log('getInsurance run');
-
     $http({
       method: 'GET',
       url: '/home/insurance'
     }).then(function (response) {
-      console.log('response from getInsurance', response.data);
       self.insurance.list = response.data;
 
     });
@@ -57,7 +50,6 @@ myApp.service('HomeService', ['$http', '$log', function ($http, $location, $log)
       }
     }).then(function (response) {
       self.searchResults.list = response.data;
-      console.log(response.data);
 
     }).then(function(){
       while (self.slides.length > 0){

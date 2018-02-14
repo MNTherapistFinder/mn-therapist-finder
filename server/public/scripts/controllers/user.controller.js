@@ -1,5 +1,5 @@
 myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserService', function ($scope, $mdToast, $mdSidenav, UserService) {
-  console.log('UserController created');
+
   var vm = this;
   vm.therapist = UserService.therapist;
   vm.userObject = UserService.userObject;
@@ -106,7 +106,6 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
 
   //opens filestack api, and changes website url in the therapist object with the selected image
   vm.openPicker = function (userPhoto, userid) {
-    console.log('in filestack');
     vm.client.pick({
       fromSources: ["local_file_system", "imagesearch", "facebook", "instagram", "dropbox"],
       transformations: {
@@ -117,7 +116,6 @@ myApp.controller('UserController', ['$scope', '$mdToast', '$mdSidenav', 'UserSer
       }
     }).then(function (response) {
       // declare this function to handle response
-      console.log(response.filesUploaded[0].url);
       vm.therapist.list[0].profile_picture = response.filesUploaded[0].url;
 
       vm.checkTherapistObjects();
