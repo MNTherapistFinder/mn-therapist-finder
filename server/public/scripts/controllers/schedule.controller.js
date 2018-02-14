@@ -1,5 +1,5 @@
 myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdDialog', 'UserService', function ($http, $mdMedia, $mdSidenav, $mdDialog, UserService) {
-    console.log('Schedule controller working')
+    
     var self = this
     self.userObject = UserService.userObject
     self.message = 'Hello';
@@ -10,7 +10,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
     self.$mdDialog = $mdDialog;
     self.appointments = [];
     self.dates = [];
-    console.log(self.userObject);
+    
 
     // Configure dates
     var today = new Date();
@@ -28,7 +28,7 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
     self.timeFrames = ["Morning", "Afternoon", "Evening"];
 
     self.getAppointments = function (timeOfDay) {
-        console.log(timeOfDay)
+        
        if (timeOfDay == "afternoon"){
            timeOfDay = self.afternoonSlots
        } else if (timeOfDay == 'morning'){
@@ -36,16 +36,15 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
        } else if (timeOfDay == 'evening') {
             timeOfDay = self.eveningSlots
        }
-        console.log('get Hit');
+        
         $http.get('/schedule').then(response => {
-            console.log('response is in getAppointments, ', response.data)
+            
 
-            self.appointments = response.data
-            console.log('self.appointments in get appointments function: ', self.appointments);
+            self.appointments = response.data;
+            
 
             self.dates = self.allot(timeOfDay, self.days, self.appointments);
-            console.log('time of day after function', timeOfDay)
-            console.log(self.dates);
+
 
         });
     }
@@ -55,10 +54,8 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
 
 
     self.save = function (appointmentToSave) {
-        console.log(appointmentToSave);
+
         appointmentToSave.active = true;
-        console.log('in save function. parameter passed is: ', appointmentToSave.date)
-        console.log(appointmentToSave.date)
         self.$http.post('/schedule', { available_from: appointmentToSave.date }).then(res => {
             self.dates = self.allot(self.slots, self.days, self.appointments);
             if(self.selectedItem == 'morning') {
@@ -68,11 +65,6 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
             } else if( self.selectedItem == 'evening'){
                 self.getAppointments(self.eveningSlots)
             } else self.getAppointments(self.morningSlots)
-            // self.$http.get('/schedule').then(response => {
-            //     console.log('GET REQUEST AFTER SAVE', response.data);
-            //     self.appointments = response.data[0].available_times;
-            //     self.dates = self.allot(self.slots, self.days, self.appointments);
-            // });
         });
 
     }
@@ -82,9 +74,6 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
 
 
     self.allot = function (slots, days, appointments) {
-        console.log('slots:', slots);
-        console.log('days:', days);
-        console.log('appointments:', appointments);
         var a = [];
         _.each(days, function (d) {
             var k = new Date(d.yyyy, d.mm, d.dd);
@@ -130,14 +119,12 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
         })
             .then(function (answer) {
                 answer.date = answer.slot;
-                console.log(answer.date);
                 vm.save(answer.date);
             });
 
     }
 
     self.deleteTime = function (time) {
-        console.log(time.available_time_id)
         $http({
             method: 'DELETE',
             url: '/schedule/' + time.available_time_id
@@ -153,15 +140,6 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
 
         switch (_d) {
             case 1: bg = 'darkGrey'; break;
-            // case 2: bg = 'darkGrey'; break;
-            // case 3: bg = 'blue'; break;
-            // case 4: bg = 'yellow'; break;
-            // case 5: bg = 'pink'; break;
-            // case 6: bg = 'darkBlue'; break;
-            // case 7: bg = 'purple'; break;
-            // case 8: bg = 'deepBlue'; break;
-            // case 9: bg = 'lightPurple'; break;
-            // case 10: bg = 'red'; break;
             default: bg = 'darkGrey'; break;
         }
 
@@ -189,12 +167,5 @@ myApp.controller('ScheduleController', ['$http', '$mdMedia', '$mdSidenav', '$mdD
 
 
 
-
-// angular.module('myApp')
-//   .component('schedule', {
-//     templateUrl: '/views/templates/schedule.html',
-//     controller: 'ScheduleController',
-//     controllerAs: 'sc'
-// })
 
 
