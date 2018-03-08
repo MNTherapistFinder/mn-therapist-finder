@@ -20,6 +20,7 @@ router.post('/', function(req, res, next) {
 
   pool.connect(function(err, client, done) {
     if(err) {
+      console.log('err', err)
       res.sendStatus(500);
     }
     client.query("INSERT INTO therapists (full_name, email, password) VALUES ($1, $2, $3) RETURNING id",
@@ -28,6 +29,7 @@ router.post('/', function(req, res, next) {
           client.end();
 
           if(err) {
+            console.log(err);
             res.sendStatus(500);
           } else {
             res.sendStatus(201);

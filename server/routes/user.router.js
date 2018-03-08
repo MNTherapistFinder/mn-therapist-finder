@@ -28,6 +28,7 @@ router.get('/logout', function (req, res) {
 router.get('/therapist', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`SELECT therapists.full_name, therapists.email, therapists.profile_picture, 
@@ -46,6 +47,7 @@ router.get('/therapist', function (req, res) {
       therapists.license_type, therapists.website, therapists.is_active,therapists.lng, therapists.lat, therapists.phone;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
+            console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
             res.sendStatus(500);
           } else {
             res.send(result.rows);
@@ -63,6 +65,7 @@ router.put('/therapist', function (req, res) {
 
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       var promise1 = client.query(`UPDATE therapists SET full_name = $1, email = $2, biography = $3, 
@@ -89,6 +92,7 @@ router.put('/therapist', function (req, res) {
       done();
       res.sendStatus(201);
     }).catch(function (err) {
+      console.log('err', err)
       res.sendStatus(500);
 
     });
@@ -101,11 +105,13 @@ router.put('/therapist', function (req, res) {
 router.get('/issues', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`SELECT * FROM issues`, function (errorMakingDatabaseQuery, result) {
         done();
         if (errorMakingDatabaseQuery) {
+          console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
           res.sendStatus(500);
         } else {
           res.send(result.rows);
@@ -118,12 +124,14 @@ router.get('/issues', function (req, res) {
 router.post('/issues', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`INSERT INTO therapists_issues ("therapists_id","issues_id")
       VALUES ($1,$2)`, [req.user.id, req.query.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
+            console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
             res.sendStatus(500);
           } else {
             res.sendStatus(201);
@@ -136,11 +144,13 @@ router.post('/issues', function (req, res) {
 router.delete('/issues', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`DELETE FROM therapists_issues WHERE therapists_id=$1 AND issues_id = $2`, [req.user.id, req.query.issues_id], function (errorMakingDatabaseQuery, result) {
         done();
         if (errorMakingDatabaseQuery) {
+          console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
           res.sendStatus(500);
         } else {
           res.sendStatus(201);
@@ -153,11 +163,13 @@ router.delete('/issues', function (req, res) {
 router.get('/healthcare', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`SELECT * FROM insurance_plans`, function (errorMakingDatabaseQuery, result) {
         done();
         if (errorMakingDatabaseQuery) {
+          console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
           res.sendStatus(500);
         } else {
           res.send(result.rows);
@@ -170,12 +182,14 @@ router.get('/healthcare', function (req, res) {
 router.post('/healthcare', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`INSERT INTO therapists_insurance_plans ("insurance_plans_id","therapists_id")
       VALUES ($1,$2)`, [req.body.id, req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
+            console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
             res.sendStatus(500);
           } else {
             res.sendStatus(201);
@@ -189,11 +203,13 @@ router.post('/healthcare', function (req, res) {
 router.delete('/healthcare', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`DELETE FROM therapists_insurance_plans WHERE  therapists_id = $1  AND insurance_plans_id=$2  `, [req.user.id, req.query.id], function (errorMakingDatabaseQuery, result) {
         done();
         if (errorMakingDatabaseQuery) {
+          console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
           res.sendStatus(500);
         } else {
           res.sendStatus(201);
@@ -207,11 +223,13 @@ router.delete('/healthcare', function (req, res) {
 router.get('/specialty', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`SELECT * FROM specialties`, function (errorMakingDatabaseQuery, result) {
         done();
         if (errorMakingDatabaseQuery) {
+          console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
           res.sendStatus(500);
         } else {
           res.send(result.rows);
@@ -224,12 +242,14 @@ router.get('/specialty', function (req, res) {
 router.post('/specialty', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`INSERT INTO therapists_specialties ("specialties_id","therapists_id")
       VALUES ($1,$2)`, [req.body.id, req.user.id], function (errorMakingDatabaseQuery, result) {
           done();
           if (errorMakingDatabaseQuery) {
+            console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
             res.sendStatus(500);
           } else {
             res.sendStatus(201);
@@ -241,11 +261,13 @@ router.post('/specialty', function (req, res) {
 router.delete('/specialty', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
+      console.log('errorConnectingToDatabase', errorConnectingToDatabase)
       res.sendStatus(500);
     } else {
       client.query(`DELETE FROM therapists_specialties WHERE  therapists_id = $1  AND specialties_id=$2  `, [req.user.id, req.query.id], function (errorMakingDatabaseQuery, result) {
         done();
         if (errorMakingDatabaseQuery) {
+          console.log('errorMakingDatabaseQuery', errorMakingDatabaseQuery)
           res.sendStatus(500);
         } else {
           res.sendStatus(201);
