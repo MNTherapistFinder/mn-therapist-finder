@@ -275,17 +275,16 @@ INSERT INTO "public"."specialties"("specialty_name") VALUES('Video Counseling') 
 ------------------------------------------------------------------------------------------------------------
 
 INSERT INTO "public"."therapists"("full_name", "email", "password", "profile_picture", "biography", "workplace_street_address", 
-"workplace_zipcode", "workplace", "years_in_practice", "school", "license_type", "website", "is_active", "lng", "lat") 
+"workplace_zipcode", "workplace", "years_in_practice", "school", "license_type", "website", "is_active", "phone", "lng", "lat") 
 
 VALUES('Sophie Weber', 'sophie@g.com', '$2a$10$sdCUVReJUcov/V6wxwiy6uPRslVC3HpkDQ50fGspZGCguoiSwaLXK', 
 'https://cdn.filestackcontent.com/TRmQpYY4RwiJFjhqQZOF', 'I have been working with clients in the greater Minneapolis area for the past seven years. 
 My approach to therapy is to make the experience driven by you, the client. How can we approach struggles you may be facing together? How can I help 
 you take the healing journey you want to take?', '3611 Bryant Avenue South, Minneapolis, MN, USA', 55415, 
-'SRID=4326;POINT(-93.290393 44.937278)', 5, 'University of Minnesota', 'Counselor, MFA, MA', 'www.liz-elton.com', 'TRUE', -93.290393, 44.937278),
+'SRID=4326;POINT(-93.290393 44.937278)', 5, 'University of Minnesota', 'Counselor, MFA, MA', 'www.liz-elton.com', 'TRUE', '(555)-555-5555',-93.290393, 44.937278),
 
  ('Oliva Griffin', 'oliva@g.com', '$2a$10$iX6s7YSs13L9ukikZC95FOW49dnrxpa06ZDXIP9d6AST/a/K1MHD2', 'https://cdn.filestackcontent.com/pyxq1BA7Tk6FAp3rE79V', 
- 'I have been working with clients in the greater Minneapolis area for the past seven years. My approach to therapy is to make the experience driven by you, the client. 
- How can we approach struggles you may be facing together? How can I help you take the healing journey you want to take?', '4306 Bryant Avenue South, Minneapolis, MN, USA',
+ 'I have been working with clients in the greater Minneapolis area for the past seven years. My approach to therapy is to make the experience driven by you, the client. How can we approach struggles you may be facing together? How can I help you take the healing journey you want to take?', '4306 Bryant Avenue South, Minneapolis, MN, USA',
  55409, 'SRID=4326;POINT(-93.2910813 44.9247472)',5,'Stanford University', 'Clinical Social Work, MSW / LISCW','ogriffin.com', 'TRUE','(555)-555-5555', -93.29108129999997, 44.9247472),
 
   ('Patrick Parker', 'patrick.therapist.user@gmail.com', '$2a$10$dBlZ0uRuP/tUnxC/bmIDzuKhtR2X2FCS38a7kKyyEZVkxgDuSUAd6', 'https://cdn.filestackcontent.com/dpQhlwnRTq8mROfc2Rgw', 'Hello! I''m Patrick, 
@@ -295,21 +294,18 @@ you take the healing journey you want to take?', '3611 Bryant Avenue South, Minn
   'Licensed Marriage and Family Therapist', 'www.patrickparker.io', 'TRUE','(763) 226-9463', -93.337876, 44.9435989),
 
 
-('Allison Reichard', 'ma@g.com', '$2a$10$4cYvAx.5lV/lYfcehIjM0OPA7xA1Lr.M64x/C.kG5npkLNd9VUfEW', 'https://cdn.filestackcontent.com/8In4SKjORT6BAeHTGwJ1', 'I am a warm, caring psychotherapist who has been practicing for 
-over 20 years. I trained psychoanalytically at NYU Graduate School of Social Work, and have helped clients understand themselves and their behaviors so that they can enjoy their lives more fully. I work with adults and 
-children individually as well as providing family and couples counseling.', '617 Jefferson St NE Minneapolis MN', 55413, 'SRID=4326;POINT(-98.25471 44.9956709)', 2, 'LMFT', 'areichard.com', 
-'123-456-7890', 'FALSE', -93.25470999999999, 44.9956709),
+('Allison Reichard', 'ma@g.com', '$2a$10$4cYvAx.5lV/lYfcehIjM0OPA7xA1Lr.M64x/C.kG5npkLNd9VUfEW', 'https://cdn.filestackcontent.com/8In4SKjORT6BAeHTGwJ1', 'I am a warm, caring psychotherapist who has been practicing for over 20 years. I trained psychoanalytically at NYU Graduate School of Social Work, and have helped clients understand themselves and their behaviors so that they can enjoy their lives more fully. I work with adults and 
+children individually as well as providing family and couples counseling.', '617 Jefferson St NE Minneapolis MN', 55413, 'SRID=4326;POINT(-98.25471 44.9956709)', 2, 'Argosy University', 'LMFT', 'areichard.com', 
+'FALSE', '123-456-7890', -93.25470999999999, 44.9956709),
 
  ('Carlos Gutierrez', 'pa@g.com', '$2a$10$nIvCnEWZwxcy15cHHqBoSu1w/tGqKnCRZEI4npPSSN5edEL25ZHGG', 'https://cdn.filestackcontent.com/8In4SKjORT6BAeHTGwJ1', 
  'I am a warm, caring psychotherapist who has been practicing for over 20 years. I trained psychoanalytically at NYU Graduate School of Social Work, and have 
- helped clients understand themselves and their behaviors so that they can enjoy their lives more fully. I work with adults and children individually as well as 
- providing family and couples counseling.', '617 Jefferson St NE Minneapolis MN', 55413, 'SRID=4326;POINT(-98.25471 44.9956709)', 11, 'University of Wisconsin La-Crosse', 
- 1997, '1234', 'LMFT', 'cgutierrez.com', '123-456-7890', 'FALSE', -93.25470999999999, 44.9956709),
+ helped clients understand themselves and their behaviors so that they can enjoy their lives more fully. I work with adults and children individually as well as providing family and couples counseling.', '617 Jefferson St NE Minneapolis MN', 55413, 'SRID=4326;POINT(-98.25471 44.9956709)', 11, 'University of Wisconsin La-Crosse', 'LMFT', 'cgutierrez.com', 'FALSE', '123-456-7890', -93.25470999999999, 44.9956709),
 
  ('Richard Liebner ', 'fa@g.com', '$2a$10$CzPEu6szo65r7pDjzSGEjOjCe8rEo0DK3.phKzvES3FXZLM3km0SG', 'https://cdn.filestackcontent.com/8In4SKjORT6BAeHTGwJ1', 'I am a warm, caring 
  psychotherapist who has been practicing for over 20 years. I trained psychoanalytically at NYU Graduate School of Social Work, and have helped clients understand themselves and their behaviors 
  so that they can enjoy their lives more fully. I work with adults and children individually as well as providing family and couples counseling.', '617 Jefferson St NE Minneapolis MN', 55413, 
- 'SRID=4326;POINT(-98.25471 44.9956709)', 'University of Chicago', 1990, 'LMFT', 'rleibner.com', '123-456-7890', 'FALSE', -93.25470999999999, 44.9956709);
+ 'SRID=4326;POINT(-98.25471 44.9956709)', 11, 'University of Chicago', 'LMFT', 'rleibner.com', 'FALSE', '123-456-7890', -93.25470999999999, 44.9956709);
 
  -----------------------------------------------------------------------------------
 
