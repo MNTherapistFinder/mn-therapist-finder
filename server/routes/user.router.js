@@ -59,9 +59,10 @@ router.get('/therapist', function (req, res) {
 
 router.put('/therapist', function (req, res) {
 
-  var issues =  '{' + req.query.issueid.toString() + '}';
-  var specialties = '{' + req.query.specialty_id.toString() + '}';
-  var insurance = '{' + req.query.insurance_id.toString() + '}';
+  console.log('req.query', req.query);
+  var issues =  '{' + req.query.issueid && req.query.issueid.toString() ? req.query.issueid.toString() : ''+ '}';
+  var specialties = '{' + req.query.specialty_id && req.query.specialty_id.toString() ? req.query.specialty_id.toString() : '' + '}';
+  var insurance = '{' + req.query.insurance_id && req.query.insurance_id.toString() ? req.query.insurance_id.toString() : '' + '}';
 
   pool.connect(function (errorConnectingToDatabase, client, done) {
     if (errorConnectingToDatabase) {
