@@ -41,7 +41,7 @@ CREATE TABLE "issues"
 CREATE TABLE "therapists_issues"
 (
     "id" serial PRIMARY KEY,
-    "therpaists_id" INTEGER references therapists,
+    "therapists_id" INTEGER references therapists,
     "issues_id" INTEGER references issues
 );
 
