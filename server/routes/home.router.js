@@ -43,6 +43,7 @@ router.get('/insurance', function (req, res) {
 
 router.get('/search', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done) {
+        console.log('/search route req.query', req.query);
         if (errorConnectingToDatabase) {
             console.log('errorConnectingToDatabase', errorConnectingToDatabase)
             res.sendStatus(500);
